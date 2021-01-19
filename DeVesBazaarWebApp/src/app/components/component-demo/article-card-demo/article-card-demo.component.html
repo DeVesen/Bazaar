@@ -1,0 +1,32 @@
+
+<app-article-list title="Info-Card">
+   <div class="card-list">
+      <div *ngFor="let article of articles">
+         <app-article-card-info [article]="article"></app-article-card-info>
+      </div>
+   </div>
+</app-article-list>
+
+<app-article-list title="Sale-Card">
+   <div class="card-list">
+      <div *ngFor="let article of articles">
+         <app-article-card-sale [article]="article"></app-article-card-sale>
+      </div>
+   </div>
+</app-article-list>
+
+<app-article-list title="Actions -> ">
+   <div ngProjectAs="actions" style="display: flex;">
+      <button mat-icon-button>
+         <mat-icon>add</mat-icon>
+      </button>
+      <button mat-icon-button>
+         <mat-icon>person_search</mat-icon>
+      </button>
+      <button mat-icon-button>
+         <mat-icon>search</mat-icon>
+      </button>
+   </div>
+   <div class="card-list">
+   </div>
+</app-article-list>

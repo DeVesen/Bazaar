@@ -1,0 +1,14 @@
+.page-content {
+  margin: 2px;
+  
+  height: calc(100% - 44px);
+  max-height: calc(100% - 44px);
+}
+
+.article-table {
+  height: calc(100% - 64px);
+  max-height: calc(100% - 64px);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}

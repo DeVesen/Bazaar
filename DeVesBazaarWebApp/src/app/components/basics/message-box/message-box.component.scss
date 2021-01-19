@@ -1,0 +1,30 @@
+
+.message-box-dlg {
+    min-width: 250px;
+}
+
+.message-box-dlg-titel {
+  margin-bottom: 7.5px;
+  font-weight: bold;
+}
+
+.message-box-dlg-message {
+    margin-bottom: 7.5px;
+}
+
+.message-box-dlg-buttons {
+    display: grid;
+    grid-template-columns: auto;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+}
+
+.grid-template-btn2 {
+    grid-template-columns: auto auto;
+}
+.grid-template-btn3 {
+    grid-template-columns: auto auto auto;
+}
+.grid-template-btn4 {
+    grid-template-columns: auto auto auto auto;
+}

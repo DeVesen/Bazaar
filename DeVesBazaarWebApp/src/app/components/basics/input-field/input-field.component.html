@@ -1,0 +1,11 @@
+
+<mat-form-field [appearance]="appearance" [hintLabel]="hintValue" [floatLabel]="floatLabel">
+  <mat-label>{{labelValue}}</mat-label>
+  <input matInput [type]="inputType"
+                  [placeholder]="placeholder"
+                  [formControl]="frmCtrl"
+                  [ngClass]="{'input-right-align' : inputRightAlign}">
+  <span matPrefix>{{prefixValue}}</span>
+  <span matSuffix>{{suffixValue}}</span>
+  <mat-error *ngIf="errorValue">{{errorValue}}</mat-error>
+</mat-form-field>

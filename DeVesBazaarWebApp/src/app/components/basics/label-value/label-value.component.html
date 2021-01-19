@@ -1,0 +1,15 @@
+
+<div class="dv-label"
+     [ngClass]="{'dv-label-horizontal': type === 'horizontal',
+                 'dv-label-vertical': type === 'vertical'}">
+  <div class="dv-label-title"
+       [ngClass]="{'dv-label-title-horizontal': type === 'horizontal',
+                   'dv-label-title-vertical': type === 'vertical'}">
+      <label>{{title}}</label>
+  </div>
+  <div class="dv-label-value"
+       [ngClass]="{'dv-label-value-horizontal': type === 'horizontal',
+                   'dv-label-value-vertical': type === 'vertical'}">
+      <label>{{value ? value : defaultValue}}</label>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+
+<div>
+    <p>Ohne hinweis - reine Nummerneingabe</p>
+    <app-seller-selection-input [sellerCtrl]="sellerCtrl"
+                                (inputChange)="inputChange($event)"></app-seller-selection-input>
+</div>
+
+<div>
+    <p>Mit Hinweis</p>
+    <app-seller-selection-input [sellerCtrl]="sellerCtrl"
+                                [showSellerHint]="true"
+                                (inputChange)="inputChange($event)"></app-seller-selection-input>
+</div>

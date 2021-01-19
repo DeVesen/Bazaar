@@ -1,0 +1,12 @@
+
+.card-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    min-height: 50px;
+
+    div {
+        margin: 5px;
+    }
+}

@@ -1,0 +1,9 @@
+.seller-selection-input ::ng-deep .mat-form-field-infix {
+    width: 50px !important;
+}
+
+.seller-selection-input input::-webkit-outer-spin-button,
+.seller-selection-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

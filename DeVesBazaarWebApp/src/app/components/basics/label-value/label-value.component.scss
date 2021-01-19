@@ -1,0 +1,35 @@
+
+.dv-label {
+    margin: 3px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.dv-label-horizontal {
+    display: flex;
+    align-items: center;
+}
+
+.dv-label-title {
+    font-size: 14px;
+    height: 15px;
+    line-height: 14px;
+
+    color: rgba(0, 0, 0, 0.54);
+}
+.dv-label-title-horizontal {
+    width: 20%;
+}
+
+.dv-label-value {
+    font-size: 20px;
+    height: 21px;
+    line-height: 20px;
+}
+.dv-label-value-vertical {
+    margin: 2px 0 5px 0;
+}
+
+
+
+.dv-label-margin-left-3 {
+    margin-left: 3px;
+}
