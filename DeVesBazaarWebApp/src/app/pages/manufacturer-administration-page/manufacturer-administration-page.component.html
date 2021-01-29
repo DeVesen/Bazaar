@@ -1,1 +1,29 @@
-<p>manufacturer-administration-page works!</p>
+
+<div class="manufacturer-page">
+    
+    <p-table [value]="manufacturer" [scrollable]="true" scrollHeight="flex">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td style="display: flex; flex-direction: row-reverse;">
+                    <button pButton pRipple 
+                            type="button"
+                            icon="pi pi-times"
+                            class="-button-rounded p-button-danger p-button-text"
+                            (click)="onRemoveManufacturer(product)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>
+
+<p-confirmDialog header="Wirklich löschen?" icon="pi pi-exclamation-triangle"></p-confirmDialog>
