@@ -21,13 +21,13 @@ export class StatisticPageComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     
     this.articleOptions = this.createChartOptions('Artikel');
-    this.articleData = await this.loadArticleData();
+    this.articleData = await this.loadArticleDatas();
 
     this.sellerOptions = this.createChartOptions('Verkäufer');
-    this.sellerData = await this.loadArticleData();
+    this.sellerData = await this.loadSellerDatas();
 
     this.tagsOptions = this.createChartOptions('Artikel / Tags');
-    this.tagsData = await this.loadArticleData();
+    this.tagsData = await this.loadArticleTagsDatas();
   }
 
   
@@ -50,12 +50,70 @@ export class StatisticPageComponent implements OnInit {
     };
   }
 
-  private loadArticleData(): Promise<any> {
+  private loadArticleDatas(): Promise<any> {
     const data = {
       labels: [
         'Nicht im Verkauf',
         'Im Verkauf',
         'Verkauft'
+      ],
+      datasets: [
+          {
+              data: [
+                300,
+                50,
+                100
+              ],
+              backgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ],
+              hoverBackgroundColor: [
+                  "#b30027",
+                  "#1068a2",
+                  "#b38000"
+              ]
+          }]    
+      };
+    return of(data).toPromise();
+  }
+
+  private loadSellerDatas(): Promise<any> {
+    const data = {
+      labels: [
+        'Abgerechnet',
+        'Nicht im Verkauf',
+        'Im Verkauf'
+      ],
+      datasets: [
+          {
+              data: [
+                300,
+                50,
+                100
+              ],
+              backgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ],
+              hoverBackgroundColor: [
+                  "#b30027",
+                  "#1068a2",
+                  "#b38000"
+              ]
+          }]    
+      };
+    return of(data).toPromise();
+  }
+
+  private loadArticleTagsDatas(): Promise<any> {
+    const data = {
+      labels: [
+        'Ski',
+        'Helm',
+        'Brille'
       ],
       datasets: [
           {
