@@ -1,1 +1,20 @@
-<p>statistic-page works!</p>
+
+<div class="statistic-page">
+
+    <div class="chart-list">
+
+        <div class="chart-info-cart">
+            <p-chart type="doughnut" [data]="articleData" [options]="articleOptions"></p-chart>
+        </div>
+        
+        <div class="chart-info-cart">
+            <p-chart type="doughnut" [data]="sellerData" [options]="sellerOptions"></p-chart>
+        </div>
+        
+        <div class="chart-info-cart">
+            <p-chart type="doughnut" [data]="tagsData" [options]="tagsOptions"></p-chart>
+        </div>
+
+    </div>
+
+</div>

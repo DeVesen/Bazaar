@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 
 import {MenuModule} from 'primeng/menu';
+import {ChartModule} from 'primeng/chart';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import {MenuModule} from 'primeng/menu';
     CommonModule
   ],
   exports: [
-    MenuModule
+    MenuModule,
+    ChartModule
   ]
 })
 export class PrimengModule { }

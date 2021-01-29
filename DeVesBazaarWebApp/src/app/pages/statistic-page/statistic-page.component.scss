@@ -1,0 +1,26 @@
+
+.statistic-page {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chart-list {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+
+    @media only screen and (max-width: 768px) {
+        grid-template-columns: 100%;
+    }
+}
+
+.chart-info-cart {
+    padding-bottom: 10px;
+    background-color: #2b2b2b;
+    border-radius: 10px;
+}
