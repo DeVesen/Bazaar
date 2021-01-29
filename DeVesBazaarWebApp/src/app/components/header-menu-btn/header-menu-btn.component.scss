@@ -1,0 +1,19 @@
+
+.header-menu-btn {
+    height: 100%;
+    
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    display: flex;
+    align-items: center;
+
+    i {
+        font-size: 3rem;
+    }
+    
+    .header-area-title-name {
+        padding-left: 10px;
+        font-size: 2rem;
+    }
+}

@@ -1,5 +1,22 @@
-<div style="background-color: darkgray; height: 40px;">
-    <div class="app-title">{{ title }}</div>
-    <div class="developer-name">Sven-Reichert</div>
+
+<div class="header-area bc-grey">
+  <app-header-menu-btn [caption]="title"
+                       *ngIf="bodySidebarIsShown"></app-header-menu-btn>
+  <app-header-menu-btn [caption]="title"
+                       (click)="menu.toggle($event)"
+                       *ngIf="!bodySidebarIsShown"></app-header-menu-btn>
 </div>
-<router-outlet></router-outlet>
+
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+<div class="body-area">
+
+  <div class="body-sidebar-area bc-grey" *ngIf="bodySidebarIsShown">
+    <p-menu [popup]="false" [model]="items" class="sidebar-menu"></p-menu>
+  </div>
+
+  <div class="body-content-area">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

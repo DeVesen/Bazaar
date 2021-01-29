@@ -30,7 +30,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.app-title').textContent).toContain('DeVesBazaarWebApp');
-    expect(compiled.querySelector('.developer-name').textContent).toContain('Sven-Reichert');
+    expect(compiled.querySelector('.content span').textContent).toContain('DeVesBazaarWebApp app is running!');
   });
 });
