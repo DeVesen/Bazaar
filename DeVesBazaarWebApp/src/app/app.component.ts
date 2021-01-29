@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout';
 import { MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
 
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.mediaSub = this.mediaObserver.asObservable().subscribe((mediaChanges: MediaChange[]) => {
+    this.mediaSub = this.mediaObserver.asObservable().subscribe(() => {
       this.bodySidebarIsShown = !this.mediaObserver.isActive('xs')
                              && !this.mediaObserver.isActive('sm');
     });
