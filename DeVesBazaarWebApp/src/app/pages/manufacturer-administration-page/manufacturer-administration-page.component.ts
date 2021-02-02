@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
+import { ManufacturerCreateDialogComponent } from 'src/app/components/manufacturer-create-dialog/manufacturer-create-dialog/manufacturer-create-dialog.component';
 import { IManufacturer } from 'src/app/models/manufacturer-model';
 import { ManufacturerApiService } from 'src/app/services/manufacturer-api-service/manufacturer-api.service';
 
@@ -10,22 +11,39 @@ import { ManufacturerApiService } from 'src/app/services/manufacturer-api-servic
 })
 export class ManufacturerAdministrationPageComponent implements OnInit {
 
+  @ViewChild(ManufacturerCreateDialogComponent) _createNewDialog: ManufacturerCreateDialogComponent;
+
+  doShowCreateDialog = false;
+  manufacturerLoaded: boolean;
   manufacturer: IManufacturer[];
 
   constructor(private _manufacturerApi: ManufacturerApiService,
               private _confirmationService: ConfirmationService) { }
 
   ngOnInit() {
-    this._manufacturerApi.getAllManufacturerAsync()
-                         .then(x => this.manufacturer = x);
+    this.onReLoadManufacturer();
   }
 
+
+  public onAddNewManufacturer(): void {
+    this._createNewDialog.showDialog();
+  }
+  
+  public onReLoadManufacturer(): void {
+    this.manufacturerLoaded = false;
+    this._manufacturerApi.getAll()
+                         .then(x => {
+                           this.manufacturer = x.data
+                           this.manufacturerLoaded = true;
+                         });
+  }
 
   public onRemoveManufacturer(product: IManufacturer): void {
     this._confirmationService.confirm({
         message: `Wirklich '${product.name}' löschen?`,
-        accept: () => {
-            this._manufacturerApi.removeManufacturer(product.id);
+        accept: async () => {
+            await this._manufacturerApi.remove(product.id);
+            await this.onReLoadManufacturer();
         }
     });
   }
