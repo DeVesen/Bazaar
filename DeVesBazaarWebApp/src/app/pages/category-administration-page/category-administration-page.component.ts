@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryAdministrationPageComponent implements OnInit {
 
+
   constructor() { }
+
 
   ngOnInit(): void {
   }
 
+
+  onAddNewCategory(): void {
+
+  }
+
+  onReLoadCategory(): void {
+
+  }
+  
 }
