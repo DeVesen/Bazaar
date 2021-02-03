@@ -16,16 +16,19 @@ export class ManufacturerApiService {
 
   constructor() {
     [
-      'Helm',
-      'Ski',
-      'Brille',
-      'Hose',
-      'Schuhe',
-      'Ski-Schuhe',
-      'Snowboard-Schuhe',
-      'Stöcke',
-
-      'Sven R.'
+      'Atomic',
+      'Blizzard',
+      'Dynamic',
+      'Dynastar',
+      'Elan',
+      'Fischer',
+      'HEAD',
+      'K2',
+      'Nordica',
+      'Salomon',
+      'Scott',
+      'Stöcklie',
+      'Völki'
     ].forEach(v => this._manufacturer.push({id: this.getEmptyId(), name: v}));
 
   }

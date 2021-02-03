@@ -22,9 +22,7 @@ export class CategoryApiService {
       'Schuhe',
       'Ski-Schuhe',
       'Snowboard-Schuhe',
-      'Stöcke',
-
-      'Sven R.'
+      'Stöcke'
     ].forEach(v => this._categories.push({id: this.getEmptyId(), name: v}));
 
   }
