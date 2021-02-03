@@ -1,1 +1,48 @@
-<p>manufacturer-administration-page works!</p>
+
+<div class="manufacturer-page">
+
+    <div class="page-title">
+        <div class="page-title-caption">
+            <div>Hersteller - Liste</div>
+        </div>
+        <button pButton pRipple type="button" icon="pi pi-plus"
+                class="page-title-add-btn p-button-rounded p-button-outlined"
+                (click)="onAddNewManufacturer()"></button>
+        <button pButton pRipple type="button" icon="pi pi-refresh"
+                class="page-title-refresh-btn p-button-rounded p-button-warning p-button-outlined"
+                (click)="onReLoadManufacturer()"></button>
+    </div>
+    
+    <div class="table-area">
+        <div *ngIf="!manufacturerLoaded"
+             class="table-load-spinner-area">
+            <app-progress-spinner [width]="'100px'" [height]="'100px'"></app-progress-spinner>
+        </div>
+        <p-table *ngIf="manufacturerLoaded" [value]="manufacturer" [scrollable]="true" scrollHeight="flex">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td style="display: flex; flex-direction: row-reverse;">
+                        <button pButton pRipple 
+                                type="button"
+                                icon="pi pi-times"
+                                class="-button-rounded p-button-danger p-button-text"
+                                (click)="onRemoveManufacturer(product)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<p-confirmDialog header="Wirklich löschen?" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<app-manufacturer-create-dialog></app-manufacturer-create-dialog>
