@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
+import { CategoryCreateDialogComponent } from 'src/app/components/category-create-dialog/category-create-dialog/category-create-dialog.component';
 import { ICategory } from 'src/app/models/category-model';
 import { CategoryApiService } from '../../services/category-api-service/category-api.service';
 
@@ -9,6 +10,8 @@ import { CategoryApiService } from '../../services/category-api-service/category
   styleUrls: ['./category-administration-page.component.scss']
 })
 export class CategoryAdministrationPageComponent implements OnInit {
+
+  @ViewChild(CategoryCreateDialogComponent) _createNewDialog: CategoryCreateDialogComponent;
 
   categoriesLoaded: boolean;
   categories: ICategory[];
@@ -24,7 +27,7 @@ export class CategoryAdministrationPageComponent implements OnInit {
 
 
   onAddNewCategory(): void {
-
+    this._createNewDialog.showDialog();
   }
 
   async onReLoadCategories(): Promise<void> {

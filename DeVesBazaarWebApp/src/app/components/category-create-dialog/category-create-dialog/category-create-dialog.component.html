@@ -1,0 +1,38 @@
+
+<p-dialog
+header="Kategorie hinzufügen ..."
+[modal]="true"
+[baseZIndex]="10000"
+[draggable]="false"
+[resizable]="false"
+[focusOnShow]="true"
+[(visible)]="doShowDialog"
+[closable]="true"
+[closeOnEscape]="true"
+(onShow)="onShow()"
+(onHide)="onHide()">
+
+<div class="add-dialog-content-area">   
+    <div class="p-field max-width">
+        <span class="p-float-label max-width">
+            <input
+                #dlgInput
+                type="text"
+                class="max-width"
+                [ngClass]="{'ng-invalid ng-dirty': inputAsError}"
+                [(ngModel)]="inputValue"
+                (keyup)="onKeyUp($event)"
+                [disabled]="waitForCreation"
+                pInputText> 
+            <!-- <label for="float-input">Hersteller</label> -->
+        </span>
+        <small [ngClass]="{'p-error': inputAsError}">{{inputInfoText}}</small>
+    </div>
+</div>
+
+<ng-template pTemplate="footer">
+    <app-progress-spinner *ngIf="waitForCreation" [width]="'39px'" [height]="'39px'"></app-progress-spinner>
+    <p-button *ngIf="!waitForCreation" icon="pi pi-check" (click)="onCreateNewEntry()" label="Speichern" styleClass="p-button-text"></p-button>
+</ng-template>
+
+</p-dialog>

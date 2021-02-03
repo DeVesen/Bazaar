@@ -16,6 +16,7 @@ import { SellerAdministrationPageComponent } from './pages/seller-administration
 import { StatisticPageComponent } from './pages/statistic-page/statistic-page.component';
 import { ManufacturerCreateDialogComponent } from './components/manufacturer-create-dialog/manufacturer-create-dialog/manufacturer-create-dialog.component';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
+import { CategoryCreateDialogComponent } from './components/category-create-dialog/category-create-dialog/category-create-dialog.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ProgressSpinnerComponent } from './components/progress-spinner/progress
     SellerAdministrationPageComponent,
     StatisticPageComponent,
     ManufacturerCreateDialogComponent,
-    ProgressSpinnerComponent
+    ProgressSpinnerComponent,
+    CategoryCreateDialogComponent
   ],
   imports: [
     BrowserModule,
