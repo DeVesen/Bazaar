@@ -41,7 +41,7 @@ export class CategoryAdministrationPageComponent implements OnInit {
         message: `Wirklich '${category.name}' löschen?`,
         accept: async () => {
             await this._categoryApi.remove(category.id);
-            this.onReLoadCategories();
+            await this.onReLoadCategories();
         }
     });
   }

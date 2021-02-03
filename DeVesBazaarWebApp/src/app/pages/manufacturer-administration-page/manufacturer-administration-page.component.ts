@@ -13,7 +13,6 @@ export class ManufacturerAdministrationPageComponent implements OnInit {
 
   @ViewChild(ManufacturerCreateDialogComponent) _createNewDialog: ManufacturerCreateDialogComponent;
 
-  doShowCreateDialog = false;
   manufacturerLoaded: boolean;
   manufacturer: IManufacturer[];
 
@@ -29,13 +28,10 @@ export class ManufacturerAdministrationPageComponent implements OnInit {
     this._createNewDialog.showDialog();
   }
   
-  public onReLoadManufacturer(): void {
+  public async onReLoadManufacturer(): Promise<void> {
     this.manufacturerLoaded = false;
-    this._manufacturerApi.getAll()
-                         .then(x => {
-                           this.manufacturer = x.data
-                           this.manufacturerLoaded = true;
-                         });
+    this.manufacturer = (await this._manufacturerApi.getAll()).data;
+    this.manufacturerLoaded = true;
   }
 
   public onRemoveManufacturer(product: IManufacturer): void {
