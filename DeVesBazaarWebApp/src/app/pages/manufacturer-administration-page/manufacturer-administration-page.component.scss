@@ -17,9 +17,9 @@
 
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: auto 44px 44px;
-    grid-template-areas: "caption addbtn refreshbtn";
-    grid-column-gap: 20px;
+    grid-template-columns: auto 44px 44px 44px;
+    grid-template-areas: "caption addbtn searchbtn refreshbtn";
+    grid-column-gap: 10px;
 }
 
 .page-title-caption {
@@ -31,6 +31,9 @@
 }
 .page-title-add-btn {
     grid-area: addbtn;
+}
+.page-title-search-btn {
+    grid-area: searchbtn;
 }
 .page-title-refresh-btn {
     grid-area: refreshbtn;

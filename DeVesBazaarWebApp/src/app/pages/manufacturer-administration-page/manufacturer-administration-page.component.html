@@ -3,10 +3,13 @@
 
     <div class="page-title">
         <div class="page-title-caption">
-            <div>Hersteller - Liste</div>
+            <div>Hersteller</div>
         </div>
         <button pButton pRipple type="button" icon="pi pi-plus"
                 class="page-title-add-btn p-button-rounded p-button-outlined"
+                (click)="onAddNewManufacturer()"></button>
+        <button pButton pRipple type="button" icon="pi pi-search"
+                class="page-title-search-btn p-button-rounded p-button-outlined"
                 (click)="onAddNewManufacturer()"></button>
         <button pButton pRipple type="button" icon="pi pi-refresh"
                 class="page-title-refresh-btn p-button-rounded p-button-warning p-button-outlined"
