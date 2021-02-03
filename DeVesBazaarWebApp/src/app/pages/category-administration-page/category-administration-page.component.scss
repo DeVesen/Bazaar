@@ -35,3 +35,16 @@
 .page-title-refresh-btn {
     grid-area: refreshbtn;
 }
+
+
+.table-load-spinner-area {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-area {
+    height: calc(100% - 54px);
+    max-height: calc(100% - 54px);
+}

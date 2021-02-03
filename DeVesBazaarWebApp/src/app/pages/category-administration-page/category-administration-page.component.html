@@ -12,5 +12,34 @@
                 class="page-title-refresh-btn p-button-rounded p-button-warning p-button-outlined"
                 (click)="onReLoadCategory()"></button>
     </div>
+    
+    <div class="table-area">
+        <div *ngIf="!categoriesLoaded"
+             class="table-load-spinner-area">
+            <app-progress-spinner [width]="'100px'" [height]="'100px'"></app-progress-spinner>
+        </div>
+        <p-table *ngIf="categoriesLoaded" [value]="categories" [scrollable]="true" scrollHeight="flex">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td style="display: flex; flex-direction: row-reverse;">
+                        <button pButton pRipple 
+                                type="button"
+                                icon="pi pi-times"
+                                class="-button-rounded p-button-danger p-button-text"
+                                (click)="onRemoveManufacturer(product)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ICategory } from 'src/app/models/category-model';
 
 @Component({
   selector: 'app-category-administration-page',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-administration-page.component.scss']
 })
 export class CategoryAdministrationPageComponent implements OnInit {
+
+  categoriesLoaded: boolean;
+  categories: ICategory;
 
 
   constructor() { }
@@ -21,6 +25,10 @@ export class CategoryAdministrationPageComponent implements OnInit {
 
   onReLoadCategory(): void {
 
+  }
+
+  onRemoveManufacturer(category: ICategory): void {
+    
   }
   
 }
