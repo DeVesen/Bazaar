@@ -34,7 +34,13 @@ export class CategoryAdministrationPageComponent implements OnInit {
   }
 
   onRemoveManufacturer(category: ICategory): void {
-    
+    this._confirmationService.confirm({
+        message: `Wirklich '${category.name}' löschen?`,
+        accept: async () => {
+            await this._categoryApi.remove(category.id);
+            this.onReLoadCategories();
+        }
+    });
   }
   
 }
