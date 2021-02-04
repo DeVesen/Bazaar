@@ -9,6 +9,7 @@ import { MediaObserver } from '@angular/flex-layout';
 export class HeaderMenuBtnComponent {
 
   @Input() caption: string;
+  @Input() pageTitle: string;
 
   constructor(public mediaObserver: MediaObserver) { }
 }

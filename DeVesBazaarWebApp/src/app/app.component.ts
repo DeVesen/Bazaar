@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
 import { MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
+import { ActivePageInfoService, ITitleActionBtn } from './services/active-page-info-service/active-page-info.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,17 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   private mediaSub: Subscription;
+  private pageInfoSub: Subscription;
 
   bodySidebarIsShown = true;
   title = 'DeVes.Bazaar';
+  pageTitle = '';
+  pageBtns: ITitleActionBtn[];
   items: MenuItem[];
 
 
-  constructor(public mediaObserver: MediaObserver) { }
+  constructor(public mediaObserver: MediaObserver,
+              private activePageInfo: ActivePageInfoService) { }
 
 
   ngOnInit(): void {
@@ -24,6 +29,12 @@ export class AppComponent implements OnInit, OnDestroy {
       this.bodySidebarIsShown = !this.mediaObserver.isActive('xs')
                              && !this.mediaObserver.isActive('sm');
       console.log(x[0].mqAlias, x[0].mediaQuery);
+    });
+    
+    this.pageInfoSub = this.activePageInfo.pageTitle$.subscribe(pt => {
+      setTimeout(() => {
+        this.pageTitle = pt;
+      }, 0);
     });
 
     this.items = [
@@ -65,7 +76,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.pageInfoSub.unsubscribe();
     this.mediaSub.unsubscribe();
   }
-
 }

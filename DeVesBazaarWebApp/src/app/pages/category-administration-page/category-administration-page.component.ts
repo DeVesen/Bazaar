@@ -3,6 +3,7 @@ import { ConfirmationService } from 'primeng/api';
 import { CategoryCreateDialogComponent } from 'src/app/components/category-create-dialog/category-create-dialog/category-create-dialog.component';
 import { ICategory } from 'src/app/models/category-model';
 import { CategoryApiService } from '../../services/category-api-service/category-api.service';
+import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
 
 @Component({
   selector: 'app-category-administration-page',
@@ -18,10 +19,12 @@ export class CategoryAdministrationPageComponent implements OnInit {
 
 
   constructor(private _categoryApi: CategoryApiService,
-              private _confirmationService: ConfirmationService) { }
+              private _confirmationService: ConfirmationService,
+              private activePageInfo: ActivePageInfoService) { }
 
 
   ngOnInit(): void {
+    this.activePageInfo.setPageTitel('Kategorien');
     this.onReLoadCategories();
   }
 

@@ -1,8 +1,13 @@
 
 <div class="header-area bc-grey">
-  <app-header-menu-btn [caption]="title"
+  
+  <app-header-menu-btn class="header-area-title"
+                       [caption]="title"
+                       [pageTitle]="pageTitle"
                        *ngIf="bodySidebarIsShown"></app-header-menu-btn>
-  <app-header-menu-btn [caption]="title"
+  <app-header-menu-btn class="header-area-title"
+                       [caption]="title"
+                       [pageTitle]="pageTitle"
                        (click)="menu.toggle($event)"
                        *ngIf="!bodySidebarIsShown"></app-header-menu-btn>
 </div>

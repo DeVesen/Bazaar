@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
+import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
 
 @Component({
   selector: 'app-statistic-page',
@@ -16,9 +17,10 @@ export class StatisticPageComponent implements OnInit {
   tagsOptions: any;
   tagsData: any;
 
-  constructor() { }
+  constructor(private activePageInfo: ActivePageInfoService) { }
 
   async ngOnInit(): Promise<void> {
+    this.activePageInfo.setPageTitel('Statistik');
     
     this.articleOptions = this.createChartOptions('Artikel');
     this.articleData = await this.loadArticleDatas();

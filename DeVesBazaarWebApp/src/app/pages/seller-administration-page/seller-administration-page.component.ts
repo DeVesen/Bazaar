@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
 
 @Component({
   selector: 'app-seller-administration-page',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellerAdministrationPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activePageInfo: ActivePageInfoService) { }
 
   ngOnInit(): void {
+    this.activePageInfo.setPageTitel('Händler');
   }
 
 }

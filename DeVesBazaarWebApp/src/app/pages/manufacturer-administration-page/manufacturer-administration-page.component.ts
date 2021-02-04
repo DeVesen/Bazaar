@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { ManufacturerCreateDialogComponent } from 'src/app/components/manufacturer-create-dialog/manufacturer-create-dialog/manufacturer-create-dialog.component';
 import { IManufacturer } from 'src/app/models/manufacturer-model';
+import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
 import { ManufacturerApiService } from 'src/app/services/manufacturer-api-service/manufacturer-api.service';
 
 @Component({
@@ -17,9 +18,11 @@ export class ManufacturerAdministrationPageComponent implements OnInit {
   manufacturer: IManufacturer[];
 
   constructor(private _manufacturerApi: ManufacturerApiService,
-              private _confirmationService: ConfirmationService) { }
+              private _confirmationService: ConfirmationService,
+              private activePageInfo: ActivePageInfoService) { }
 
   ngOnInit() {
+    this.activePageInfo.setPageTitel('Hersteller');
     this.onReLoadManufacturer();
   }
 
