@@ -3,9 +3,19 @@
 
     <div class="page-title">
         <app-simple-toolbar-area>
-            <app-simple-toolbar-new-btn styleClass="toolbar-btn" (click)="onAddNewManufacturer()"></app-simple-toolbar-new-btn>
-            <app-simple-toolbar-search-input styleClass="toolbar-btn" (doSearch)="doSearch()"></app-simple-toolbar-search-input>
-            <app-simple-toolbar-refresh-btn styleClass="toolbar-btn" (click)="onReLoadManufacturer()"></app-simple-toolbar-refresh-btn>
+            <app-simple-toolbar-new-btn
+                *ngIf="!searchAsMax"
+                styleClass="toolbar-item"
+                (click)="onAddNewManufacturer()"></app-simple-toolbar-new-btn>
+            <app-simple-toolbar-search-input
+                style="{{searchStyle}}"
+                styleClass="toolbar-item"
+                (inputIsShownChange)="onSearchToggle($event)"
+                (doSearch)="doSearch()"></app-simple-toolbar-search-input>
+            <app-simple-toolbar-refresh-btn
+                *ngIf="!searchAsMax"
+                styleClass="toolbar-item"
+                (click)="onReLoadManufacturer()"></app-simple-toolbar-refresh-btn>
         </app-simple-toolbar-area>
     </div>
     

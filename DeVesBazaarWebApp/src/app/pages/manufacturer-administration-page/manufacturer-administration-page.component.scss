@@ -16,6 +16,10 @@
     ::ng-deep .p-menubar {
         padding: 0;
     }
+
+    ::ng-deep .toolbar-item {
+        margin-left: 3px !important;
+    }
 }
 
 

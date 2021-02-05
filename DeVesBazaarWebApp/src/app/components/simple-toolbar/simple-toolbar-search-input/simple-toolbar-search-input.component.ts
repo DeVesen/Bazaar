@@ -34,6 +34,7 @@ export class SimpleToolbarSearchInputComponent implements OnInit, AfterViewInit 
 
   doShow(): void {
     this.inputIsShown = true;
+    this.inputIsShownChange.emit(this.inputIsShown);
 
     setTimeout(() => {
       const inputRef = document.getElementById(this.inputId) as HTMLInputElement;
@@ -45,6 +46,7 @@ export class SimpleToolbarSearchInputComponent implements OnInit, AfterViewInit 
 
   doHide(): void {
     this.inputIsShown = false;
+    this.inputIsShownChange.emit(this.inputIsShown);
   }
 
   onDoSearch($event) {
