@@ -1,0 +1,9 @@
+
+<app-simple-toolbar-area>
+    <app-simple-toolbar-new-btn styleClass="toolbar-btn"></app-simple-toolbar-new-btn>
+    <app-simple-toolbar-search-btn styleClass="toolbar-btn"></app-simple-toolbar-search-btn>
+    <app-simple-toolbar-refresh-btn styleClass="toolbar-btn"></app-simple-toolbar-refresh-btn>
+    <app-simple-toolbar-search-input styleClass="toolbar-btn"
+                                     (doSearch)="writeConsole($event)"
+                                     (keyupChange)="writeConsole($event)"></app-simple-toolbar-search-input>
+</app-simple-toolbar-area>

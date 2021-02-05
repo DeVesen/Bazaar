@@ -5,6 +5,9 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 
 import {MenuModule} from 'primeng/menu';
+import {MenubarModule} from 'primeng/menubar';
+import {ToolbarModule} from 'primeng/toolbar';
+
 import {ChartModule} from 'primeng/chart';
 import {DividerModule} from 'primeng/divider';
 
@@ -27,6 +30,9 @@ import {OrderListModule} from 'primeng/orderlist';
     InputTextModule,
     
     MenuModule,
+    MenubarModule,
+    ToolbarModule,
+    
     ChartModule,
     DividerModule,
 

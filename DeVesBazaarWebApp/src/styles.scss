@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+  font-family: "JetBrainsMono";
+  src: local("JetBrainsMono"), url(./assets/fonts/JetBrains_Mono/static/JetBrainsMono-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "RobotoMono";
+  src: local("RobotoMono"), url(./assets/fonts/Roboto_Mono/static/RobotoMono-Regular.ttf) format("truetype");
+}
+
+
 html,
 body {
   height: 100%;
@@ -10,8 +20,4 @@ body {
 body {
   margin: 0;
   display: block;
-
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: black;
-  color: rgba(255, 255, 255, 0.87);
 }

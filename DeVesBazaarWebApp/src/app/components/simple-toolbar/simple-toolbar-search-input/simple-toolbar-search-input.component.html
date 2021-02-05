@@ -1,0 +1,20 @@
+
+<div class="{{styleClass}}" style="width: auto;">
+    <app-simple-toolbar-btn
+        *ngIf="!inputIsShown"
+        iconLeft="pi pi-search"
+        label="Suchen"
+        [showText]="showBtnText"
+        (click)="doShow()"></app-simple-toolbar-btn>
+    
+    <div class="p-inputgroup stsi-area"
+        *ngIf="inputIsShown">
+        <i class="p-inputgroup-addon pi pi-angle-right stsi-btn-hover stsi-image-left" (click)="doHide()"></i>
+        <input  id='{{inputId}}' pInputText type="text"
+                          class="stsi-input"
+                          placeholder="Suchwort"
+                          (keyup)="onKeyup($event)"
+                          [(ngModel)]="value">
+        <i class="p-inputgroup-addon pi pi-search stsi-btn-hover stsi-image-right" (click)="onDoSearch($event)"></i>
+    </div>
+</div>

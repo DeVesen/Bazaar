@@ -2,18 +2,11 @@
 <div class="category-page">
 
     <div class="page-title">
-        <div class="page-title-caption">
-            <div>Kategorien</div>
-        </div>
-        <button pButton pRipple type="button" icon="pi pi-plus"
-                class="page-title-add-btn p-button-rounded p-button-outlined"
-                (click)="onAddNewCategory()"></button>
-        <button pButton pRipple type="button" icon="pi pi-search"
-                class="page-title-search-btn p-button-rounded p-button-outlined"
-                (click)="onAddNewCategory()"></button>
-        <button pButton pRipple type="button" icon="pi pi-refresh"
-                class="page-title-refresh-btn p-button-rounded p-button-warning p-button-outlined"
-                (click)="onReLoadCategories()"></button>
+        <app-simple-toolbar-area>
+            <app-simple-toolbar-new-btn styleClass="toolbar-btn" (click)="onAddNewCategory()"></app-simple-toolbar-new-btn>
+            <app-simple-toolbar-search-input styleClass="toolbar-btn" (doSearch)="doSearch()"></app-simple-toolbar-search-input>
+            <app-simple-toolbar-refresh-btn styleClass="toolbar-btn" (click)="onReLoadCategories()"></app-simple-toolbar-refresh-btn>
+        </app-simple-toolbar-area>
     </div>
     
     <div class="table-area">
@@ -21,7 +14,7 @@
              class="table-load-spinner-area">
             <app-progress-spinner [width]="'100px'" [height]="'100px'"></app-progress-spinner>
         </div>
-        <p-table *ngIf="categoriesLoaded" [value]="categories" [scrollable]="true" scrollHeight="flex">
+        <p-table *ngIf="categoriesLoaded" styleClass="p-datatable-sm" [value]="categories" [scrollable]="true" scrollHeight="flex">
             <ng-template pTemplate="header">
                 <tr>
                     <th pSortableColumn="id"># <p-sortIcon field="id"></p-sortIcon></th>

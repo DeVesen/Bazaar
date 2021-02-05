@@ -28,7 +28,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.mediaSub = this.mediaObserver.asObservable().subscribe(x => {
       this.bodySidebarIsShown = !this.mediaObserver.isActive('xs')
                              && !this.mediaObserver.isActive('sm');
-      console.log(x[0].mqAlias, x[0].mediaQuery);
     });
     
     this.pageInfoSub = this.activePageInfo.pageTitle$.subscribe(pt => {

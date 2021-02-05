@@ -17,6 +17,13 @@ import { StatisticPageComponent } from './pages/statistic-page/statistic-page.co
 import { ManufacturerCreateDialogComponent } from './components/manufacturer-create-dialog/manufacturer-create-dialog/manufacturer-create-dialog.component';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 import { CategoryCreateDialogComponent } from './components/category-create-dialog/category-create-dialog/category-create-dialog.component';
+import { ComponentDemoComponent } from './pages/component-demo/component-demo/component-demo.component';
+import { SimpleToolbarAreaComponent } from './components/simple-toolbar/simple-toolbar-area/simple-toolbar-area.component';
+import { SimpleToolbarBtnComponent } from './components/simple-toolbar/basics/simple-toolbar-btn/simple-toolbar-btn.component';
+import { SimpleToolbarNewBtnComponent } from './components/simple-toolbar/simple-toolbar-new-btn/simple-toolbar-new-btn.component';
+import { SimpleToolbarRefreshBtnComponent } from './components/simple-toolbar/simple-toolbar-refresh-btn/simple-toolbar-refresh-btn.component';
+import { SimpleToolbarSearchBtnComponent } from './components/simple-toolbar/simple-toolbar-search-btn/simple-toolbar-search-btn.component';
+import { SimpleToolbarSearchInputComponent } from './components/simple-toolbar/simple-toolbar-search-input/simple-toolbar-search-input.component';
 
 
 @NgModule({
@@ -32,7 +39,14 @@ import { CategoryCreateDialogComponent } from './components/category-create-dial
     StatisticPageComponent,
     ManufacturerCreateDialogComponent,
     ProgressSpinnerComponent,
-    CategoryCreateDialogComponent
+    CategoryCreateDialogComponent,
+    ComponentDemoComponent,
+    SimpleToolbarAreaComponent,
+    SimpleToolbarBtnComponent,
+    SimpleToolbarNewBtnComponent,
+    SimpleToolbarRefreshBtnComponent,
+    SimpleToolbarSearchBtnComponent,
+    SimpleToolbarSearchInputComponent
   ],
   imports: [
     BrowserModule,

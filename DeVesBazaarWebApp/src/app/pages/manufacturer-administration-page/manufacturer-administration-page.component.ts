@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MenuItem } from 'primeng/api';
 import { ManufacturerCreateDialogComponent } from 'src/app/components/manufacturer-create-dialog/manufacturer-create-dialog/manufacturer-create-dialog.component';
 import { IManufacturer } from 'src/app/models/manufacturer-model';
 import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
@@ -16,6 +16,7 @@ export class ManufacturerAdministrationPageComponent implements OnInit {
 
   manufacturerLoaded: boolean;
   manufacturer: IManufacturer[];
+  actionItems: MenuItem[];
 
   constructor(private _manufacturerApi: ManufacturerApiService,
               private _confirmationService: ConfirmationService,
@@ -29,6 +30,10 @@ export class ManufacturerAdministrationPageComponent implements OnInit {
 
   public onAddNewManufacturer(): void {
     this._createNewDialog.showDialog();
+  }
+
+  public doSearch(): void {
+    console.log('Manufacturer - doSearch');
   }
   
   public async onReLoadManufacturer(): Promise<void> {

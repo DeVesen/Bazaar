@@ -1,0 +1,27 @@
+
+.simple-toolbar-area {
+    width: 100%;
+    height: 42px;
+    
+    display: flex;
+}
+
+.sta-background {
+    background-color: #1E1E1E;
+}
+
+.sta-border {
+    border: 1px solid rgb(57, 57, 57);
+    border-radius: 4px;
+}
+
+
+.simple-toolbar-justify-content-left {
+    justify-content: flex-start;
+}
+.simple-toolbar-justify-content-center {
+    justify-content: center;
+}
+.simple-toolbar-justify-content-right {
+    justify-content: flex-end;
+}

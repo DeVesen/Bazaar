@@ -5,6 +5,18 @@
     background-color: #1e1e1e;
 }
 
+.app-component-area {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: rgba(255, 255, 255, 0.87);
+    font-family: JetBrainsMono, RobotoMono, Consolas, Roboto, "Helvetica Neue", sans-serif;
+
+    ::ng-deep .p-component {
+        font-family: JetBrainsMono, RobotoMono, Consolas, Roboto, "Helvetica Neue", sans-serif !important;
+    }
+}
+
 .header-area {
     width: 100%;
     height: 70px;

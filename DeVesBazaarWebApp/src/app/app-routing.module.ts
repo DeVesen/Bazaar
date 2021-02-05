@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoryAdministrationPageComponent } from './pages/category-administration-page/category-administration-page.component';
+import { ComponentDemoComponent } from './pages/component-demo/component-demo/component-demo.component';
 import { ManufacturerAdministrationPageComponent } from './pages/manufacturer-administration-page/manufacturer-administration-page.component';
 import { SalePageComponent } from './pages/sale-page/sale-page.component';
 import { SellerAdministrationPageComponent } from './pages/seller-administration-page/seller-administration-page.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'statistics',
     component: StatisticPageComponent
+  },
+  {
+    path: 'component-demo',
+    component: ComponentDemoComponent
   }
 ];
 

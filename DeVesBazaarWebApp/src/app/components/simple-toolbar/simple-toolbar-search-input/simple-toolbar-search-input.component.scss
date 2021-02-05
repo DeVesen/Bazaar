@@ -1,0 +1,14 @@
+
+:host .stsi-area i {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+:host .stsi-area input {
+    height: 40px;
+}
+
+:host .stsi-area :hover  {
+    background-color: rgb(57, 57, 57);
+}

@@ -11,32 +11,11 @@
 
 
 .page-title {
-    height: 54px;
-    padding: 5px 10px 5px 10px;
-    background-color: rgb(30,30,30);
-
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: auto 44px 44px 44px;
-    grid-template-areas: "caption addbtn searchbtn refreshbtn";
-    grid-column-gap: 10px;
-}
-
-.page-title-caption {
-    grid-area: caption;
+    margin-bottom: 7px;
     
-    display: flex;
-    align-items: center;
-    font-size: 26px;
-}
-.page-title-add-btn {
-    grid-area: addbtn;
-}
-.page-title-search-btn {
-    grid-area: searchbtn;
-}
-.page-title-refresh-btn {
-    grid-area: refreshbtn;
+    ::ng-deep .p-menubar {
+        padding: 0;
+    }
 }
 
 

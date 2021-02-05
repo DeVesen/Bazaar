@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MenuItem } from 'primeng/api';
 import { CategoryCreateDialogComponent } from 'src/app/components/category-create-dialog/category-create-dialog/category-create-dialog.component';
 import { ICategory } from 'src/app/models/category-model';
 import { CategoryApiService } from '../../services/category-api-service/category-api.service';
@@ -16,6 +16,7 @@ export class CategoryAdministrationPageComponent implements OnInit {
 
   categoriesLoaded: boolean;
   categories: ICategory[];
+  actionItems: MenuItem[];
 
 
   constructor(private _categoryApi: CategoryApiService,
@@ -31,6 +32,10 @@ export class CategoryAdministrationPageComponent implements OnInit {
 
   onAddNewCategory(): void {
     this._createNewDialog.showDialog();
+  }
+
+  public doSearch(): void {
+    console.log('Manufacturer - doSearch');
   }
 
   async onReLoadCategories(): Promise<void> {

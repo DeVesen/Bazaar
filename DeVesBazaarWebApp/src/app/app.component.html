@@ -1,27 +1,29 @@
 
-<div class="header-area bc-grey">
+<div class="app-component-area">
+  <div class="header-area bc-grey">
+    
+    <app-header-menu-btn class="header-area-title"
+                         [caption]="title"
+                         [pageTitle]="pageTitle"
+                         *ngIf="bodySidebarIsShown"></app-header-menu-btn>
+    <app-header-menu-btn class="header-area-title"
+                         [caption]="title"
+                         [pageTitle]="pageTitle"
+                         (click)="menu.toggle($event)"
+                         *ngIf="!bodySidebarIsShown"></app-header-menu-btn>
+  </div>
   
-  <app-header-menu-btn class="header-area-title"
-                       [caption]="title"
-                       [pageTitle]="pageTitle"
-                       *ngIf="bodySidebarIsShown"></app-header-menu-btn>
-  <app-header-menu-btn class="header-area-title"
-                       [caption]="title"
-                       [pageTitle]="pageTitle"
-                       (click)="menu.toggle($event)"
-                       *ngIf="!bodySidebarIsShown"></app-header-menu-btn>
-</div>
-
-<p-menu #menu [popup]="true" [model]="items"></p-menu>
-
-<div class="body-area">
-
-  <div class="body-sidebar-area bc-grey" *ngIf="bodySidebarIsShown">
-    <p-menu [popup]="false" [model]="items" class="sidebar-menu"></p-menu>
+  <p-menu #menu [popup]="true" [model]="items"></p-menu>
+  
+  <div class="body-area">
+  
+    <div class="body-sidebar-area bc-grey" *ngIf="bodySidebarIsShown">
+      <p-menu [popup]="false" [model]="items" class="sidebar-menu"></p-menu>
+    </div>
+  
+    <div class="body-content-area">
+      <router-outlet></router-outlet>
+    </div>
+  
   </div>
-
-  <div class="body-content-area">
-    <router-outlet></router-outlet>
-  </div>
-
 </div>
