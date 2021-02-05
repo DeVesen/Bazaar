@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
-import { ManufacturerCreateDialogComponent } from 'src/app/components/manufacturer-create-dialog/manufacturer-create-dialog/manufacturer-create-dialog.component';
+import { ManufacturerCreateDialogComponent } from 'src/app/components/manufacturer-create-dialog/manufacturer-create-dialog.component';
 import { IManufacturer } from 'src/app/models/manufacturer-model';
 import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
 import { ManufacturerApiService } from 'src/app/services/manufacturer-api-service/manufacturer-api.service';

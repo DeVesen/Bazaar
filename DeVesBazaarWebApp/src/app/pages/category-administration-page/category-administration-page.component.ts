@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService, MenuItem } from 'primeng/api';
-import { CategoryCreateDialogComponent } from 'src/app/components/category-create-dialog/category-create-dialog/category-create-dialog.component';
+import { CategoryCreateDialogComponent } from 'src/app/components/category-create-dialog/category-create-dialog.component';
 import { ICategory } from 'src/app/models/category-model';
 import { CategoryApiService } from '../../services/category-api-service/category-api.service';
 import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
