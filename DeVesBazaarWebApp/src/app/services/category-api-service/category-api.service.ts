@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { IResponse } from 'src/app/models/api-response-model';
 import { ICategory } from '../../models/category-model';
-import { GlobalHelper } from '../helpers/global-helper';
-import { List } from '../helpers/list';
+import { GlobalHelper } from '../../helpers/global-helper';
+import { List } from '../../helpers/list';
 
 @Injectable({
   providedIn: 'root'

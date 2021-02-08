@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { ManufacturerCreateDialogComponent } from 'src/app/components/manufacturer-create-dialog/manufacturer-create-dialog.component';
 import { IManufacturer } from 'src/app/models/manufacturer-model';
 import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
-import { StringHelper } from 'src/app/services/helpers/string-helper';
+import { StringHelper } from 'src/app/helpers/string-helper';
 import { ManufacturerApiService } from 'src/app/services/manufacturer-api-service/manufacturer-api.service';
 
 @Component({

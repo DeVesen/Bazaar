@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { PrimengModule } from './modules/primeng.module';
+import { PrimengModule } from './primeng.module';
 
 import { HeaderMenuBtnComponent } from './components/header-menu-btn/header-menu-btn.component';
 import { ManufacturerAdministrationPageComponent } from './pages/manufacturer-administration-page/manufacturer-administration-page.component';

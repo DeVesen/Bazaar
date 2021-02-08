@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { of, throwError } from 'rxjs';
 import { IResponse } from 'src/app/models/api-response-model';
 import { IManufacturer } from 'src/app/models/manufacturer-model';
-import { GlobalHelper } from '../helpers/global-helper';
-import { List } from '../helpers/list';
+import { GlobalHelper } from '../../helpers/global-helper';
+import { List } from '../../helpers/list';
 
 
 @Injectable({

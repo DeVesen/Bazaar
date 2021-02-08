@@ -6,7 +6,7 @@ import { CategoryApiService } from '../../services/category-api-service/category
 import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
 import { MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
-import { StringHelper } from 'src/app/services/helpers/string-helper';
+import { StringHelper } from 'src/app/helpers/string-helper';
 
 @Component({
   selector: 'app-category-administration-page',
