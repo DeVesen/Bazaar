@@ -1,1 +1,56 @@
-<p>seller-administration-page works!</p>
+
+<div class="manufacturer-page">
+
+    <div class="page-title">
+        <app-simple-toolbar-area>
+            <app-simple-toolbar-new-btn
+                *ngIf="!searchAsMax"
+                styleClass="toolbar-item"
+                (click)="onAddNewManufacturer()"></app-simple-toolbar-new-btn>
+            <app-simple-toolbar-search-input
+                style="{{searchStyle}}"
+                styleClass="toolbar-item"
+                (inputIsShownChange)="onSearchToggle($event)"
+                (keyupChange)="onSearchChange($event)"
+                (doSearch)="doSearch($event)"
+                [(value)]="searchValue"></app-simple-toolbar-search-input>
+            <app-simple-toolbar-refresh-btn
+                *ngIf="!searchAsMax"
+                styleClass="toolbar-item"
+                (click)="onReLoadManufacturer()"></app-simple-toolbar-refresh-btn>
+        </app-simple-toolbar-area>
+    </div>
+    
+    <div class="table-area">
+        <div *ngIf="!manufacturerLoaded"
+             class="table-load-spinner-area">
+            <app-progress-spinner [width]="'100px'" [height]="'100px'"></app-progress-spinner>
+        </div>
+        <p-table *ngIf="manufacturerLoaded" styleClass="p-datatable-sm" [value]="manufacturer" [scrollable]="true" scrollHeight="flex">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="id"># <p-sortIcon field="id"></p-sortIcon></th>
+                    <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th style="width: 70px;"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td style="width: 70px;">
+                        <button pButton pRipple 
+                                type="button"
+                                icon="pi pi-times"
+                                class="-button-rounded p-button-danger p-button-text"
+                                (click)="onRemoveManufacturer(product)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<p-confirmDialog header="Wirklich löschen?" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<app-manufacturer-create-dialog (dlgClosed)="newEntryDlgClosed()"></app-manufacturer-create-dialog>

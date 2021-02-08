@@ -1,0 +1,36 @@
+
+.max-width {
+    width: 100%;
+}
+
+
+.manufacturer-page {
+    height: 100%;
+    max-height: 100%;
+}
+
+
+.page-title {
+    margin-bottom: 7px;
+    
+    ::ng-deep .p-menubar {
+        padding: 0;
+    }
+
+    ::ng-deep .toolbar-item {
+        margin-left: 3px !important;
+    }
+}
+
+
+.table-load-spinner-area {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-area {
+    height: calc(100% - 54px);
+    max-height: calc(100% - 54px);
+}

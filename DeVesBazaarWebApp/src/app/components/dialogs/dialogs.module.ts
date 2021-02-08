@@ -7,13 +7,15 @@ import { PrimengModule } from '../primeng/primeng.module';
 
 import { CategoryCreateDialogComponent } from './category-create-dialog/category-create-dialog.component';
 import { ManufacturerCreateDialogComponent } from './manufacturer-create-dialog/manufacturer-create-dialog.component';
+import { SellerCreateDialogComponent } from './seller-create-dialog/seller-create-dialog.component';
 
 
 
 @NgModule({
   declarations: [
     ManufacturerCreateDialogComponent,
-    CategoryCreateDialogComponent
+    CategoryCreateDialogComponent,
+    SellerCreateDialogComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { ManufacturerCreateDialogComponent } from './manufacturer-create-dialog/
   ],
   exports: [
     ManufacturerCreateDialogComponent,
-    CategoryCreateDialogComponent
+    CategoryCreateDialogComponent,
+    SellerCreateDialogComponent
   ]
 })
 export class DialogsModule { }
