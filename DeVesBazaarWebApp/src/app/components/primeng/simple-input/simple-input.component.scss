@@ -1,0 +1,109 @@
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.width-max {
+    width: 100%;
+}
+
+
+.alternative-p-field-active {
+    ::ng-deep .p-inputtext:enabled {
+        border-color: rgb(165, 165, 165) !important;
+    }
+    ::ng-deep label {
+        color: rgb(165, 165, 165) !important;
+    }
+    ::ng-deep small {
+        color: rgb(165, 165, 165) !important;
+    }
+    ::ng-deep .action-button-addon {
+        color: rgba(165, 165, 165) !important;
+        background-color: rgba(165, 165, 165, 0.3) !important;
+        border-color: rgb(165, 165, 165) !important;
+    }
+    ::ng-deep .action-button-addon-reset {
+        color: rgba(165, 165, 165) !important;
+        border-color: rgb(165, 165, 165) !important;
+    }
+    ::ng-deep .action-button-addon-reset:hover {
+        cursor: pointer;
+        color: black !important;
+        background-color: rgba(165, 165, 165) !important;
+    }
+    ::ng-deep .action-button-addon:hover {
+        cursor: pointer;
+        color: black !important;
+        background-color: rgba(165, 165, 165) !important;
+    }
+}
+.alternative-p-field-inactive {
+    ::ng-deep .p-inputtext:enabled {
+        border-color: rgb(126, 126, 126) !important;
+    }
+    ::ng-deep label {
+        color: rgb(128, 126, 126) !important;
+    }
+    ::ng-deep small {
+        color: rgb(128, 126, 126) !important;
+    }
+    ::ng-deep .action-button-addon {
+        color: rgba(126, 126, 126) !important;
+        background-color: rgba(126, 126, 126, 0.3) !important;
+        border-color: rgb(128, 126, 126) !important;
+    }
+}
+
+.alternative-p-field-active-error {
+    ::ng-deep .p-inputtext:enabled {
+        border-color: rgb(247, 100, 163) !important;
+    }
+    ::ng-deep label {
+        color: rgb(247, 100, 163) !important;
+    }
+    ::ng-deep small {
+        color: rgb(247, 100, 163) !important;
+    }
+    ::ng-deep .action-button-addon-reset {
+        border-color: rgb(247, 100, 163) !important;
+        color: rgb(247, 100, 163) !important;
+    }
+    ::ng-deep .action-button-addon-reset:hover {
+        cursor: pointer;
+        border-color: rgba(247, 100, 163, 0.3) !important;
+        color: black !important;
+        background-color: rgb(246, 67, 145);
+    }
+    ::ng-deep .action-button-addon-error {
+        border-color: rgb(247, 100, 163) !important;
+        color: rgb(247, 100, 163) !important;
+        background-color: rgba(247, 100, 163, 0.3);
+    }
+    // ::ng-deep .action-button-addon-error:hover {
+    //     cursor: pointer !important;
+    //     color: black !important;
+    //     background-color: rgb(246, 67, 145) !important;
+    // }
+}
+.alternative-p-field-inactive-error {
+    ::ng-deep .p-inputtext:enabled {
+        border-color: rgb(246, 67, 145) !important;
+    }
+    ::ng-deep label {
+        color: rgb(246, 67, 145) !important;
+    }
+    ::ng-deep small {
+        color: rgb(246, 67, 145) !important;
+    }
+    ::ng-deep .action-button-addon-reset {
+        border-color: rgb(246, 67, 145) !important;
+        color: rgb(246, 67, 145) !important;
+        background-color: rgba(246, 67, 145, 0.3);
+    }
+    ::ng-deep .action-button-addon-error {
+        border-color: rgb(246, 67, 145) !important;
+        color: rgb(246, 67, 145) !important;
+        background-color: rgba(246, 67, 145, 0.3);
+    }
+}

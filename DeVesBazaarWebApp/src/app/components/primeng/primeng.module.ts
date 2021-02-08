@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 import {ButtonModule} from 'primeng/button';
@@ -23,15 +26,21 @@ import {OrderListModule} from 'primeng/orderlist';
 
 
 import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
+import { SimpleInputComponent } from './simple-input/simple-input.component';
 
 
 @NgModule({
   declarations: [
-    ProgressSpinnerComponent
+    ProgressSpinnerComponent,
+    SimpleInputComponent
   ],
   imports: [
     CommonModule,
+    BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
     
     ButtonModule,
     InputTextModule,
@@ -69,7 +78,8 @@ import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.co
     OrderListModule,
     
     
-    ProgressSpinnerComponent
+    ProgressSpinnerComponent,
+    SimpleInputComponent
   ],
   providers: [ConfirmationService],
 })

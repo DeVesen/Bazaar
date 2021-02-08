@@ -1,9 +1,48 @@
 
-<app-simple-toolbar-area>
-    <app-simple-toolbar-new-btn styleClass="toolbar-btn"></app-simple-toolbar-new-btn>
-    <app-simple-toolbar-search-btn styleClass="toolbar-btn"></app-simple-toolbar-search-btn>
-    <app-simple-toolbar-refresh-btn styleClass="toolbar-btn"></app-simple-toolbar-refresh-btn>
-    <app-simple-toolbar-search-input styleClass="toolbar-btn"
-                                     (doSearch)="writeConsole($event)"
-                                     (keyupChange)="writeConsole($event)"></app-simple-toolbar-search-input>
-</app-simple-toolbar-area>
+<div class="demo-area">
+    <h2>app-simple-toolbar-area</h2>
+
+    <app-simple-toolbar-area>
+        <app-simple-toolbar-new-btn styleClass="toolbar-btn"></app-simple-toolbar-new-btn>
+        <app-simple-toolbar-search-btn styleClass="toolbar-btn"></app-simple-toolbar-search-btn>
+        <app-simple-toolbar-refresh-btn styleClass="toolbar-btn"></app-simple-toolbar-refresh-btn>
+        <app-simple-toolbar-search-input styleClass="toolbar-btn"
+                                        (doSearch)="writeConsole($event)"
+                                        (keyupChange)="writeConsole($event)"></app-simple-toolbar-search-input>
+    </app-simple-toolbar-area>
+</div>
+
+
+
+<div class="demo-area">
+    <h2>app-simple-input</h2>
+
+    <h4>Blank</h4>
+    <app-simple-input [(value)]="valueTxt"></app-simple-input>
+
+    <h4>placeholder</h4>
+    <app-simple-input placeholder="Mit Platzhalter" [(value)]="valueTxt"></app-simple-input>
+
+    <h4>Überschrift</h4>
+    <app-simple-input labelTxt="Überschrift" [(value)]="valueTxt"></app-simple-input>
+
+    <h4>Hilfstext</h4>
+    <app-simple-input helpTxt="Eine Zahl zwischen 1 und 10000" [(value)]="valueTxt"></app-simple-input>
+
+    <h4>Actionsknöpfe links</h4>
+    <app-simple-input [buttonsLeft]="[{key: 'k1', icon: 'pi pi-apple'}]" [(value)]="valueTxt"></app-simple-input>
+
+    <h4>Actionsknöpfe rechts</h4>
+    <app-simple-input [buttonsRight]="[{key: 'k1', icon: 'pi pi-apple'}]" [(value)]="valueTxt"></app-simple-input>
+
+    <h4>Actionsknöpfe beidseitig</h4>
+    <app-simple-input [buttonsLeft]="[{key: 'k1', icon: 'pi pi-apple'}]" [buttonsRight]="[{key: 'k1', icon: 'pi pi-apple'}]" [(value)]="valueTxt"></app-simple-input>
+
+    <h4>Fehler</h4>
+    <app-simple-input errorTxt="Eingabe sollte eine Zahl sein!" [(value)]="valueTxt"></app-simple-input>
+
+    <h4>Fehler (ohne Icon)</h4>
+    <app-simple-input errorTxt="Eingabe sollte eine Zahl sein!" [exclamationInCaseOfError]="false" [(value)]="valueTxt"></app-simple-input>
+    
+    <p>{{valueTxt}}</p>
+</div>

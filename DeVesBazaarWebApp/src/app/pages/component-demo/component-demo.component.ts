@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ComponentDemoComponent {
   
+  valueTxt: string;
+
   constructor() { }
 
   writeConsole($event) {

@@ -1,0 +1,40 @@
+
+<div class="p-field alternative-p-field"
+     [ngClass]="{'alternative-p-field-active': showActive,
+                 'alternative-p-field-inactive': showInActive,
+                 'alternative-p-field-active-error': showActive && hasError,
+                 'alternative-p-field-inactive-error': showInActive && hasError}"
+     (mouseenter)="mouseEnter()"
+     (mouseleave)="mouseLeave()">
+
+    <label *ngIf="labelTxt">{{labelTxt}}</label>
+
+    <div class="p-inputgroup">
+
+        <span *ngFor="let btn of buttonsLeft"
+              class="action-button-addon p-inputgroup-addon"
+              (click)="clickLeftBtn(btn.key)"><i class="{{btn.icon}}"></i></span>
+
+        <input pInputText
+            type="{{type}}"
+            placeholder="{{placeholder}}"
+            [(ngModel)]="value"
+            (focusin)="onFocusInEvent($event)"
+            (focusout)="onFocusOutEvent($event)"
+            (ngModelChange)="ngModelChange($event)">         
+
+        <span *ngIf="value"
+            class="action-button-addon-reset p-inputgroup-addon"
+            (click)="resetValue()"><i style="font-weight: bold;" class="pi pi-times"></i></span>
+        <span *ngIf="hasError && exclamationInCaseOfError"
+            class="action-button-addon-error p-inputgroup-addon"><i class="pi pi-exclamation-triangle"></i></span>
+        <span *ngFor="let btn of buttonsRight"
+            class="action-button-addon p-inputgroup-addon"
+            (click)="clickRightBtn(btn.key)"><i class="{{btn.icon}}"></i></span>
+
+    </div>
+
+    <small class="width-max"
+           *ngIf="infoTxt">{{infoTxt}}</small>
+    
+</div>
