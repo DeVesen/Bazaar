@@ -6,6 +6,7 @@ import { CategoryApiService } from '../../services/category-api-service/category
 import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
 import { MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
+import { StringHelper } from 'src/app/services/helpers/string-helper';
 
 @Component({
   selector: 'app-category-administration-page',
@@ -22,6 +23,7 @@ export class CategoryAdministrationPageComponent implements OnInit, OnDestroy {
   actionItems: MenuItem[];
   searchIsActive = false;
   searchAsMax = false;
+  searchValue: string;
 
 
   constructor(private _mediaObserver: MediaObserver,
@@ -53,19 +55,48 @@ export class CategoryAdministrationPageComponent implements OnInit, OnDestroy {
     this._createNewDialog.showDialog();
   }
 
+  newEntryDlgClosed(): void {
+    this.searchValue = '';
+    this.onReLoadCategories();
+  }
+
   onSearchToggle(isOpen: boolean): void {
     const fullSizeSearch = this._mediaObserver.isActive('xs')
     this.searchIsActive = isOpen;
     this.searchAsMax = isOpen && fullSizeSearch;
+
+    if (!isOpen) {
+      this.onReLoadCategories();
+    }
   }
 
-  public doSearch(): void {
-    console.log('Manufacturer - doSearch');
+  onSearchChange($event: any): void {
+    if ($event && $event.key === 'Enter') {
+      this.onReLoadCategories(this.searchValue);
+    }
   }
 
-  async onReLoadCategories(): Promise<void> {
+  public doSearch(filterValue?: string): void {
+    this.onReLoadCategories(filterValue);
+  }
+
+  async onReLoadCategories(filterValue?: string): Promise<void> {
     this.categoriesLoaded = false;
-    this.categories = (await this._categoryApi.getAll()).data;
+    this.categories = (await this._categoryApi.getAll()).data.filter(i => {
+      
+      if (!i || !filterValue || filterValue.trim().length <= 0) {
+        return true;
+      }
+
+      if (StringHelper.containsIgnorCase(i.id.toString(), filterValue)) {
+        return true;
+      }
+      if (StringHelper.containsIgnorCase(i.name, filterValue)) {
+        return true;
+      }
+
+      return false;
+    });
     this.categoriesLoaded = true;
   }
 

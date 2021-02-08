@@ -16,7 +16,7 @@ export class SimpleToolbarSearchInputComponent implements OnInit, AfterViewInit 
 
   @Output() valueChange = new EventEmitter<string>();
   @Output() inputIsShownChange = new EventEmitter<boolean>();
-  @Output() doSearch = new EventEmitter<any>();
+  @Output() doSearch = new EventEmitter<string>();
   @Output() keyupChange = new EventEmitter<any>();
   
   inputId: string;
@@ -49,8 +49,12 @@ export class SimpleToolbarSearchInputComponent implements OnInit, AfterViewInit 
     this.inputIsShownChange.emit(this.inputIsShown);
   }
 
-  onDoSearch($event) {
-    this.doSearch.emit($event);
+  onDoSearch() {
+    this.doSearch.emit(this.value);
+  }
+
+  modelChange($event): void {
+    this.valueChange.emit($event);
   }
 
   onKeyup($event) {

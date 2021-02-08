@@ -11,7 +11,9 @@
                 style="{{searchStyle}}"
                 styleClass="toolbar-item"
                 (inputIsShownChange)="onSearchToggle($event)"
-                (doSearch)="doSearch()"></app-simple-toolbar-search-input>
+                (keyupChange)="onSearchChange($event)"
+                (doSearch)="doSearch($event)"
+                [(value)]="searchValue"></app-simple-toolbar-search-input>
             <app-simple-toolbar-refresh-btn
                 *ngIf="!searchAsMax"
                 styleClass="toolbar-item"
@@ -51,4 +53,4 @@
 
 <p-confirmDialog header="Wirklich löschen?" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 
-<app-manufacturer-create-dialog></app-manufacturer-create-dialog>
+<app-manufacturer-create-dialog (dlgClosed)="newEntryDlgClosed()"></app-manufacturer-create-dialog>

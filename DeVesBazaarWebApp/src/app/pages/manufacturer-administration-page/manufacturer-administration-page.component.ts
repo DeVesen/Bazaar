@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { ManufacturerCreateDialogComponent } from 'src/app/components/manufacturer-create-dialog/manufacturer-create-dialog.component';
 import { IManufacturer } from 'src/app/models/manufacturer-model';
 import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
+import { StringHelper } from 'src/app/services/helpers/string-helper';
 import { ManufacturerApiService } from 'src/app/services/manufacturer-api-service/manufacturer-api.service';
 
 @Component({
@@ -22,6 +23,8 @@ export class ManufacturerAdministrationPageComponent implements OnInit, OnDestro
   actionItems: MenuItem[];
   searchIsActive = false;
   searchAsMax = false;
+  searchValue: string;
+  
 
   constructor(private _mediaObserver: MediaObserver,
               private _manufacturerApi: ManufacturerApiService,
@@ -52,19 +55,49 @@ export class ManufacturerAdministrationPageComponent implements OnInit, OnDestro
     this._createNewDialog.showDialog();
   }
 
+  newEntryDlgClosed(): void {
+    this.searchValue = '';
+    this.onReLoadManufacturer();
+  }
+
   onSearchToggle(isOpen: boolean): void {
     const fullSizeSearch = this._mediaObserver.isActive('xs')
     this.searchIsActive = isOpen;
     this.searchAsMax = isOpen && fullSizeSearch;
+
+    if (!isOpen) {
+      this.searchValue = '';
+      this.onReLoadManufacturer();
+    }
   }
 
-  public doSearch(): void {
-    console.log('Manufacturer - doSearch');
+  onSearchChange($event: any): void {
+    if ($event && $event.key === 'Enter') {
+      this.onReLoadManufacturer(this.searchValue);
+    }
+  }
+
+  public doSearch(filterValue?: string): void {
+    this.onReLoadManufacturer(filterValue);
   }
   
-  public async onReLoadManufacturer(): Promise<void> {
+  public async onReLoadManufacturer(filterValue?: string): Promise<void> {
     this.manufacturerLoaded = false;
-    this.manufacturer = (await this._manufacturerApi.getAll()).data;
+    this.manufacturer = (await this._manufacturerApi.getAll()).data.filter(i => {
+      
+      if (!i || !filterValue || filterValue.trim().length <= 0) {
+        return true;
+      }
+
+      if (StringHelper.containsIgnorCase(i.id.toString(), filterValue)) {
+        return true;
+      }
+      if (StringHelper.containsIgnorCase(i.name, filterValue)) {
+        return true;
+      }
+
+      return false;
+    });
     this.manufacturerLoaded = true;
   }
 

@@ -14,7 +14,8 @@
                           class="stsi-input"
                           placeholder="Suchwort"
                           (keyup)="onKeyup($event)"
+                          (ngModelChange)="modelChange($event)"
                           [(ngModel)]="value">
-        <i class="p-inputgroup-addon pi pi-search stsi-btn-hover stsi-image-right" (click)="onDoSearch($event)"></i>
+        <i class="p-inputgroup-addon pi pi-search stsi-btn-hover stsi-image-right" (click)="onDoSearch()"></i>
     </div>
 </div>
