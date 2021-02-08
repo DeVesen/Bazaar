@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService, MenuItem } from 'primeng/api';
-import { CategoryCreateDialogComponent } from 'src/app/components/category-create-dialog/category-create-dialog.component';
 import { ICategory } from 'src/app/models/category-model';
 import { CategoryApiService } from '../../services/category-api-service/category-api.service';
 import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
 import { MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { StringHelper } from 'src/app/helpers/string-helper';
+import { CategoryCreateDialogComponent } from 'src/app/components/dialogs/category-create-dialog/category-create-dialog.component';
 
 @Component({
   selector: 'app-category-administration-page',
