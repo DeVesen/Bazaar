@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, Vie
 import { Dialog } from 'primeng/dialog';
 import { IDialogResult } from 'src/app/models/dialog-result';
 import { IManufacturer } from 'src/app/models/manufacturer-model';
-import { ManufacturerApiService } from 'src/app/services/manufacturer-api-service/manufacturer-api.service';
+import { SellerApiService } from 'src/app/services/seller-api-service/seller-api.service';
 
 @Component({
   selector: 'app-seller-create-dialog',
@@ -11,8 +11,8 @@ import { ManufacturerApiService } from 'src/app/services/manufacturer-api-servic
 })
 export class SellerCreateDialogComponent implements OnInit, AfterViewInit {
 
-  private MSG_PLEASEINPUT: string = 'Bitte Hersteller eintragen ...';
-  private MSG_FORCEINPUT: string = 'Bitte einen Hersteller eintragen!';
+  private MSG_PLEASEINPUT: string = 'Bitte Verkäufer eintragen ...';
+  private MSG_FORCEINPUT: string = 'Bitte einen Verkäufer eintragen!';
   private MSG_PLEASEWAIT: string = 'Bitte warten ...';
   
   @ViewChild(Dialog) _dialog: Dialog;
@@ -27,7 +27,7 @@ export class SellerCreateDialogComponent implements OnInit, AfterViewInit {
   closeWasInformed = false;
   @Output() dlgClosed = new EventEmitter<IDialogResult<IManufacturer>>();
 
-  constructor(private _manufacturerApi: ManufacturerApiService) { }
+  constructor(private _sellerApi: SellerApiService) { }
 
   ngOnInit(): void {
   }
@@ -46,7 +46,7 @@ export class SellerCreateDialogComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    this._manufacturerApi.create({id: 0, name: this.inputValue})
+    this._sellerApi.create({id: 0, name: this.inputValue})
                          .then(r => {
                            if (r.error) {
                             this.setDialogStatus(false, true, ...r.error.messageCode);

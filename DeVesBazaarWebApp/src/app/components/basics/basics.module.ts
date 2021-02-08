@@ -9,6 +9,7 @@ import { SimpleToolbarNewBtnComponent } from './simple-toolbar/simple-toolbar-ne
 import { SimpleToolbarRefreshBtnComponent } from './simple-toolbar/simple-toolbar-refresh-btn/simple-toolbar-refresh-btn.component';
 import { SimpleToolbarSearchBtnComponent } from './simple-toolbar/simple-toolbar-search-btn/simple-toolbar-search-btn.component';
 import { SimpleToolbarSearchInputComponent } from './simple-toolbar/simple-toolbar-search-input/simple-toolbar-search-input.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -24,7 +25,8 @@ import { SimpleToolbarSearchInputComponent } from './simple-toolbar/simple-toolb
     SimpleToolbarSearchInputComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     HeaderMenuBtnComponent,

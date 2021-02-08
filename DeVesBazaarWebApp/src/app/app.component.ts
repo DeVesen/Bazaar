@@ -45,7 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
             routerLink: '/sale'
           },
           {
-            label: 'Händler',
+            label: 'Verkäufer',
             icon: 'pi pi-users',
             routerLink: '/seller-administration'
           },

@@ -2,11 +2,11 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
-import { ManufacturerCreateDialogComponent } from 'src/app/components/dialogs/manufacturer-create-dialog/manufacturer-create-dialog.component';
 import { StringHelper } from 'src/app/helpers/string-helper';
 import { IManufacturer } from 'src/app/models/manufacturer-model';
 import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
-import { ManufacturerApiService } from 'src/app/services/manufacturer-api-service/manufacturer-api.service';
+import { SellerCreateDialogComponent } from '../../components/dialogs/seller-create-dialog/seller-create-dialog.component';
+import { SellerApiService } from '../../services/seller-api-service/seller-api.service';
 
 @Component({
   selector: 'app-seller-administration-page',
@@ -16,10 +16,10 @@ import { ManufacturerApiService } from 'src/app/services/manufacturer-api-servic
 export class SellerAdministrationPageComponent implements OnInit, OnDestroy {
   private mediaSub: Subscription;
 
-  @ViewChild(ManufacturerCreateDialogComponent) _createNewDialog: ManufacturerCreateDialogComponent;
+  @ViewChild(SellerCreateDialogComponent) _createNewDialog: SellerCreateDialogComponent;
 
-  manufacturerLoaded: boolean;
-  manufacturer: IManufacturer[];
+  sellerLoaded: boolean;
+  sellers: IManufacturer[];
   actionItems: MenuItem[];
   searchIsActive = false;
   searchAsMax = false;
@@ -27,7 +27,7 @@ export class SellerAdministrationPageComponent implements OnInit, OnDestroy {
   
 
   constructor(private _mediaObserver: MediaObserver,
-              private _manufacturerApi: ManufacturerApiService,
+              private _sellerApi: SellerApiService,
               private _confirmationService: ConfirmationService,
               private activePageInfo: ActivePageInfoService) { }
 
@@ -38,8 +38,8 @@ export class SellerAdministrationPageComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.activePageInfo.setPageTitel('Hersteller');
-    this.onReLoadManufacturer();
+    this.activePageInfo.setPageTitel('Verkäufer');
+    this.onReLoadSeller();
 
     this.mediaSub = this._mediaObserver.asObservable().subscribe(x => {
       this.onSearchToggle(this.searchIsActive);
@@ -51,13 +51,13 @@ export class SellerAdministrationPageComponent implements OnInit, OnDestroy {
   }
 
 
-  public onAddNewManufacturer(): void {
+  public onAddNewSeller(): void {
     this._createNewDialog.showDialog();
   }
 
   newEntryDlgClosed(): void {
     this.searchValue = '';
-    this.onReLoadManufacturer();
+    this.onReLoadSeller();
   }
 
   onSearchToggle(isOpen: boolean): void {
@@ -67,23 +67,23 @@ export class SellerAdministrationPageComponent implements OnInit, OnDestroy {
 
     if (!isOpen) {
       this.searchValue = '';
-      this.onReLoadManufacturer();
+      this.onReLoadSeller();
     }
   }
 
   onSearchChange($event: any): void {
     if ($event && $event.key === 'Enter') {
-      this.onReLoadManufacturer(this.searchValue);
+      this.onReLoadSeller(this.searchValue);
     }
   }
 
   public doSearch(filterValue?: string): void {
-    this.onReLoadManufacturer(filterValue);
+    this.onReLoadSeller(filterValue);
   }
   
-  public async onReLoadManufacturer(filterValue?: string): Promise<void> {
-    this.manufacturerLoaded = false;
-    this.manufacturer = (await this._manufacturerApi.getAll()).data.filter(i => {
+  public async onReLoadSeller(filterValue?: string): Promise<void> {
+    this.sellerLoaded = false;
+    this.sellers = (await this._sellerApi.getAll()).data.filter(i => {
       
       if (!i || !filterValue || filterValue.trim().length <= 0) {
         return true;
@@ -98,15 +98,15 @@ export class SellerAdministrationPageComponent implements OnInit, OnDestroy {
 
       return false;
     });
-    this.manufacturerLoaded = true;
+    this.sellerLoaded = true;
   }
 
-  public onRemoveManufacturer(product: IManufacturer): void {
+  public onRemoveSeller(product: IManufacturer): void {
     this._confirmationService.confirm({
         message: `Wirklich '${product.name}' löschen?`,
         accept: async () => {
-            await this._manufacturerApi.remove(product.id);
-            await this.onReLoadManufacturer();
+            await this._sellerApi.remove(product.id);
+            await this.onReLoadSeller();
         }
     });
   }

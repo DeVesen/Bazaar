@@ -1,12 +1,12 @@
 
-<div class="manufacturer-page">
+<div class="seller-page">
 
     <div class="page-title">
         <app-simple-toolbar-area>
             <app-simple-toolbar-new-btn
                 *ngIf="!searchAsMax"
                 styleClass="toolbar-item"
-                (click)="onAddNewManufacturer()"></app-simple-toolbar-new-btn>
+                (click)="onAddNewSeller()"></app-simple-toolbar-new-btn>
             <app-simple-toolbar-search-input
                 style="{{searchStyle}}"
                 styleClass="toolbar-item"
@@ -17,16 +17,16 @@
             <app-simple-toolbar-refresh-btn
                 *ngIf="!searchAsMax"
                 styleClass="toolbar-item"
-                (click)="onReLoadManufacturer()"></app-simple-toolbar-refresh-btn>
+                (click)="onReLoadSeller()"></app-simple-toolbar-refresh-btn>
         </app-simple-toolbar-area>
     </div>
     
     <div class="table-area">
-        <div *ngIf="!manufacturerLoaded"
+        <div *ngIf="!sellerLoaded"
              class="table-load-spinner-area">
             <app-progress-spinner [width]="'100px'" [height]="'100px'"></app-progress-spinner>
         </div>
-        <p-table *ngIf="manufacturerLoaded" styleClass="p-datatable-sm" [value]="manufacturer" [scrollable]="true" scrollHeight="flex">
+        <p-table *ngIf="sellerLoaded" styleClass="p-datatable-sm" [value]="sellers" [scrollable]="true" scrollHeight="flex">
             <ng-template pTemplate="header">
                 <tr>
                     <th pSortableColumn="id"># <p-sortIcon field="id"></p-sortIcon></th>
@@ -43,7 +43,7 @@
                                 type="button"
                                 icon="pi pi-times"
                                 class="-button-rounded p-button-danger p-button-text"
-                                (click)="onRemoveManufacturer(product)"></button>
+                                (click)="onRemoveSeller(product)"></button>
                     </td>
                 </tr>
             </ng-template>
@@ -53,4 +53,4 @@
 
 <p-confirmDialog header="Wirklich löschen?" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 
-<app-manufacturer-create-dialog (dlgClosed)="newEntryDlgClosed()"></app-manufacturer-create-dialog>
+<app-seller-create-dialog (dlgClosed)="newEntryDlgClosed()"></app-seller-create-dialog>
