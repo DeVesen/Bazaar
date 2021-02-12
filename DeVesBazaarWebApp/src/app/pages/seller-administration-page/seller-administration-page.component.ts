@@ -48,9 +48,6 @@ export class SellerAdministrationPageComponent implements OnInit, AfterViewInit,
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this._createNewDialog.showDialog();
-    }, 0);
   }
 
   ngOnDestroy() {

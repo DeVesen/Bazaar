@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { IDialogResult } from 'src/app/models/dialog-result';
-import { IManufacturer } from 'src/app/models/manufacturer-model';
 import { ISeller } from '../../../models/seller-model';
 import { SimpleInputComponent } from '../../primeng/simple-input/simple-input.component';
 import { SellerApiService } from '../../../services/seller-api-service/seller-api.service';
