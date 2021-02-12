@@ -1,8 +1,38 @@
 
 .add-dialog-content-area {
     min-width: 50vw;
+
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+    grid-column-gap: 5px;
+    grid-row-gap: 3px;
+    grid-template-areas: 
+      "id id salutation salutation"
+      "firstname firstname lastname lastname"
+      "phone phone email email";
 }
 
 .max-width {
     width: 100%;
+}
+
+
+.input-item-id {
+    grid-area: id;
+}
+.input-item-salutation {
+    grid-area: salutation;
+}
+.input-item-firstname {
+    grid-area: firstname;
+}
+.input-item-lastname {
+    grid-area: lastname;
+}
+.input-item-phone {
+    grid-area: phone;
+}
+.input-item-email {
+    grid-area: email;
 }

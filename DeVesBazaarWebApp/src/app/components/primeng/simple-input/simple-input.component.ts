@@ -80,12 +80,10 @@ export class SimpleInputComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   mouseEnter(): void {
-    console.log('mouseEnter');
     this.isMouseOver = true;
   }
 
   mouseLeave(): void {
-    console.log('mouseLeave');
     this.isMouseOver = false;
   }
 

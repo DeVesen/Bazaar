@@ -12,27 +12,48 @@
     (onShow)="onShow()"
     (onHide)="onHide()">
 
-    <div class="add-dialog-content-area">   
-        <div class="p-field max-width">
-            <span class="p-float-label max-width">
-                <input
-                    #dlgInput
-                    type="text"
-                    class="max-width"
-                    [ngClass]="{'ng-invalid ng-dirty': inputAsError}"
-                    [(ngModel)]="inputValue"
-                    (keyup)="onKeyUp($event)"
-                    [disabled]="waitForCreation"
-                    pInputText> 
-                <!-- <label for="float-input">Hersteller</label> -->
-            </span>
-            <small [ngClass]="{'p-error': inputAsError}">{{inputInfoText}}</small>
-        </div>
+    <div class="add-dialog-content-area">
+        <app-simple-input #sellerId labelTxt="Nummer (*)" type="number"
+                          class="input-item-id"
+                          [(value)]="sellerNumber"
+                          [exclamationInCaseOfError]="false"
+                          (valueChange)="inputChange('sellerId')"></app-simple-input>
+        <app-simple-input class="input-item-salutation"
+                          labelTxt="Anrede"
+                          [(value)]="sellerSalutation"
+                          [exclamationInCaseOfError]="false"
+                          (valueChange)="inputChange('sellerSalutation')"></app-simple-input>
+        <app-simple-input #sellerFirstName labelTxt="Vorname (*)"
+                          class="input-item-firstname"
+                          [(value)]="sellerFirstname"
+                          [exclamationInCaseOfError]="false"
+                          (valueChange)="inputChange('sellerFirstName')"></app-simple-input>
+        <app-simple-input #sellerLastName labelTxt="Nachname (*)"
+                          class="input-item-lastname"
+                          [(value)]="sellerLastname"
+                          [exclamationInCaseOfError]="false"
+                          (valueChange)="inputChange('sellerLastName')"></app-simple-input>
+        <app-simple-input class="input-item-phone"
+                          labelTxt="Telefon"
+                          type="tel"
+                          [(value)]="sellerPhone"
+                          [exclamationInCaseOfError]="false"
+                          (valueChange)="inputChange('sellerPhone')"></app-simple-input>
+        <app-simple-input class="input-item-email"
+                          labelTxt="E-Mail" type="email"
+                          [(value)]="sellerEmail"
+                          [exclamationInCaseOfError]="false"
+                          (valueChange)="inputChange('sellerEmail')"></app-simple-input>
     </div>
 
     <ng-template pTemplate="footer">
         <app-progress-spinner *ngIf="waitForCreation" [width]="'39px'" [height]="'39px'"></app-progress-spinner>
-        <p-button *ngIf="!waitForCreation" icon="pi pi-check" (click)="onCreateNewEntry()" label="Speichern" styleClass="p-button-text"></p-button>
+        <button pButton pRipple
+                type="button"
+                label="Speichern"
+                class="p-button-outlined p-button-success"
+                *ngIf="!waitForCreation"
+                (click)="onCreateNewEntry()"></button>
     </ng-template>
 
 </p-dialog>

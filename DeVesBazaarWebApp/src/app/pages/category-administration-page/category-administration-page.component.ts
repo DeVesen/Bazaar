@@ -83,19 +83,10 @@ export class CategoryAdministrationPageComponent implements OnInit, OnDestroy {
   async onReLoadCategories(filterValue?: string): Promise<void> {
     this.categoriesLoaded = false;
     this.categories = (await this._categoryApi.getAll()).data.filter(i => {
-      
       if (!i || !filterValue || filterValue.trim().length <= 0) {
         return true;
       }
-
-      if (StringHelper.containsIgnorCase(i.id.toString(), filterValue)) {
-        return true;
-      }
-      if (StringHelper.containsIgnorCase(i.name, filterValue)) {
-        return true;
-      }
-
-      return false;
+      return StringHelper.objectContainsValue(i, filterValue);
     });
     this.categoriesLoaded = true;
   }

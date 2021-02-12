@@ -30,14 +30,16 @@
             <ng-template pTemplate="header">
                 <tr>
                     <th pSortableColumn="id"># <p-sortIcon field="id"></p-sortIcon></th>
-                    <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="name">Nachname <p-sortIcon field="lastname"></p-sortIcon></th>
+                    <th pSortableColumn="name">Vorname <p-sortIcon field="firstName"></p-sortIcon></th>
                     <th style="width: 70px;"></th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-product>
                 <tr>
                     <td>{{product.id}}</td>
-                    <td>{{product.name}}</td>
+                    <td>{{product.lastName}}</td>
+                    <td>{{product.firstName}}</td>
                     <td style="width: 70px;">
                         <button pButton pRipple 
                                 type="button"

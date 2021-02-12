@@ -84,19 +84,10 @@ export class ManufacturerAdministrationPageComponent implements OnInit, OnDestro
   public async onReLoadManufacturer(filterValue?: string): Promise<void> {
     this.manufacturerLoaded = false;
     this.manufacturer = (await this._manufacturerApi.getAll()).data.filter(i => {
-      
       if (!i || !filterValue || filterValue.trim().length <= 0) {
         return true;
       }
-
-      if (StringHelper.containsIgnorCase(i.id.toString(), filterValue)) {
-        return true;
-      }
-      if (StringHelper.containsIgnorCase(i.name, filterValue)) {
-        return true;
-      }
-
-      return false;
+      return StringHelper.objectContainsValue(i, filterValue);
     });
     this.manufacturerLoaded = true;
   }
