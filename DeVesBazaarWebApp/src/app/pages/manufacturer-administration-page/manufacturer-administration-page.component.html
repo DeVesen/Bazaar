@@ -10,10 +10,11 @@
             <app-simple-toolbar-search-input
                 style="{{searchStyle}}"
                 styleClass="toolbar-item"
+                [(value)]="searchValue"
+                (valueChange)="onValueChange()"
                 (inputIsShownChange)="onSearchToggle($event)"
                 (keyupChange)="onSearchChange($event)"
-                (doSearch)="doSearch($event)"
-                [(value)]="searchValue"></app-simple-toolbar-search-input>
+                (doSearch)="doSearch($event)"></app-simple-toolbar-search-input>
             <app-simple-toolbar-refresh-btn
                 *ngIf="!searchAsMax"
                 styleClass="toolbar-item"

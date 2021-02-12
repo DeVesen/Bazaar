@@ -4,10 +4,22 @@
         *ngIf="!inputIsShown"
         iconLeft="pi pi-search"
         label="Suchen"
+        styleClass="search-open-btn"
         [showText]="showBtnText"
         (click)="doShow()"></app-simple-toolbar-btn>
     
-    <div class="p-inputgroup stsi-area"
+    <app-simple-input
+        *ngIf="inputIsShown"
+        inputId="inputId"
+        [buttonsLeft]="[{key: 'close', icon: 'pi pi-angle-right'}]"
+        [buttonsRight]="[{key: 'search', icon: 'pi pi-search'}]"
+        [(value)]="value"
+        (valueChange)="modelChange($event)"
+        (inputKeyup)="onKeyup($event)"
+        (clickBtnLeft)="clickBtn($event)"
+        (clickBtnRight)="clickBtn($event)"></app-simple-input>
+
+    <!-- <div class="p-inputgroup stsi-area"
         *ngIf="inputIsShown">
         <i class="p-inputgroup-addon pi pi-angle-right stsi-btn-hover stsi-image-left" (click)="doHide()"></i>
         <input  id='{{inputId}}' pInputText type="text"
@@ -17,5 +29,5 @@
                           (ngModelChange)="modelChange($event)"
                           [(ngModel)]="value">
         <i class="p-inputgroup-addon pi pi-search stsi-btn-hover stsi-image-right" (click)="onDoSearch()"></i>
-    </div>
+    </div> -->
 </div>

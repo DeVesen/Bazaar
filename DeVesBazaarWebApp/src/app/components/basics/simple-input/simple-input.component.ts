@@ -15,6 +15,7 @@ export class SimpleInputComponent implements OnInit, AfterViewInit, OnChanges {
   isMouseOver = false;
   isFocused = false;
 
+  @Input() inputId: string;
   @Input() type: string = 'text';
   @Input() value: string;
   @Input() placeholder: string;
@@ -30,9 +31,13 @@ export class SimpleInputComponent implements OnInit, AfterViewInit, OnChanges {
   @Output() valueChange = new EventEmitter<string>();
   @Output() clickBtnLeft = new EventEmitter<string>();
   @Output() clickBtnRight = new EventEmitter<string>();
+  @Output() inputKeyup = new EventEmitter<any>();
 
 
-  constructor() { }
+  constructor() {
+    const randomId = Math.floor((Math.random() * 100) + 1);
+    this.inputId = `d${randomId}${new Date().getTime()}`;
+  }
 
   get showActive(): boolean {
     return (this.isMouseOver || this.isFocused || this.value ? true : false);
@@ -85,6 +90,10 @@ export class SimpleInputComponent implements OnInit, AfterViewInit, OnChanges {
 
   mouseLeave(): void {
     this.isMouseOver = false;
+  }
+
+  onKeyup($event): void {
+    this.inputKeyup.emit($event);
   }
 
   onFocusInEvent($event): void {

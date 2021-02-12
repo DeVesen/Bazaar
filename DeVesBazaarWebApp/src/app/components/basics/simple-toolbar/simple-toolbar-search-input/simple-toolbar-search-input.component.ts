@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-simple-toolbar-search-input',
@@ -7,11 +7,10 @@ import { Component, Input, OnInit, Output, EventEmitter, ElementRef, ViewChild, 
 })
 export class SimpleToolbarSearchInputComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('dlgInput') _inputField: ElementRef;
-
   @Input() value = '';
   @Input() showBtnText = false;
   @Input() inputIsShown = false;
+  @Input() escMeansClosing = true;
   @Input() styleClass: string;
 
   @Output() valueChange = new EventEmitter<string>();
@@ -22,7 +21,7 @@ export class SimpleToolbarSearchInputComponent implements OnInit, AfterViewInit 
   inputId: string;
 
   constructor() {
-    this.inputId = `input_${new Date().getTime()}`;
+    this.inputId = `stbsiv`;
   }
 
   ngOnInit(): void {
@@ -31,6 +30,17 @@ export class SimpleToolbarSearchInputComponent implements OnInit, AfterViewInit 
   ngAfterViewInit(): void {
   }
 
+
+  clickBtn(btnKey: string): void {
+    switch(btnKey) {
+      case 'close':
+        this.doHide();
+        break;
+      case 'search':
+        this.onDoSearch();
+        break;
+    }
+  }
 
   doShow(): void {
     this.inputIsShown = true;
@@ -41,7 +51,7 @@ export class SimpleToolbarSearchInputComponent implements OnInit, AfterViewInit 
       if (inputRef) {
         inputRef.focus();
       }
-    }, 100);
+    }, 1000);
   }
 
   doHide(): void {
@@ -58,6 +68,10 @@ export class SimpleToolbarSearchInputComponent implements OnInit, AfterViewInit 
   }
 
   onKeyup($event) {
+    if (this.escMeansClosing && $event.key === 'Escape') {
+      this.doHide();
+      return;
+    }
     this.keyupChange.emit($event);
   }
 }

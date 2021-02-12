@@ -60,6 +60,9 @@ export class ManufacturerAdministrationPageComponent implements OnInit, OnDestro
     this.onReLoadManufacturer();
   }
 
+  onValueChange(): void {
+  }
+
   onSearchToggle(isOpen: boolean): void {
     const fullSizeSearch = this._mediaObserver.isActive('xs')
     this.searchIsActive = isOpen;

@@ -16,9 +16,11 @@
               (click)="clickLeftBtn(btn.key)"><i class="{{btn.icon}}"></i></span>
 
         <input pInputText
+            id="{{inputId}}"
             type="{{type}}"
             placeholder="{{placeholder}}"
             [(ngModel)]="value"
+            (keyup)="onKeyup($event)"
             (focusin)="onFocusInEvent($event)"
             (focusout)="onFocusOutEvent($event)"
             (ngModelChange)="ngModelChange($event)">         

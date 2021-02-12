@@ -12,3 +12,16 @@
 :host .stsi-area :hover  {
     background-color: rgb(57, 57, 57);
 }
+
+:host ::ng-deep .p-inputtext {
+    height: 40px !important;
+}
+:host ::ng-deep .p-inputgroup-addon {
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+}
+
+
+// regular: #7e7e7e
+// hover:   #A5A5A5

@@ -32,7 +32,7 @@ import {OrderListModule} from 'primeng/orderlist';
 import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
 import { HeaderMenuBtnComponent } from './header-menu-btn/header-menu-btn.component';
 import { SimpleInputComponent } from './simple-input/simple-input.component';
-import { SimpleToolbarBtnComponent } from './simple-toolbar/basics/simple-toolbar-btn/simple-toolbar-btn.component';
+import { SimpleToolbarBtnComponent } from './simple-toolbar/simple-toolbar-btn/simple-toolbar-btn.component';
 import { SimpleToolbarAreaComponent } from './simple-toolbar/simple-toolbar-area/simple-toolbar-area.component';
 import { SimpleToolbarNewBtnComponent } from './simple-toolbar/simple-toolbar-new-btn/simple-toolbar-new-btn.component';
 import { SimpleToolbarRefreshBtnComponent } from './simple-toolbar/simple-toolbar-refresh-btn/simple-toolbar-refresh-btn.component';

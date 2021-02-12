@@ -10,48 +10,48 @@
 
 .alternative-p-field-active {
     ::ng-deep .p-inputtext:enabled {
-        border-color: rgb(165, 165, 165) !important;
+        border-color: #A5A5A5 !important;
     }
     ::ng-deep label {
-        color: rgb(165, 165, 165) !important;
+        color: #A5A5A5 !important;
     }
     ::ng-deep small {
-        color: rgb(165, 165, 165) !important;
+        color: #A5A5A5 !important;
     }
     ::ng-deep .action-button-addon {
-        color: rgba(165, 165, 165) !important;
-        background-color: rgba(165, 165, 165, 0.3) !important;
-        border-color: rgb(165, 165, 165) !important;
+        color: #A5A5A5 !important;
+        background-color: rgba(#A5A5A5, 0.1) !important;
+        border-color: #A5A5A5 !important;
     }
     ::ng-deep .action-button-addon-reset {
-        color: rgba(165, 165, 165) !important;
-        border-color: rgb(165, 165, 165) !important;
+        color: #A5A5A5 !important;
+        border-color: #A5A5A5 !important;
     }
     ::ng-deep .action-button-addon-reset:hover {
         cursor: pointer;
         color: black !important;
-        background-color: rgba(165, 165, 165) !important;
+        background-color: #A5A5A5 !important;
     }
     ::ng-deep .action-button-addon:hover {
         cursor: pointer;
         color: black !important;
-        background-color: rgba(165, 165, 165) !important;
+        background-color: #A5A5A5 !important;
     }
 }
 .alternative-p-field-inactive {
     ::ng-deep .p-inputtext:enabled {
-        border-color: rgb(126, 126, 126) !important;
+        border-color: #7e7e7e !important;
     }
     ::ng-deep label {
-        color: rgb(128, 126, 126) !important;
+        color: #7e7e7e !important;
     }
     ::ng-deep small {
-        color: rgb(128, 126, 126) !important;
+        color: #7e7e7e !important;
     }
     ::ng-deep .action-button-addon {
-        color: rgba(126, 126, 126) !important;
-        background-color: rgba(126, 126, 126, 0.3) !important;
-        border-color: rgb(128, 126, 126) !important;
+        color: #7e7e7e !important;
+        background-color: rgba(#7e7e7e, 0.1) !important;
+        border-color: #7e7e7e !important;
     }
 }
 
