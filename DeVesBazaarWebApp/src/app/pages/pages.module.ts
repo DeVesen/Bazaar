@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { BasicsModule } from '../components/basics/basics.module';
-import { PrimengModule } from '../components/primeng/primeng.module';
 import { DialogsModule } from '../components/dialogs/dialogs.module';
 
 import { CategoryAdministrationPageComponent } from './category-administration-page/category-administration-page.component';
@@ -29,7 +28,6 @@ import { StatisticPageComponent } from './statistic-page/statistic-page.componen
     FormsModule,
 
     BasicsModule,
-    PrimengModule,
     DialogsModule
   ],
   exports: [

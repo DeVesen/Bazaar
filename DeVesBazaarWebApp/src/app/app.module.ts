@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BasicsModule } from './components/basics/basics.module';
-import { PrimengModule } from './components/primeng/primeng.module';
 import { DialogsModule } from './components/dialogs/dialogs.module';
 import { PagesModule } from './pages/pages.module';
 
@@ -24,7 +23,6 @@ import { PagesModule } from './pages/pages.module';
     BrowserAnimationsModule,
 
     BasicsModule,
-    PrimengModule,
     DialogsModule,
     PagesModule
   ],

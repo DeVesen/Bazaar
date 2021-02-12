@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { IDialogResult } from 'src/app/models/dialog-result';
 import { ISeller } from '../../../models/seller-model';
-import { SimpleInputComponent } from '../../primeng/simple-input/simple-input.component';
 import { SellerApiService } from '../../../services/seller-api-service/seller-api.service';
+import { SimpleInputComponent } from '../../basics/simple-input/simple-input.component';
 
 @Component({
   selector: 'app-seller-create-dialog',

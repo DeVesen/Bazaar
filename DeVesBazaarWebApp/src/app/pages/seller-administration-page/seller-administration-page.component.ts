@@ -3,7 +3,6 @@ import { MediaObserver } from '@angular/flex-layout';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { StringHelper } from 'src/app/helpers/string-helper';
-import { IManufacturer } from 'src/app/models/manufacturer-model';
 import { ActivePageInfoService } from 'src/app/services/active-page-info-service/active-page-info.service';
 import { SellerCreateDialogComponent } from '../../components/dialogs/seller-create-dialog/seller-create-dialog.component';
 import { SellerApiService } from '../../services/seller-api-service/seller-api.service';
