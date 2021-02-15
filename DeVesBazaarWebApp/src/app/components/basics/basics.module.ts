@@ -38,6 +38,12 @@ import { SimpleToolbarNewBtnComponent } from './simple-toolbar/simple-toolbar-ne
 import { SimpleToolbarRefreshBtnComponent } from './simple-toolbar/simple-toolbar-refresh-btn/simple-toolbar-refresh-btn.component';
 import { SimpleToolbarSearchBtnComponent } from './simple-toolbar/simple-toolbar-search-btn/simple-toolbar-search-btn.component';
 import { SimpleToolbarSearchInputComponent } from './simple-toolbar/simple-toolbar-search-input/simple-toolbar-search-input.component';
+import { SimpleTableButtonComponent } from './simple-table-buttons/simple-table-button/simple-table-button.component';
+import { SimpleButtonComponent } from './simple-buttons/simple-button/simple-button.component';
+import { SimbleAddButtonComponent } from './simple-buttons/simble-add-button/simble-add-button.component';
+import { SimbleRefreshButtonComponent } from './simple-buttons/simble-refresh-button/simble-refresh-button.component';
+import { SimbleSearchButtonComponent } from './simple-buttons/simble-search-button/simble-search-button.component';
+import { SimbleAngleRightButtonComponent } from './simple-buttons/simble-angle-right-button/simble-angle-right-button.component';
 
 
 
@@ -53,7 +59,13 @@ import { SimpleToolbarSearchInputComponent } from './simple-toolbar/simple-toolb
     SimpleToolbarNewBtnComponent,
     SimpleToolbarRefreshBtnComponent,
     SimpleToolbarSearchBtnComponent,
-    SimpleToolbarSearchInputComponent
+    SimpleToolbarSearchInputComponent,
+    SimpleButtonComponent,
+    SimbleAddButtonComponent,
+    SimbleRefreshButtonComponent,
+    SimbleSearchButtonComponent,
+    SimbleAngleRightButtonComponent,
+    SimpleTableButtonComponent
   ],
   imports: [
     CommonModule,
@@ -101,7 +113,13 @@ import { SimpleToolbarSearchInputComponent } from './simple-toolbar/simple-toolb
     SimpleToolbarNewBtnComponent,
     SimpleToolbarRefreshBtnComponent,
     SimpleToolbarSearchBtnComponent,
-    SimpleToolbarSearchInputComponent
+    SimpleToolbarSearchInputComponent,
+    SimpleButtonComponent,
+    SimbleAddButtonComponent,
+    SimbleRefreshButtonComponent,
+    SimbleSearchButtonComponent,
+    SimbleAngleRightButtonComponent,
+    SimpleTableButtonComponent
   ],
   providers: [ConfirmationService],
 })

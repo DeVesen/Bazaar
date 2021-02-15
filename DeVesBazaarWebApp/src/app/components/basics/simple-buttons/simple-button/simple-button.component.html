@@ -1,0 +1,26 @@
+
+<button class="s-component s-btn s-btn-raised {{styleClass}}"
+        [disabled]="disabled"
+        [ngClass]="{'s-btn-raised': styleType === 'raised',
+                    's-btn-text': styleType === 'text',
+                    's-btn-outlined': styleType === 'outlined',
+                    's-primary': category === 'primary',
+                    's-secondary': category === 'secondary',
+                    's-success': category === 'success',
+                    's-info': category === 'info',
+                    's-warning': category === 'warning',
+                    's-help': category === 'help',
+                    's-danger': category === 'danger',
+                    's-btn-smal': sizeType === 'smal',
+                    's-btn-normal': sizeType === 'normal',
+                    's-btn-large': sizeType === 'large',
+                    's-btn-xlarge': sizeType === 'xlarge',
+                    's-btn-xxlarge': sizeType === 'xxlarge'}">
+    <i *ngIf="iconLeft"
+        class="{{iconLeft}}"
+        [ngClass]="{'space': caption || iconRight}"></i>
+    <div *ngIf="caption"
+        [ngClass]="{'space': iconRight}">{{caption}}</div>
+    <i *ngIf="iconRight"
+        class="{{iconRight}}"></i>
+</button>

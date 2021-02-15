@@ -1,0 +1,215 @@
+
+.s-component {
+    box-sizing: border-box;
+
+    font-family: JetBrainsMono, RobotoMono, Consolas, Roboto, "Helvetica Neue", sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+}
+.s-component ::ng-deep .p-component {
+    font-family: JetBrainsMono, RobotoMono, Consolas, Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+
+.s-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    
+    user-select: none;
+    -webkit-user-select: none;
+
+    vertical-align: bottom;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+
+    margin: 0;
+    padding: 2px 8px 2px 8px;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    min-height: 40px;
+    min-width: 40px;
+    
+    --color100: #ffffff;
+    --color095: #f2f2f2;
+    --color090: #e6e6e6;
+    --color085: #d9d9d9;
+    --color080: #cccccc;
+    --color075: #bfbfbf;
+    --color070: #b3b3b3;
+    --color065: #a6a6a6;
+    --color060: #999999;
+    --color055: #8c8c8c;
+    --color050: #808080;
+    --color045: #737373;
+    --color040: #666666;
+    --color035: #595959;
+    --color030: #4d4d4d;
+    --color025: #404040;
+    --color020: #333333;
+    --color015: #262626;
+    --color010: #1a1a1a;
+    --color005: #0d0d0d;
+    --color000: #000000;
+
+    border: 0 none;
+    border-radius: 4px;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+.s-btn:enabled:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+}
+.s-btn:enabled:hover {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+}
+.s-btn:enabled:active {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+}
+
+
+// xs, s, m, l, xl, xxl
+
+.s-btn-smal {
+    height: 33px;
+    min-height: 33px;
+    max-height: 33px;
+    min-width: 33px;
+    font-size: 12px;
+}
+.s-btn-normal {
+    height: 37px;
+    min-height: 37px;
+    max-height: 37px;
+    min-width: 37px;
+    font-size: 14px;
+}
+.s-btn-large {
+    height: 41px;
+    min-height: 41px;
+    max-height: 41px;
+    min-width: 41px;
+    font-size: 15px;
+}
+.s-btn-xlarge {
+    height: 45px;
+    min-height: 45px;
+    max-height: 45px;
+    min-width: 45px;
+    font-size: 17.5px;
+}
+.s-btn-xxlarge {
+    height: 49px;
+    min-height: 49px;
+    max-height: 49px;
+    min-width: 49px;
+    font-size: 17.5px;
+}
+
+
+.space {
+    padding-right: 5px;
+}
+
+
+.s-btn-raised {
+    color: var(--color025);
+    background: var(--color080);
+    border: 1px solid transparent;
+}
+.s-btn-raised:enabled:hover {
+    color: var(--color005);
+    background: var(--color065);
+    border: 1px solid var(--color065);
+}
+.s-btn-raised:enabled:active {
+    color: var(--color100);
+    background: var(--color050);
+    border: 1px solid var(--color080);
+}
+
+.s-btn-text {
+    color: var(--color080);
+    background: transparent;
+    border: 1px solid transparent;
+}
+.s-btn-text:enabled:hover {
+    color: var(--color065);
+    background: transparent;
+    border: 1px solid var(--color065);
+}
+.s-btn-text:enabled:active {
+    color: var(--color100);
+    background: var(--color050);
+    border: 1px solid var(--color080);
+}
+
+.s-btn-outlined {
+    color: var(--color080);
+    background: transparent;
+    border: 1px solid var(--color080);
+}
+.s-btn-outlined:enabled:hover {
+    color: var(--color005);
+    background: var(--color065);
+    border: 1px solid var(--color080);
+}
+.s-btn-outlined:enabled:active {
+    color: var(--color100);
+    background: var(--color050);
+    border: 1px solid var(--color080);
+}
+
+
+.s-primary {
+    --color080: #9FA8DA;
+    --color065: #9fa8daeb;
+    --color050: #9fa8daad;
+}
+
+.s-secondary {
+    --color080: #F48FB1;
+    --color065: #f48fb1eb;
+    --color050: #f48fb1ad;
+}
+
+.s-success {
+    --color080: #C5E1A5;
+    --color065: #c5e1a5eb;
+    --color050: #c5e1a5ad;
+}
+
+.s-info {
+    --color080: #90CAF9;
+    --color065: #90caf9eb;
+    --color050: #90caf9ad;
+}
+
+.s-warning {
+    --color080: #FFF59D;
+    --color065: #fff59deb;
+    --color050: #fff59dad;
+}
+
+.s-help {
+    --color080: #CE93D8;
+    --color065: #ce93d8eb;
+    --color050: #ce93d8ad;
+}
+
+.s-danger {
+    --color080: #EF9A9A;
+    --color065: #ef9a9aeb;
+    --color050: #ef9a9aad;
+}

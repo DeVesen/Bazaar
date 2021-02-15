@@ -17,6 +17,10 @@ const routes: Routes = [
     component: SellerAdministrationPageComponent
   },
   {
+    path: 'seller-management',
+    component: SellerAdministrationPageComponent
+  },
+  {
     path: 'manufacturer-administration',
     component: ManufacturerAdministrationPageComponent
   },
