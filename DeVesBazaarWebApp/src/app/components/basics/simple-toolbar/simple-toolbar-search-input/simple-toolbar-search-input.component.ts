@@ -8,7 +8,6 @@ import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit } from '@
 export class SimpleToolbarSearchInputComponent implements OnInit, AfterViewInit {
 
   @Input() value = '';
-  @Input() showBtnText = false;
   @Input() inputIsShown = false;
   @Input() escMeansClosing = true;
   @Input() styleClass: string;

@@ -1,12 +1,11 @@
 
 <div class="{{styleClass}}" style="width: auto;">
-    <app-simple-toolbar-btn
+    <s-toolbar-btn
         *ngIf="!inputIsShown"
         iconLeft="pi pi-search"
         label="Suchen"
         styleClass="search-open-btn"
-        [showText]="showBtnText"
-        (click)="doShow()"></app-simple-toolbar-btn>
+        (click)="doShow()"></s-toolbar-btn>
     
     <app-simple-input
         *ngIf="inputIsShown"

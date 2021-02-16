@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 's-search-btn',
-  templateUrl: './simble-search-button.component.html',
-  styleUrls: ['./simble-search-button.component.scss']
+  selector: 's-btn-add',
+  templateUrl: './simble-button-add.component.html',
+  styleUrls: ['./simble-button-add.component.scss']
 })
-export class SimbleSearchButtonComponent implements OnInit {
+export class SimbleButtonAddComponent implements OnInit {
 
   @Input() caption: string;
   @Input() category: string;
-  @Input() iconLeft: string = 'pi pi-search';
+  @Input() iconLeft: string = 'pi pi-plus';
   @Input() iconRight: string;
   @Input() styleClass: string;
   @Input() disabled: boolean = false;

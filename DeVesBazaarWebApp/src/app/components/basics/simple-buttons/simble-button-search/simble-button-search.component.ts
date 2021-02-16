@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 's-refresh-btn',
-  templateUrl: './simble-refresh-button.component.html',
-  styleUrls: ['./simble-refresh-button.component.scss']
+  selector: 's-btn-search',
+  templateUrl: './simble-button-search.component.html',
+  styleUrls: ['./simble-button-search.component.scss']
 })
-export class SimbleRefreshButtonComponent implements OnInit {
+export class SimbleButtonSearchComponent implements OnInit {
 
   @Input() caption: string;
   @Input() category: string;
-  @Input() iconLeft: string = 'pi pi-refresh';
+  @Input() iconLeft: string = 'pi pi-search';
   @Input() iconRight: string;
   @Input() styleClass: string;
   @Input() disabled: boolean = false;

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SimbleAngleRightButtonComponent } from './simble-angle-right-button.component';
+import { SimbleButtonAngleRightComponent } from './simble-button-angle-right.component';
 
 describe('SimbleAngleRightButtonComponent', () => {
-  let component: SimbleAngleRightButtonComponent;
-  let fixture: ComponentFixture<SimbleAngleRightButtonComponent>;
+  let component: SimbleButtonAngleRightComponent;
+  let fixture: ComponentFixture<SimbleButtonAngleRightComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SimbleAngleRightButtonComponent ]
+      declarations: [ SimbleButtonAngleRightComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SimbleAngleRightButtonComponent);
+    fixture = TestBed.createComponent(SimbleButtonAngleRightComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

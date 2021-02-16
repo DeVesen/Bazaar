@@ -1,5 +1,21 @@
 
 <div class="demo-area">
+    <h2>app-simple-toolbar-area</h2>
+
+    <app-simple-toolbar-area>
+        <app-simple-toolbar-new-btn styleClass="toolbar-btn"></app-simple-toolbar-new-btn>
+        <app-simple-toolbar-search-btn styleClass="toolbar-btn"></app-simple-toolbar-search-btn>
+        <app-simple-toolbar-refresh-btn styleClass="toolbar-btn"></app-simple-toolbar-refresh-btn>
+        <app-simple-toolbar-search-input styleClass="toolbar-btn"
+                                        (doSearch)="writeConsole($event)"
+                                        (keyupChange)="writeConsole($event)"></app-simple-toolbar-search-input>
+        <s-btn styleClass="toolbar-btn" iconLeft="pi pi-apple"></s-btn>
+    </app-simple-toolbar-area>
+</div>
+
+
+
+<div class="demo-area">
     <h2>s-btn</h2>
 
     <h4>Raised</h4>
@@ -95,53 +111,45 @@
         <div>
             <h4>s-add-btn</h4>
             <div class="demo-elements">
-                <s-add-btn></s-add-btn>
-                <s-add-btn [disabled]="true"></s-add-btn>
+                <s-btn-add></s-btn-add>
+                <s-btn-add [disabled]="true"></s-btn-add>
             </div>
         </div>
     
         <div>
             <h4>s-refresh-btn</h4>
             <div class="demo-elements">
-                <s-refresh-btn></s-refresh-btn>
-                <s-refresh-btn [disabled]="true"></s-refresh-btn>
+                <s-btn-refresh></s-btn-refresh>
+                <s-btn-refresh [disabled]="true"></s-btn-refresh>
             </div>
         </div>
     
         <div>
             <h4>s-search-btn</h4>
             <div class="demo-elements">
-                <s-search-btn></s-search-btn>
-                <s-search-btn [disabled]="true"></s-search-btn>
+                <s-btn-search></s-btn-search>
+                <s-btn-search [disabled]="true"></s-btn-search>
             </div>
         </div>
     
         <div>
             <h4>s-angle-right-btn</h4>
             <div class="demo-elements">
-                <s-angle-right-btn></s-angle-right-btn>
-                <s-angle-right-btn [disabled]="true"></s-angle-right-btn>
+                <s-btn-angle-right></s-btn-angle-right>
+                <s-btn-angle-right [disabled]="true"></s-btn-angle-right>
+            </div>
+        </div>
+    
+        <div>
+            <h4>s-save-btn</h4>
+            <div class="demo-elements">
+                <s-btn-save></s-btn-save>
+                <s-btn-save [disabled]="true"></s-btn-save>
             </div>
         </div>
 
     </div>
 
-</div>
-
-
-
-<div class="demo-area">
-    <h2>app-simple-toolbar-area</h2>
-
-    <app-simple-toolbar-area>
-        <app-simple-toolbar-new-btn styleClass="toolbar-btn"></app-simple-toolbar-new-btn>
-        <app-simple-toolbar-search-btn styleClass="toolbar-btn"></app-simple-toolbar-search-btn>
-        <app-simple-toolbar-refresh-btn styleClass="toolbar-btn"></app-simple-toolbar-refresh-btn>
-        <app-simple-toolbar-search-input styleClass="toolbar-btn"
-                                        (doSearch)="writeConsole($event)"
-                                        (keyupChange)="writeConsole($event)"></app-simple-toolbar-search-input>
-        <app-simple-toolbar-btn styleClass="toolbar-btn" iconLeft="pi pi-apple"></app-simple-toolbar-btn>
-    </app-simple-toolbar-area>
 </div>
 
 

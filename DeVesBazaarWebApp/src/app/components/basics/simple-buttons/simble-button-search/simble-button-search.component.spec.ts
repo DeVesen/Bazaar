@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SimbleSearchButtonComponent } from './simble-search-button.component';
+import { SimbleButtonSearchComponent } from './simble-button-search.component';
 
 describe('SimbleSearchButtonComponent', () => {
-  let component: SimbleSearchButtonComponent;
-  let fixture: ComponentFixture<SimbleSearchButtonComponent>;
+  let component: SimbleButtonSearchComponent;
+  let fixture: ComponentFixture<SimbleButtonSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SimbleSearchButtonComponent ]
+      declarations: [ SimbleButtonSearchComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SimbleSearchButtonComponent);
+    fixture = TestBed.createComponent(SimbleButtonSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

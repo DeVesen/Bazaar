@@ -32,7 +32,7 @@ header="Kategorie hinzufügen ..."
 
 <ng-template pTemplate="footer">
     <app-progress-spinner *ngIf="waitForCreation" [width]="'39px'" [height]="'39px'"></app-progress-spinner>
-    <p-button *ngIf="!waitForCreation" icon="pi pi-check" (click)="onCreateNewEntry()" label="Speichern" styleClass="p-button-text"></p-button>
+    <s-btn-save *ngIf="!waitForCreation" (click)="onCreateNewEntry()"></s-btn-save>
 </ng-template>
 
 </p-dialog>

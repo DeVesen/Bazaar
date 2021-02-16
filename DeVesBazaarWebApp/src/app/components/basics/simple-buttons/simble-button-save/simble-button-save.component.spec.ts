@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SimbleAddButtonComponent } from './simble-add-button.component';
+import { SimbleButtonSaveComponent } from './simble-button-save.component';
 
-describe('SimbleAddButtonComponent', () => {
-  let component: SimbleAddButtonComponent;
-  let fixture: ComponentFixture<SimbleAddButtonComponent>;
+describe('SimbleSaveButtonComponent', () => {
+  let component: SimbleButtonSaveComponent;
+  let fixture: ComponentFixture<SimbleButtonSaveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SimbleAddButtonComponent ]
+      declarations: [ SimbleButtonSaveComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SimbleAddButtonComponent);
+    fixture = TestBed.createComponent(SimbleButtonSaveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

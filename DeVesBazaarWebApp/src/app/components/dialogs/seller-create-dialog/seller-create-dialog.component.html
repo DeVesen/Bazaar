@@ -48,12 +48,7 @@
 
     <ng-template pTemplate="footer">
         <app-progress-spinner *ngIf="waitForCreation" [width]="'39px'" [height]="'39px'"></app-progress-spinner>
-        <button pButton pRipple
-                type="button"
-                label="Speichern"
-                class="p-button-outlined p-button-success"
-                *ngIf="!waitForCreation"
-                (click)="onCreateNewEntry()"></button>
+        <s-btn-save *ngIf="!waitForCreation" (click)="onCreateNewEntry()"></s-btn-save>
     </ng-template>
 
 </p-dialog>

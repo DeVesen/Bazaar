@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SimbleRefreshButtonComponent } from './simble-refresh-button.component';
+import { SimbleButtonRefreshComponent } from './simble-button-refresh.component';
 
 describe('SimbleRefreshButtonComponent', () => {
-  let component: SimbleRefreshButtonComponent;
-  let fixture: ComponentFixture<SimbleRefreshButtonComponent>;
+  let component: SimbleButtonRefreshComponent;
+  let fixture: ComponentFixture<SimbleButtonRefreshComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SimbleRefreshButtonComponent ]
+      declarations: [ SimbleButtonRefreshComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SimbleRefreshButtonComponent);
+    fixture = TestBed.createComponent(SimbleButtonRefreshComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

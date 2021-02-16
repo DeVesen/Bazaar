@@ -1,11 +1,6 @@
 
-<div class="simple-toolbar-btn {{styleClass}}">
-    <i *ngIf="iconLeft"
-       class="simple-toolbar-addon {{iconLeft}}"></i>
-    <div *ngIf="label && showText" 
-         class="simple-toolbar-addon simple-toolbar-btn-label"
-         [ngClass]="{'dl8': iconLeft}">{{label}}</div>
-    <i *ngIf="iconRight"
-       class="simple-toolbar-addon {{iconRight}}"
-       [ngClass]="{'dl8': iconLeft || (label && showText)}"></i>
-</div>
+<s-btn   [iconLeft]="iconLeft"
+         [iconRight]="iconRight"
+         [caption]="caption"
+         styleType="outlined"
+         [styleClass]="styleClass"></s-btn>

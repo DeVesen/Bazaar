@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 's-angle-right-btn',
-  templateUrl: './simble-angle-right-button.component.html',
-  styleUrls: ['./simble-angle-right-button.component.scss']
+  selector: 's-btn-refresh',
+  templateUrl: './simble-button-refresh.component.html',
+  styleUrls: ['./simble-button-refresh.component.scss']
 })
-export class SimbleAngleRightButtonComponent implements OnInit {
+export class SimbleButtonRefreshComponent implements OnInit {
 
   @Input() caption: string;
   @Input() category: string;
-  @Input() iconLeft: string = 'pi pi-angle-right';
+  @Input() iconLeft: string = 'pi pi-refresh';
   @Input() iconRight: string;
   @Input() styleClass: string;
   @Input() disabled: boolean = false;

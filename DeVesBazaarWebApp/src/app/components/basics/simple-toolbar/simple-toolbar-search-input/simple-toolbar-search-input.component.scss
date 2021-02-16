@@ -1,12 +1,12 @@
 
 :host .stsi-area i {
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 37px;
+    height: 37px;
 }
 
 :host .stsi-area input {
-    height: 40px;
+    height: 37px;
 }
 
 :host .stsi-area :hover  {
@@ -14,12 +14,12 @@
 }
 
 :host ::ng-deep .p-inputtext {
-    height: 40px !important;
+    height: 37px !important;
 }
 :host ::ng-deep .p-inputgroup-addon {
-    width: 40px !important;
-    min-width: 40px !important;
-    height: 40px !important;
+    width: 37px !important;
+    min-width: 37px !important;
+    height: 37px !important;
 }
 
 
