@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using DeVes.Bazaar.Data.Contracts.Models;
 
 namespace DeVes.Bazaar.Interfaces
@@ -7,8 +8,8 @@ namespace DeVes.Bazaar.Interfaces
     {
         IEnumerable<SellerModel> GetItems();
         SellerModel GetItem(long number);
-        void Create(SellerModel value);
-        void Update(SellerModel value);
-        void Delete(long number);
+        Task<bool> CreateAsync(SellerModel value);
+        Task<bool> UpdateAsync(SellerModel value);
+        Task<bool> DeleteAsync(long number);
     }
 }

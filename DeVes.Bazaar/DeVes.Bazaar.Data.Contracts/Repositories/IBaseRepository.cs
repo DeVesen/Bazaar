@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using DeVes.Bazaar.Data.Contracts.Models;
 
 namespace DeVes.Bazaar.Data.Contracts.Repositories
@@ -13,10 +14,9 @@ namespace DeVes.Bazaar.Data.Contracts.Repositories
 
         long GetNextFreeNumber();
 
-        void Insert(TModel value);
-        void Update(TModel value);
-
-        long Delete(long number);
+        Task<bool> InsertAsync(TModel value);
+        Task<bool> UpdateAsync(long number, TModel value);
+        Task<bool> DeleteAsync(long number);
     }
 
     public interface IRepository

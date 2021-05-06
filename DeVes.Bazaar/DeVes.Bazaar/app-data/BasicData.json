@@ -1,0 +1,482 @@
+{
+  "categoryModel": [
+    {
+      "title": "Ski",
+      "number": 1
+    },
+    {
+      "title": "Board",
+      "number": 2
+    },
+    {
+      "title": "Stöcke",
+      "number": 3
+    },
+    {
+      "title": "Schuhe",
+      "number": 4
+    },
+    {
+      "title": "Socken",
+      "number": 5
+    },
+    {
+      "title": "Hoste",
+      "number": 6
+    },
+    {
+      "title": "Jacke",
+      "number": 7
+    },
+    {
+      "title": "Protektor",
+      "number": 8
+    },
+    {
+      "title": "Termokleidung",
+      "number": 9
+    },
+    {
+      "title": "Handschuhe",
+      "number": 10
+    },
+    {
+      "title": "Brille",
+      "number": 11
+    },
+    {
+      "title": "Helm",
+      "number": 12
+    },
+    {
+      "title": "Sonstiges",
+      "number": 13
+    }
+  ],
+  "manufacturerModel": [
+    {
+      "title": "Völkl",
+      "number": 1
+    },
+    {
+      "title": "Atomic",
+      "number": 2
+    },
+    {
+      "title": "Fischer",
+      "number": 3
+    },
+    {
+      "title": "Rossignol",
+      "number": 4
+    },
+    {
+      "title": "Elan",
+      "number": 5
+    },
+    {
+      "title": "K2",
+      "number": 6
+    },
+    {
+      "title": "Dynastar",
+      "number": 7
+    },
+    {
+      "title": "Blizzard",
+      "number": 8
+    },
+    {
+      "title": "Head",
+      "number": 9
+    },
+    {
+      "title": "Salomon",
+      "number": 10
+    },
+    {
+      "title": "Nordica",
+      "number": 11
+    },
+    {
+      "title": "Stöckli",
+      "number": 12
+    },
+    {
+      "title": "Movement",
+      "number": 13
+    },
+    {
+      "title": "Kästle",
+      "number": 14
+    },
+    {
+      "title": "Armada",
+      "number": 15
+    },
+    {
+      "title": "Scott",
+      "number": 16
+    },
+    {
+      "title": "Line",
+      "number": 17
+    },
+    {
+      "title": "Kneissl",
+      "number": 18
+    },
+    {
+      "title": "Indigo",
+      "number": 19
+    },
+    {
+      "title": "White Cristal",
+      "number": 20
+    },
+    {
+      "title": "Dynamic",
+      "number": 21
+    },
+    {
+      "title": "Black Diamond",
+      "number": 22
+    },
+    {
+      "title": "Amplid",
+      "number": 23
+    },
+    {
+      "title": "Bogner",
+      "number": 24
+    },
+    {
+      "title": "Vist",
+      "number": 25
+    },
+    {
+      "title": "Moment",
+      "number": 26
+    },
+    {
+      "title": "Zag",
+      "number": 27
+    },
+    {
+      "title": "CoreUPT",
+      "number": 28
+    },
+    {
+      "title": "Hagan",
+      "number": 29
+    },
+    {
+      "title": "4FRNT",
+      "number": 30
+    },
+    {
+      "title": "Bohême",
+      "number": 31
+    },
+    {
+      "title": "Surface",
+      "number": 32
+    },
+    {
+      "title": "Pale",
+      "number": 33
+    },
+    {
+      "title": "Majesty",
+      "number": 34
+    },
+    {
+      "title": "Volant",
+      "number": 35
+    },
+    {
+      "title": "Faction Skis",
+      "number": 36
+    },
+    {
+      "title": "Zai",
+      "number": 37
+    },
+    {
+      "title": "Hart",
+      "number": 38
+    },
+    {
+      "title": "Trab",
+      "number": 39
+    },
+    {
+      "title": "Lacroix",
+      "number": 40
+    },
+    {
+      "title": "RTC",
+      "number": 41
+    },
+    {
+      "title": "Liberty Skis",
+      "number": 42
+    },
+    {
+      "title": "Zweydingers",
+      "number": 43
+    },
+    {
+      "title": "Black Crows",
+      "number": 44
+    },
+    {
+      "title": "Icelantic",
+      "number": 45
+    },
+    {
+      "title": "DPS",
+      "number": 46
+    },
+    {
+      "title": "G3",
+      "number": 47
+    },
+    {
+      "title": "Blossom",
+      "number": 48
+    },
+    {
+      "title": "GAF-Skis",
+      "number": 49
+    },
+    {
+      "title": "Klint",
+      "number": 50
+    },
+    {
+      "title": "Storm-Skis",
+      "number": 51
+    },
+    {
+      "title": "Mountain Wave",
+      "number": 52
+    },
+    {
+      "title": "Fat Ypus",
+      "number": 53
+    },
+    {
+      "title": "Dynafit",
+      "number": 54
+    },
+    {
+      "title": "Lightning Boards",
+      "number": 55
+    },
+    {
+      "title": "Duret Skis",
+      "number": 56
+    },
+    {
+      "title": "Voile",
+      "number": 57
+    },
+    {
+      "title": "Prior",
+      "number": 58
+    },
+    {
+      "title": "Extrem",
+      "number": 59
+    },
+    {
+      "title": "Navaski",
+      "number": 60
+    },
+    {
+      "title": "Kessler",
+      "number": 61
+    },
+    {
+      "title": "Roxy",
+      "number": 62
+    },
+    {
+      "title": "Differences",
+      "number": 63
+    },
+    {
+      "title": "Born To Ride",
+      "number": 64
+    },
+    {
+      "title": "Scotty Bob",
+      "number": 65
+    },
+    {
+      "title": "Apo",
+      "number": 66
+    },
+    {
+      "title": "Hammer",
+      "number": 67
+    },
+    {
+      "title": "ON3P Skis",
+      "number": 68
+    },
+    {
+      "title": "Pure Skis",
+      "number": 69
+    },
+    {
+      "title": "Palmer",
+      "number": 70
+    },
+    {
+      "title": "Duel",
+      "number": 71
+    },
+    {
+      "title": "Avant",
+      "number": 72
+    },
+    {
+      "title": "Core",
+      "number": 73
+    },
+    {
+      "title": "Lokomotiv",
+      "number": 74
+    },
+    {
+      "title": "Snowrider",
+      "number": 75
+    },
+    {
+      "title": "Nocopy",
+      "number": 76
+    },
+    {
+      "title": "Fortitude",
+      "number": 77
+    },
+    {
+      "title": "Sochi",
+      "number": 78
+    },
+    {
+      "title": "Ninthward",
+      "number": 79
+    },
+    {
+      "title": "Epic Planks",
+      "number": 80
+    },
+    {
+      "title": "Dupraz",
+      "number": 81
+    },
+    {
+      "title": "Goodha",
+      "number": 82
+    },
+    {
+      "title": "Whitedot",
+      "number": 83
+    },
+    {
+      "title": "Schuetz Sports",
+      "number": 84
+    },
+    {
+      "title": "High Society",
+      "number": 85
+    },
+    {
+      "title": "Lagriffe",
+      "number": 86
+    },
+    {
+      "title": "Powderequipment",
+      "number": 87
+    },
+    {
+      "title": "Aluflex",
+      "number": 88
+    },
+    {
+      "title": "Asnes",
+      "number": 89
+    },
+    {
+      "title": "DeCosse Customs",
+      "number": 90
+    },
+    {
+      "title": "Black Thunder",
+      "number": 91
+    },
+    {
+      "title": "Eloura Blacksmith",
+      "number": 92
+    },
+    {
+      "title": "AlpControl",
+      "number": 93
+    },
+    {
+      "title": "UniQriding",
+      "number": 94
+    },
+    {
+      "title": "Rax",
+      "number": 95
+    },
+    {
+      "title": "Schärhorn",
+      "number": 96
+    },
+    {
+      "title": "Heidiskis",
+      "number": 97
+    },
+    {
+      "title": "Erbacher",
+      "number": 98
+    },
+    {
+      "title": "Pogoski",
+      "number": 99
+    },
+    {
+      "title": "Grown",
+      "number": 100
+    },
+    {
+      "title": "Swell Panik",
+      "number": 101
+    },
+    {
+      "title": "Clone Ind",
+      "number": 102
+    },
+    {
+      "title": "Styibwe",
+      "number": 103
+    },
+    {
+      "title": "Sterling",
+      "number": 104
+    },
+    {
+      "title": "Foil",
+      "number": 105
+    },
+    {
+      "title": "RootAlpine",
+      "number": 106
+    }
+  ]
+}

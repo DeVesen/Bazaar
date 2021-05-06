@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using DeVes.Bazaar.Data.Contracts.Models;
 using System.Linq;
+using System.Threading.Tasks;
+using DeVes.Bazaar.Data.Contracts.Models;
 using DeVes.Bazaar.Interfaces;
 
 namespace DeVes.Bazaar.Controllers
@@ -38,29 +39,29 @@ namespace DeVes.Bazaar.Controllers
 
         // POST api/<SellerController>
         [HttpPost]
-        public void Post([FromBody] SellerModel value)
+        public async Task Post([FromBody] SellerModel value)
         {
-            _sellerLogic.Create(value ?? throw new ArgumentNullException(nameof(value)));
+            await _sellerLogic.CreateAsync(value ?? throw new ArgumentNullException(nameof(value)));
         }
 
         // PUT api/<SellerController>/5
         [HttpPut("{number}")]
-        public void Put(int number, [FromBody] SellerModel value)
+        public async Task Put(int number, [FromBody] SellerModel value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
             value.Number = number;
 
-            _sellerLogic.Update(value);
+            await _sellerLogic.UpdateAsync(value);
         }
 
         // DELETE api/<SellerController>/5
         [HttpDelete("{number}")]
-        public void Delete(int number)
+        public async Task Delete(int number)
         {
             if (number <= 0) throw new ArgumentException(nameof(number));
 
-            _sellerLogic.Delete(number);
+            await _sellerLogic.DeleteAsync(number);
         }
     }
 }

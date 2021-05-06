@@ -1,33 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DeVes.Bazaar.Data.Contracts.Models;
 using DeVes.Bazaar.Data.Contracts.Repositories;
 using DeVes.Bazaar.Interfaces;
 
 namespace DeVes.Bazaar.Logic
 {
-    public class ArticleLogic : BaseLogic<ArticleModel>, IArticleLogic
+    public class ArticleLogic : IArticleLogic
     {
         private readonly IArticleRepository _articleRepository;
         private readonly ISellerRepository _sellerRepository;
 
 
-        public ArticleLogic(IArticleRepository articleRepository,
-                            ISellerRepository sellerRepository)
-            : base(articleRepository)
+        public ArticleLogic(IArticleRepository articleRepository, ISellerRepository sellerRepository)
         {
             _articleRepository = articleRepository ?? throw new ArgumentNullException(nameof(articleRepository));
             _sellerRepository = sellerRepository ?? throw new ArgumentNullException(nameof(sellerRepository));
         }
 
 
-        public IEnumerable<ArticleModel> GetItems(long? sellerNumber)
-        {
-            return _articleRepository.GetItems(sellerNumber);
-        }
+        public IEnumerable<ArticleModel> GetItems() => _articleRepository.GetItems();
+        public ArticleModel GetItem(long number) => _articleRepository.GetItem(number);
+        public IEnumerable<ArticleModel> GetItemsOfSeller(long sellerNumber) => _articleRepository.GetItemsOfSeller(sellerNumber);
 
-
-        public void Create(ArticleModel value)
+        
+        public async Task<bool> CreateAsync(ArticleModel value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
@@ -52,10 +50,10 @@ namespace DeVes.Bazaar.Logic
             if (_articleRepository.GetItem(value.Number) != null) throw new ArgumentException($"Number '{value.Number}' already in use!");
             if (_sellerRepository.GetItem(value.SellerNumber) == null) throw new ArgumentException($"SellerNumber '{value.Number}' not known!");
 
-            _articleRepository.Insert(value);
+            return await _articleRepository.InsertAsync(value);
         }
 
-        public void Update(ArticleModel value)
+        public async Task<bool> UpdateAsync(ArticleModel value)
         {
             if (value.Number <= 0) throw new ArgumentException($"'{nameof(value.Number)}' is not defined!");
             if (value.SellerNumber <= 0) throw new ArgumentException($"'{nameof(value.SellerNumber)}' is not defined!");
@@ -74,7 +72,14 @@ namespace DeVes.Bazaar.Logic
             if (_articleRepository.GetItem(value.Number) == null) throw new ArgumentException($"Article {value.Number} not known!");
             if (_sellerRepository.GetItem(value.SellerNumber) == null) throw new ArgumentException($"SellerNumber '{value.Number}' not known!");
 
-            _articleRepository.Update(value);
+            return await _articleRepository.UpdateAsync(value.SellerNumber, value);
+        }
+
+        public async Task<bool> DeleteAsync(long number)
+        {
+            if (number <= 0) throw new ArgumentException($"'{nameof(number)}' is not defined!");
+
+            return await _articleRepository.DeleteAsync(number);
         }
     }
 }

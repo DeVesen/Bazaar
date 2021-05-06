@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.IO;
-using DeVes.Bazaar.Data.MongoDb;
+using DeVes.Bazaar.Data.Contracts.Repositories;
+using DeVes.Bazaar.Data.JsonDb;
 using DeVes.Bazaar.Interfaces;
 using DeVes.Bazaar.Logic;
 using Microsoft.OpenApi.Models;
@@ -13,28 +13,34 @@ namespace DeVes.Bazaar
 {
     public class Startup
     {
-        private readonly IConfiguration _configuration;
+        private readonly RepoOptions _basicDataRepoOptions;
+        private readonly RepoOptions _sellerDataRepoOptions;
 
-        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+        public Startup(IHostEnvironment env)
         {
-            configuration.SetInternalsToConfiguration(env);
+            var appDataPath = Path.Combine(env.ContentRootPath, @"app-data");
 
-            _configuration = configuration;
+            if (Directory.Exists(appDataPath) is false)
+            {
+                Directory.CreateDirectory(appDataPath);
+            }
+
+            _basicDataRepoOptions = new RepoOptions(Path.Combine(appDataPath, @"BasicData.json"));
+            _sellerDataRepoOptions = new RepoOptions(Path.Combine(appDataPath, @"SellerData.json"));
         }
-
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMongoDbRepository(_configuration["Data:ConnectionString"], "DeVesBazaarDb");
+            services.AddTransient<IManufacturerRepository>(provider => new ManufacturerRepository(_basicDataRepoOptions));
+            services.AddTransient<ICategoryRepository>(provider => new CategoryRepository(_basicDataRepoOptions));
+            services.AddTransient<ISellerRepository>(provider => new SellerRepository(_sellerDataRepoOptions));
+            services.AddTransient<IArticleRepository>(provider => new ArticleRepository(_sellerDataRepoOptions));
 
             services.AddTransient<IManufacturerLogic, ManufacturerLogic>();
             services.AddTransient<ICategoryLogic, CategoryLogic>();
             services.AddTransient<ISellerLogic, SellerLogic>();
             services.AddTransient<IArticleLogic, ArticleLogic>();
-
-            services.AddTransient<ISaleLogic, SaleLogic>();
-            services.AddTransient<IAccountingLogic, AccountingLogic>();
 
             services.AddControllers();
 
@@ -52,7 +58,8 @@ namespace DeVes.Bazaar
                 app.UseDeveloperExceptionPage();
             }
 
-            app.InitializeRepositories();
+            app.ApplicationServices.GetRequiredService<ICategoryLogic>().BasicInitializationAsync().GetAwaiter().GetResult();
+            app.ApplicationServices.GetRequiredService<IManufacturerLogic>().BasicInitializationAsync().GetAwaiter().GetResult();
 
             app.UseHttpsRedirection();
 
@@ -70,26 +77,6 @@ namespace DeVes.Bazaar
             {
                 endpoints.MapControllers();
             });
-        }
-
-
-
-    }
-
-    public static class StartupExtensions
-    {
-        public static void SetInternalsToConfiguration(this IConfiguration configuration, IWebHostEnvironment env)
-        {
-            configuration["DataRootPath"] = Path.Combine(env.ContentRootPath, @"app-data");
-        }
-
-        public static void InitializeRepositories(this IApplicationBuilder app)
-        {
-            var categoryLogic = app.ApplicationServices.GetRequiredService<ICategoryLogic>();
-            categoryLogic.BasicInitialization();
-
-            var manufacturerLogic = app.ApplicationServices.GetRequiredService<IManufacturerLogic>();
-            manufacturerLogic.BasicInitialization();
         }
     }
 }

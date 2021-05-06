@@ -1,23 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using DeVes.Bazaar.Data.Contracts.Models;
 using DeVes.Bazaar.Data.Contracts.Repositories;
 using DeVes.Bazaar.Interfaces;
 
 namespace DeVes.Bazaar.Logic
 {
-    public class SellerLogic : BaseLogic<SellerModel>, ISellerLogic
+    public class SellerLogic : ISellerLogic
     {
         private readonly ISellerRepository _sellerRepository;
 
 
         public SellerLogic(ISellerRepository sellerRepository)
-            : base(sellerRepository)
         {
             _sellerRepository = sellerRepository ?? throw new ArgumentNullException(nameof(sellerRepository));
         }
 
+        public SellerModel GetItem(long number) => _sellerRepository.GetItem(number);
+        public IEnumerable<SellerModel> GetItems() => _sellerRepository.GetItems();
 
-        public void Create(SellerModel value)
+
+        public async Task<bool> CreateAsync(SellerModel value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
@@ -31,10 +35,9 @@ namespace DeVes.Bazaar.Logic
 
             if (_sellerRepository.GetItem(value.Number) != null) throw new ArgumentException($"Number '{value.Number}' already in use!");
 
-            _sellerRepository.Insert(value);
+            return await _sellerRepository.InsertAsync(value);
         }
-
-        public void Update(SellerModel value)
+        public async Task<bool> UpdateAsync(SellerModel value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
@@ -45,7 +48,13 @@ namespace DeVes.Bazaar.Logic
 
             if (_sellerRepository.GetItem(value.Number) == null) throw new ArgumentException($"{value.Number} not in use!");
 
-            _sellerRepository.Update(value);
+            return await _sellerRepository.UpdateAsync(value.Number, value);
+        }
+        public async Task<bool> DeleteAsync(long number)
+        {
+            if (number <= 0) throw new ArgumentException($"'{nameof(number)}' is not defined!");
+
+            return await _sellerRepository.DeleteAsync(number);
         }
     }
 }

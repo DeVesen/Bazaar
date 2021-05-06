@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DeVes.Bazaar.Data.Contracts.Models;
 using DeVes.Bazaar.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -36,29 +37,29 @@ namespace DeVes.Bazaar.Controllers
 
         // POST api/<ArticleController>
         [HttpPost]
-        public void Post([FromBody] ManufacturerModel value)
+        public async Task Post([FromBody] ManufacturerModel value)
         {
-            _manufacturerLogic.Create(value ?? throw new ArgumentNullException(nameof(value)));
+            await _manufacturerLogic.CreateAsync(value ?? throw new ArgumentNullException(nameof(value)));
         }
 
         // PUT api/<ArticleController>/5
         [HttpPut("{number}")]
-        public void Put(int number, [FromBody] ManufacturerModel value)
+        public async Task Put(int number, [FromBody] ManufacturerModel value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
             value.Number = number;
 
-            _manufacturerLogic.Update(value);
+            await _manufacturerLogic.UpdateAsync(value);
         }
 
         // DELETE api/<ArticleController>/5
         [HttpDelete("{number}")]
-        public void Delete(int number)
+        public async Task Delete(int number)
         {
             if (number <= 0) throw new ArgumentException(nameof(number));
 
-            _manufacturerLogic.Delete(number);
+            await _manufacturerLogic.DeleteAsync(number);
         }
     }
 }

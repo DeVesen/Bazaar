@@ -5,6 +5,6 @@ namespace DeVes.Bazaar.Data.Contracts.Repositories
 {
     public interface IArticleRepository : IBaseRepository<ArticleModel>
     {
-        IEnumerable<ArticleModel> GetItems(long? sellerNumber);
+        IEnumerable<ArticleModel> GetItemsOfSeller(long sellerNumber);
     }
 }

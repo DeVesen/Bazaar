@@ -1,23 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using DeVes.Bazaar.Data.Contracts.Models;
 using DeVes.Bazaar.Data.Contracts.Repositories;
 using DeVes.Bazaar.Interfaces;
 
 namespace DeVes.Bazaar.Logic
 {
-    public class ManufacturerLogic : BaseLogic<ManufacturerModel>, IManufacturerLogic
+    public class ManufacturerLogic : IManufacturerLogic
     {
         private readonly IManufacturerRepository _manufacturerRepository;
 
 
         public ManufacturerLogic(IManufacturerRepository manufacturerRepository)
-            : base(manufacturerRepository)
         {
             _manufacturerRepository = manufacturerRepository ?? throw new ArgumentNullException(nameof(manufacturerRepository));
         }
 
+        public ManufacturerModel GetItem(long number) => _manufacturerRepository.GetItem(number);
+        public IEnumerable<ManufacturerModel> GetItems() => _manufacturerRepository.GetItems();
 
-        public void Create(ManufacturerModel value)
+
+        public async Task<bool> CreateAsync(ManufacturerModel value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
@@ -29,10 +33,9 @@ namespace DeVes.Bazaar.Logic
 
             if (_manufacturerRepository.GetItem(value.Number) != null) throw new ArgumentException($"Number '{value.Number}' already in use!");
 
-            _manufacturerRepository.Insert(value);
+            return await _manufacturerRepository.InsertAsync(value);
         }
-
-        public void Update(ManufacturerModel value)
+        public async Task<bool> UpdateAsync(ManufacturerModel value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
@@ -41,120 +44,126 @@ namespace DeVes.Bazaar.Logic
             
             if (_manufacturerRepository.GetItem(value.Number) == null) throw new ArgumentException($"{value.Number} not in use!");
 
-            _manufacturerRepository.Update(value);
+            return await _manufacturerRepository.UpdateAsync(value.Number, value);
+        }
+        public async Task<bool> DeleteAsync(long number)
+        {
+            if (number <= 0) throw new ArgumentException($"'{nameof(number)}' is not defined!");
+
+            return await _manufacturerRepository.DeleteAsync(number);
         }
 
 
-        public void BasicInitialization()
+        public async Task BasicInitializationAsync()
         {
             if (_manufacturerRepository.Count > 0) return;
 
-            Create(new ManufacturerModel { Title = "Völkl" });
-            Create(new ManufacturerModel { Title = "Atomic" });
-            Create(new ManufacturerModel { Title = "Fischer" });
-            Create(new ManufacturerModel { Title = "Rossignol" });
-            Create(new ManufacturerModel { Title = "Elan" });
-            Create(new ManufacturerModel { Title = "K2" });
-            Create(new ManufacturerModel { Title = "Dynastar" });
-            Create(new ManufacturerModel { Title = "Blizzard" });
-            Create(new ManufacturerModel { Title = "Head" });
-            Create(new ManufacturerModel { Title = "Salomon" });
-            Create(new ManufacturerModel { Title = "Nordica" });
-            Create(new ManufacturerModel { Title = "Stöckli" });
-            Create(new ManufacturerModel { Title = "Movement" });
-            Create(new ManufacturerModel { Title = "Kästle" });
-            Create(new ManufacturerModel { Title = "Armada" });
-            Create(new ManufacturerModel { Title = "Scott" });
-            Create(new ManufacturerModel { Title = "Line" });
-            Create(new ManufacturerModel { Title = "Kneissl" });
-            Create(new ManufacturerModel { Title = "Indigo" });
-            Create(new ManufacturerModel { Title = "White Cristal" });
-            Create(new ManufacturerModel { Title = "Dynamic" });
-            Create(new ManufacturerModel { Title = "Black Diamond" });
-            Create(new ManufacturerModel { Title = "Amplid" });
-            Create(new ManufacturerModel { Title = "Bogner" });
-            Create(new ManufacturerModel { Title = "Vist" });
-            Create(new ManufacturerModel { Title = "Moment" });
-            Create(new ManufacturerModel { Title = "Zag" });
-            Create(new ManufacturerModel { Title = "CoreUPT" });
-            Create(new ManufacturerModel { Title = "Hagan" });
-            Create(new ManufacturerModel { Title = "4FRNT" });
-            Create(new ManufacturerModel { Title = "Bohême" });
-            Create(new ManufacturerModel { Title = "Surface" });
-            Create(new ManufacturerModel { Title = "Pale" });
-            Create(new ManufacturerModel { Title = "Majesty" });
-            Create(new ManufacturerModel { Title = "Volant" });
-            Create(new ManufacturerModel { Title = "Faction Skis" });
-            Create(new ManufacturerModel { Title = "Zai" });
-            Create(new ManufacturerModel { Title = "Hart" });
-            Create(new ManufacturerModel { Title = "Trab" });
-            Create(new ManufacturerModel { Title = "Lacroix" });
-            Create(new ManufacturerModel { Title = "RTC" });
-            Create(new ManufacturerModel { Title = "Liberty Skis" });
-            Create(new ManufacturerModel { Title = "Zweydingers" });
-            Create(new ManufacturerModel { Title = "Black Crows" });
-            Create(new ManufacturerModel { Title = "Icelantic" });
-            Create(new ManufacturerModel { Title = "DPS" });
-            Create(new ManufacturerModel { Title = "G3" });
-            Create(new ManufacturerModel { Title = "Blossom" });
-            Create(new ManufacturerModel { Title = "GAF-Skis" });
-            Create(new ManufacturerModel { Title = "Klint" });
-            Create(new ManufacturerModel { Title = "Storm-Skis" });
-            Create(new ManufacturerModel { Title = "Mountain Wave" });
-            Create(new ManufacturerModel { Title = "Fat Ypus" });
-            Create(new ManufacturerModel { Title = "Dynafit" });
-            Create(new ManufacturerModel { Title = "Lightning Boards" });
-            Create(new ManufacturerModel { Title = "Duret Skis" });
-            Create(new ManufacturerModel { Title = "Voile" });
-            Create(new ManufacturerModel { Title = "Prior" });
-            Create(new ManufacturerModel { Title = "Extrem" });
-            Create(new ManufacturerModel { Title = "Navaski" });
-            Create(new ManufacturerModel { Title = "Kessler" });
-            Create(new ManufacturerModel { Title = "Roxy" });
-            Create(new ManufacturerModel { Title = "Differences" });
-            Create(new ManufacturerModel { Title = "Born To Ride" });
-            Create(new ManufacturerModel { Title = "Scotty Bob" });
-            Create(new ManufacturerModel { Title = "Apo" });
-            Create(new ManufacturerModel { Title = "Hammer" });
-            Create(new ManufacturerModel { Title = "ON3P Skis" });
-            Create(new ManufacturerModel { Title = "Pure Skis" });
-            Create(new ManufacturerModel { Title = "Palmer" });
-            Create(new ManufacturerModel { Title = "Duel" });
-            Create(new ManufacturerModel { Title = "Avant" });
-            Create(new ManufacturerModel { Title = "Core" });
-            Create(new ManufacturerModel { Title = "Lokomotiv" });
-            Create(new ManufacturerModel { Title = "Snowrider" });
-            Create(new ManufacturerModel { Title = "Nocopy" });
-            Create(new ManufacturerModel { Title = "Fortitude" });
-            Create(new ManufacturerModel { Title = "Sochi" });
-            Create(new ManufacturerModel { Title = "Ninthward" });
-            Create(new ManufacturerModel { Title = "Epic Planks" });
-            Create(new ManufacturerModel { Title = "Dupraz" });
-            Create(new ManufacturerModel { Title = "Goodha" });
-            Create(new ManufacturerModel { Title = "Whitedot" });
-            Create(new ManufacturerModel { Title = "Schuetz Sports" });
-            Create(new ManufacturerModel { Title = "High Society" });
-            Create(new ManufacturerModel { Title = "Lagriffe" });
-            Create(new ManufacturerModel { Title = "Powderequipment" });
-            Create(new ManufacturerModel { Title = "Aluflex" });
-            Create(new ManufacturerModel { Title = "Asnes" });
-            Create(new ManufacturerModel { Title = "DeCosse Customs" });
-            Create(new ManufacturerModel { Title = "Black Thunder" });
-            Create(new ManufacturerModel { Title = "Eloura Blacksmith" });
-            Create(new ManufacturerModel { Title = "AlpControl" });
-            Create(new ManufacturerModel { Title = "UniQriding" });
-            Create(new ManufacturerModel { Title = "Rax" });
-            Create(new ManufacturerModel { Title = "Schärhorn" });
-            Create(new ManufacturerModel { Title = "Heidiskis" });
-            Create(new ManufacturerModel { Title = "Erbacher" });
-            Create(new ManufacturerModel { Title = "Pogoski" });
-            Create(new ManufacturerModel { Title = "Grown" });
-            Create(new ManufacturerModel { Title = "Swell Panik" });
-            Create(new ManufacturerModel { Title = "Clone Ind" });
-            Create(new ManufacturerModel { Title = "Styibwe" });
-            Create(new ManufacturerModel { Title = "Sterling" });
-            Create(new ManufacturerModel { Title = "Foil" });
-            Create(new ManufacturerModel { Title = "RootAlpine" });
+            await CreateAsync(new ManufacturerModel { Title = "Völkl" });
+            await CreateAsync(new ManufacturerModel { Title = "Atomic" });
+            await CreateAsync(new ManufacturerModel { Title = "Fischer" });
+            await CreateAsync(new ManufacturerModel { Title = "Rossignol" });
+            await CreateAsync(new ManufacturerModel { Title = "Elan" });
+            await CreateAsync(new ManufacturerModel { Title = "K2" });
+            await CreateAsync(new ManufacturerModel { Title = "Dynastar" });
+            await CreateAsync(new ManufacturerModel { Title = "Blizzard" });
+            await CreateAsync(new ManufacturerModel { Title = "Head" });
+            await CreateAsync(new ManufacturerModel { Title = "Salomon" });
+            await CreateAsync(new ManufacturerModel { Title = "Nordica" });
+            await CreateAsync(new ManufacturerModel { Title = "Stöckli" });
+            await CreateAsync(new ManufacturerModel { Title = "Movement" });
+            await CreateAsync(new ManufacturerModel { Title = "Kästle" });
+            await CreateAsync(new ManufacturerModel { Title = "Armada" });
+            await CreateAsync(new ManufacturerModel { Title = "Scott" });
+            await CreateAsync(new ManufacturerModel { Title = "Line" });
+            await CreateAsync(new ManufacturerModel { Title = "Kneissl" });
+            await CreateAsync(new ManufacturerModel { Title = "Indigo" });
+            await CreateAsync(new ManufacturerModel { Title = "White Cristal" });
+            await CreateAsync(new ManufacturerModel { Title = "Dynamic" });
+            await CreateAsync(new ManufacturerModel { Title = "Black Diamond" });
+            await CreateAsync(new ManufacturerModel { Title = "Amplid" });
+            await CreateAsync(new ManufacturerModel { Title = "Bogner" });
+            await CreateAsync(new ManufacturerModel { Title = "Vist" });
+            await CreateAsync(new ManufacturerModel { Title = "Moment" });
+            await CreateAsync(new ManufacturerModel { Title = "Zag" });
+            await CreateAsync(new ManufacturerModel { Title = "CoreUPT" });
+            await CreateAsync(new ManufacturerModel { Title = "Hagan" });
+            await CreateAsync(new ManufacturerModel { Title = "4FRNT" });
+            await CreateAsync(new ManufacturerModel { Title = "Bohême" });
+            await CreateAsync(new ManufacturerModel { Title = "Surface" });
+            await CreateAsync(new ManufacturerModel { Title = "Pale" });
+            await CreateAsync(new ManufacturerModel { Title = "Majesty" });
+            await CreateAsync(new ManufacturerModel { Title = "Volant" });
+            await CreateAsync(new ManufacturerModel { Title = "Faction Skis" });
+            await CreateAsync(new ManufacturerModel { Title = "Zai" });
+            await CreateAsync(new ManufacturerModel { Title = "Hart" });
+            await CreateAsync(new ManufacturerModel { Title = "Trab" });
+            await CreateAsync(new ManufacturerModel { Title = "Lacroix" });
+            await CreateAsync(new ManufacturerModel { Title = "RTC" });
+            await CreateAsync(new ManufacturerModel { Title = "Liberty Skis" });
+            await CreateAsync(new ManufacturerModel { Title = "Zweydingers" });
+            await CreateAsync(new ManufacturerModel { Title = "Black Crows" });
+            await CreateAsync(new ManufacturerModel { Title = "Icelantic" });
+            await CreateAsync(new ManufacturerModel { Title = "DPS" });
+            await CreateAsync(new ManufacturerModel { Title = "G3" });
+            await CreateAsync(new ManufacturerModel { Title = "Blossom" });
+            await CreateAsync(new ManufacturerModel { Title = "GAF-Skis" });
+            await CreateAsync(new ManufacturerModel { Title = "Klint" });
+            await CreateAsync(new ManufacturerModel { Title = "Storm-Skis" });
+            await CreateAsync(new ManufacturerModel { Title = "Mountain Wave" });
+            await CreateAsync(new ManufacturerModel { Title = "Fat Ypus" });
+            await CreateAsync(new ManufacturerModel { Title = "Dynafit" });
+            await CreateAsync(new ManufacturerModel { Title = "Lightning Boards" });
+            await CreateAsync(new ManufacturerModel { Title = "Duret Skis" });
+            await CreateAsync(new ManufacturerModel { Title = "Voile" });
+            await CreateAsync(new ManufacturerModel { Title = "Prior" });
+            await CreateAsync(new ManufacturerModel { Title = "Extrem" });
+            await CreateAsync(new ManufacturerModel { Title = "Navaski" });
+            await CreateAsync(new ManufacturerModel { Title = "Kessler" });
+            await CreateAsync(new ManufacturerModel { Title = "Roxy" });
+            await CreateAsync(new ManufacturerModel { Title = "Differences" });
+            await CreateAsync(new ManufacturerModel { Title = "Born To Ride" });
+            await CreateAsync(new ManufacturerModel { Title = "Scotty Bob" });
+            await CreateAsync(new ManufacturerModel { Title = "Apo" });
+            await CreateAsync(new ManufacturerModel { Title = "Hammer" });
+            await CreateAsync(new ManufacturerModel { Title = "ON3P Skis" });
+            await CreateAsync(new ManufacturerModel { Title = "Pure Skis" });
+            await CreateAsync(new ManufacturerModel { Title = "Palmer" });
+            await CreateAsync(new ManufacturerModel { Title = "Duel" });
+            await CreateAsync(new ManufacturerModel { Title = "Avant" });
+            await CreateAsync(new ManufacturerModel { Title = "Core" });
+            await CreateAsync(new ManufacturerModel { Title = "Lokomotiv" });
+            await CreateAsync(new ManufacturerModel { Title = "Snowrider" });
+            await CreateAsync(new ManufacturerModel { Title = "Nocopy" });
+            await CreateAsync(new ManufacturerModel { Title = "Fortitude" });
+            await CreateAsync(new ManufacturerModel { Title = "Sochi" });
+            await CreateAsync(new ManufacturerModel { Title = "Ninthward" });
+            await CreateAsync(new ManufacturerModel { Title = "Epic Planks" });
+            await CreateAsync(new ManufacturerModel { Title = "Dupraz" });
+            await CreateAsync(new ManufacturerModel { Title = "Goodha" });
+            await CreateAsync(new ManufacturerModel { Title = "Whitedot" });
+            await CreateAsync(new ManufacturerModel { Title = "Schuetz Sports" });
+            await CreateAsync(new ManufacturerModel { Title = "High Society" });
+            await CreateAsync(new ManufacturerModel { Title = "Lagriffe" });
+            await CreateAsync(new ManufacturerModel { Title = "Powderequipment" });
+            await CreateAsync(new ManufacturerModel { Title = "Aluflex" });
+            await CreateAsync(new ManufacturerModel { Title = "Asnes" });
+            await CreateAsync(new ManufacturerModel { Title = "DeCosse Customs" });
+            await CreateAsync(new ManufacturerModel { Title = "Black Thunder" });
+            await CreateAsync(new ManufacturerModel { Title = "Eloura Blacksmith" });
+            await CreateAsync(new ManufacturerModel { Title = "AlpControl" });
+            await CreateAsync(new ManufacturerModel { Title = "UniQriding" });
+            await CreateAsync(new ManufacturerModel { Title = "Rax" });
+            await CreateAsync(new ManufacturerModel { Title = "Schärhorn" });
+            await CreateAsync(new ManufacturerModel { Title = "Heidiskis" });
+            await CreateAsync(new ManufacturerModel { Title = "Erbacher" });
+            await CreateAsync(new ManufacturerModel { Title = "Pogoski" });
+            await CreateAsync(new ManufacturerModel { Title = "Grown" });
+            await CreateAsync(new ManufacturerModel { Title = "Swell Panik" });
+            await CreateAsync(new ManufacturerModel { Title = "Clone Ind" });
+            await CreateAsync(new ManufacturerModel { Title = "Styibwe" });
+            await CreateAsync(new ManufacturerModel { Title = "Sterling" });
+            await CreateAsync(new ManufacturerModel { Title = "Foil" });
+            await CreateAsync(new ManufacturerModel { Title = "RootAlpine" });
         }
     }
 }

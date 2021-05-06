@@ -1,0 +1,14 @@
+{
+  "sellerModel": [
+    {
+      "firstName": "Sven",
+      "lastName": "Reichert",
+      "street": "Am Sägewerk 18",
+      "zip": "76756",
+      "town": "Bellheim",
+      "eMail": "Sven.Reichert@gmail.com",
+      "phone": "01718383390",
+      "number": 3
+    }
+  ]
+}
