@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DeVes.Bazaar.Data.Contracts.Logic;
 using DeVes.Bazaar.Data.Contracts.Models;
-using DeVes.Bazaar.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeVes.Bazaar.Controllers
@@ -33,6 +33,13 @@ namespace DeVes.Bazaar.Controllers
         public ArticleModel Get(int number)
         {
             return _articleLogic.GetItem(number);
+        }
+
+        // GET api/<ArticleController>/5/Seller/1
+        [HttpGet("Seller/{sellerNumber}")]
+        public IEnumerable<ArticleModel> GetItemsOfSeller(int sellerNumber)
+        {
+            return _articleLogic.GetItemsOfSeller(sellerNumber);
         }
 
         // POST api/<ArticleController>

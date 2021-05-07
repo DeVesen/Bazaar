@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DeVes.Bazaar.Data.Contracts.Logic;
 using DeVes.Bazaar.Data.Contracts.Models;
-using DeVes.Bazaar.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeVes.Bazaar.Controllers

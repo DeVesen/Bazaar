@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.IO;
+using DeVes.Bazaar.Data.Contracts.Logic;
 using DeVes.Bazaar.Data.Contracts.Repositories;
 using DeVes.Bazaar.Data.JsonDb;
-using DeVes.Bazaar.Interfaces;
 using DeVes.Bazaar.Logic;
 using Microsoft.OpenApi.Models;
 

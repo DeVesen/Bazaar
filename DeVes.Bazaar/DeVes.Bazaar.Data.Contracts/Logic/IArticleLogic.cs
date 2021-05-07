@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using DeVes.Bazaar.Data.Contracts.Models;
 
-namespace DeVes.Bazaar.Interfaces
+namespace DeVes.Bazaar.Data.Contracts.Logic
 {
     public interface IArticleLogic
     {

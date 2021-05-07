@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DeVes.Bazaar.Data.Contracts.Logic;
 using DeVes.Bazaar.Data.Contracts.Models;
 using DeVes.Bazaar.Data.Contracts.Repositories;
-using DeVes.Bazaar.Interfaces;
 
 namespace DeVes.Bazaar.Logic
 {

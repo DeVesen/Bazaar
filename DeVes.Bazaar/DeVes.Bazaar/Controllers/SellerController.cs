@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DeVes.Bazaar.Data.Contracts.Logic;
 using DeVes.Bazaar.Data.Contracts.Models;
-using DeVes.Bazaar.Interfaces;
 
 namespace DeVes.Bazaar.Controllers
 {
@@ -12,12 +12,14 @@ namespace DeVes.Bazaar.Controllers
     [ApiController]
     public class SellerController : ControllerBase
     {
-        private readonly ISellerLogic _sellerLogic;
+        private readonly ISellerLogic  _sellerLogic;
+        private readonly IArticleLogic _articleLogic;
 
 
-        public SellerController(ISellerLogic sellerLogic)
+        public SellerController(ISellerLogic sellerLogic, IArticleLogic articleLogic)
         {
             _sellerLogic = sellerLogic ?? throw new ArgumentNullException(nameof(sellerLogic));
+            _articleLogic = articleLogic ?? throw new ArgumentNullException(nameof(articleLogic));
         }
 
 
@@ -35,6 +37,13 @@ namespace DeVes.Bazaar.Controllers
         public SellerModel Get(int number)
         {
             return _sellerLogic.GetItem(number);
+        }
+
+        // GET api/<SellerController>/5/Articles
+        [HttpGet("{sellerNumber}/Articles")]
+        public IEnumerable<ArticleModel> GetArticles(int sellerNumber)
+        {
+            return _articleLogic.GetItemsOfSeller(sellerNumber);
         }
 
         // POST api/<SellerController>
