@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DeVes.Bazaar.GraphQl;
+using DeVes.Bazaar.GraphQl.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeVes.Bazaar.Controllers
