@@ -19,5 +19,4 @@
     <ProjectReference Include="..\DeVes.Bazaar.Logic\DeVes.Bazaar.Logic.csproj" />
   </ItemGroup>
 
-
 </Project>

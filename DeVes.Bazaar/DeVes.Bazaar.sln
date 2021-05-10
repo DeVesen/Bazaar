@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeVes.Bazaar", "DeVes.Bazaa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeVes.Bazaar.Data.JsonDb", "DeVes.Bazaar.Data.JsonDb\DeVes.Bazaar.Data.JsonDb.csproj", "{2B9ED1F1-C555-4F99-90D1-416A3CAA9CBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeVes.Bazaar.Logic", "DeVes.Bazaar.Logic\DeVes.Bazaar.Logic.csproj", "{A3B9BF0F-C155-4660-85A3-6C2BC80EBA2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeVes.Bazaar.Logic", "DeVes.Bazaar.Logic\DeVes.Bazaar.Logic.csproj", "{A3B9BF0F-C155-4660-85A3-6C2BC80EBA2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeVes.Bazaar.Contracts", "DeVes.Bazaar.Contracts\DeVes.Bazaar.Contracts.csproj", "{0279A6B6-FE66-4574-B317-1E41D81FAF0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeVes.Bazaar.Contracts", "DeVes.Bazaar.Contracts\DeVes.Bazaar.Contracts.csproj", "{0279A6B6-FE66-4574-B317-1E41D81FAF0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
