@@ -77,7 +77,7 @@ namespace DeVes.Bazaar
             app.ApplicationServices.GetRequiredService<ICategoryLogic>().BasicInitializationAsync().GetAwaiter().GetResult();
             app.ApplicationServices.GetRequiredService<IManufacturerLogic>().BasicInitializationAsync().GetAwaiter().GetResult();
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 
