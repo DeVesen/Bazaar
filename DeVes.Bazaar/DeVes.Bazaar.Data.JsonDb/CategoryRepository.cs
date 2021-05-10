@@ -1,6 +1,5 @@
-﻿using DeVes.Bazaar.Data.Contracts.Models;
-using DeVes.Bazaar.Data.Contracts.Repositories;
-using JsonFlatFileDataStore;
+﻿using DeVes.Bazaar.Contracts.Models;
+using DeVes.Bazaar.Contracts.Repositories;
 
 namespace DeVes.Bazaar.Data.JsonDb
 {

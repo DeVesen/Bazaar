@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DeVes.Bazaar.Data.Contracts.Logic;
-using DeVes.Bazaar.Data.Contracts.Models;
+using DeVes.Bazaar.Contracts.Logic;
+using DeVes.Bazaar.Contracts.Models;
+using DeVes.Bazaar.Extensions;
 
 namespace DeVes.Bazaar.Controllers
 {
@@ -27,9 +28,17 @@ namespace DeVes.Bazaar.Controllers
         [HttpGet]
         public IEnumerable<SellerModel> Get()
         {
-            return _sellerLogic.GetItems().OrderBy(p => p.LastName)
-                                          .ThenBy(p => p.LastName)
-                                          .ThenBy(p => p.Number);
+            var reqNumber = Request.Query.Get<long?>("number");
+            var reqFirstName = Request.Query.Get<string>("firstName");
+            var reqTitle = Request.Query.Get<string>("lastName");
+            var reqZip = Request.Query.Get<string>("zip");
+            var reqTown = Request.Query.Get<string>("town");
+            var reqEMail = Request.Query.Get<string>("eMail");
+
+            return _sellerLogic.GetItems(reqNumber, reqFirstName, reqTitle, reqZip, reqTown, reqEMail)
+                               .OrderBy(p => p.LastName)
+                               .ThenBy(p => p.LastName)
+                               .ThenBy(p => p.Number);
         }
 
         // GET api/<SellerController>/5
@@ -39,12 +48,12 @@ namespace DeVes.Bazaar.Controllers
             return _sellerLogic.GetItem(number);
         }
 
-        // GET api/<SellerController>/5/Articles
-        [HttpGet("{sellerNumber}/Articles")]
-        public IEnumerable<ArticleModel> GetArticles(int sellerNumber)
-        {
-            return _articleLogic.GetItemsOfSeller(sellerNumber);
-        }
+        //// GET api/<SellerController>/5/Articles
+        //[HttpGet("{sellerNumber}/Articles")]
+        //public IEnumerable<ArticleModel> GetArticles(int sellerNumber)
+        //{
+        //    return _articleLogic.GetItemsOfSeller(sellerNumber);
+        //}
 
         // POST api/<SellerController>
         [HttpPost]

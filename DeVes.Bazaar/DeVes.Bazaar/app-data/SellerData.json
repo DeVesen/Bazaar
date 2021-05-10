@@ -10,5 +10,19 @@
       "phone": "01718383390",
       "number": 3
     }
+  ],
+  "articleModel": [
+    {
+      "sellerNumber": 3,
+      "title": "string",
+      "category": "string",
+      "manufacturer": "string",
+      "onSaleSince": "2021-05-07T10:59:22.939Z",
+      "price": 99.0,
+      "soldAt": null,
+      "soldFor": null,
+      "returnedAt": null,
+      "number": 1
+    }
   ]
 }

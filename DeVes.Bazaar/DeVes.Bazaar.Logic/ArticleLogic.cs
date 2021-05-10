@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DeVes.Bazaar.Data.Contracts.Logic;
-using DeVes.Bazaar.Data.Contracts.Models;
-using DeVes.Bazaar.Data.Contracts.Repositories;
+using DeVes.Bazaar.Contracts.Logic;
+using DeVes.Bazaar.Contracts.Models;
+using DeVes.Bazaar.Contracts.Repositories;
 
 namespace DeVes.Bazaar.Logic
 {
@@ -20,9 +20,14 @@ namespace DeVes.Bazaar.Logic
         }
 
 
-        public IEnumerable<ArticleModel> GetItems() => _articleRepository.GetItems();
+        public IEnumerable<ArticleModel> GetItems(long? number, long? sellerNumber,
+                                                  string title, string category, string manufacturer,
+                                                  bool? isSold, bool? isReturned)
+        {
+            return _articleRepository.GetItems(number, sellerNumber, title, category, manufacturer, isSold, isReturned);
+        }
+
         public ArticleModel GetItem(long number) => _articleRepository.GetItem(number);
-        public IEnumerable<ArticleModel> GetItemsOfSeller(long sellerNumber) => _articleRepository.GetItemsOfSeller(sellerNumber);
 
         
         public async Task<bool> CreateAsync(ArticleModel value)

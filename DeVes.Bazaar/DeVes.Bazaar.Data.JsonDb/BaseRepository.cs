@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DeVes.Bazaar.Data.Contracts.Models;
+using DeVes.Bazaar.Contracts.Models;
 using JsonFlatFileDataStore;
 
 namespace DeVes.Bazaar.Data.JsonDb

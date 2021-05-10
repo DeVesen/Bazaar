@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.IO;
-using DeVes.Bazaar.Data.Contracts.Logic;
-using DeVes.Bazaar.Data.Contracts.Repositories;
+using DeVes.Bazaar.Contracts.Logic;
+using DeVes.Bazaar.Contracts.Repositories;
 using DeVes.Bazaar.Data.JsonDb;
+using DeVes.Bazaar.GraphQl;
 using DeVes.Bazaar.Logic;
+using GraphQL;
+using GraphQL.NewtonsoftJson;
 using Microsoft.OpenApi.Models;
 
 namespace DeVes.Bazaar
@@ -41,6 +44,16 @@ namespace DeVes.Bazaar
             services.AddTransient<ICategoryLogic, CategoryLogic>();
             services.AddTransient<ISellerLogic, SellerLogic>();
             services.AddTransient<IArticleLogic, ArticleLogic>();
+
+            services.AddTransient<GraphQlLogic>();
+            services.AddTransient<IDocumentExecuter, DocumentExecuter>();
+            services.AddTransient<IDocumentWriter, DocumentWriter>();
+            services.AddTransient<SellerModelType>();
+            services.AddTransient<ArticleModelType>();
+            services.AddTransient<CategoryModelType>();
+            services.AddTransient<ManufacturerModelType>();
+            services.AddTransient<GlobalAppQuery>();
+            services.AddTransient<GlobalAppSchema>();
 
             services.AddControllers();
 
