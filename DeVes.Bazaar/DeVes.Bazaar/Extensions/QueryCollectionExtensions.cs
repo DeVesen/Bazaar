@@ -23,7 +23,7 @@ namespace DeVes.Bazaar.Extensions
             {
                 try
                 {
-                    var result = (T)Convert.ChangeType(s, typeof(T));
+                    var result = (T) Convert.ChangeType(s, typeof(T));
                     values.Add(result);
                 }
                 catch (Exception)
@@ -36,10 +36,11 @@ namespace DeVes.Bazaar.Extensions
             return values;
         }
 
-        public static T Get<T>(this IQueryCollection collection, string key, T @default = default, ParameterPick option = ParameterPick.First)
+        public static T Get<T>(this IQueryCollection collection, string key, T @default = default,
+                               ParameterPick         option = ParameterPick.First)
         {
             var values = All<T>(collection, key).ToArray();
-            var value = @default;
+            var value  = @default;
 
             if (values.Any())
             {

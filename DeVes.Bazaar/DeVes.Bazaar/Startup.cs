@@ -31,14 +31,15 @@ namespace DeVes.Bazaar
                 Directory.CreateDirectory(appDataPath);
             }
 
-            _basicDataRepoOptions = new RepoOptions(Path.Combine(appDataPath, @"BasicData.json"));
+            _basicDataRepoOptions  = new RepoOptions(Path.Combine(appDataPath, @"BasicData.json"));
             _sellerDataRepoOptions = new RepoOptions(Path.Combine(appDataPath, @"SellerData.json"));
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IManufacturerRepository>(provider => new ManufacturerRepository(_basicDataRepoOptions));
+            services.AddTransient<IManufacturerRepository>(provider =>
+                                                               new ManufacturerRepository(_basicDataRepoOptions));
             services.AddTransient<ICategoryRepository>(provider => new CategoryRepository(_basicDataRepoOptions));
             services.AddTransient<ISellerRepository>(provider => new SellerRepository(_sellerDataRepoOptions));
             services.AddTransient<IArticleRepository>(provider => new ArticleRepository(_sellerDataRepoOptions));
@@ -62,7 +63,8 @@ namespace DeVes.Bazaar
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DeVesen.Bazaar API", Version = "v1" });
+                c.SwaggerDoc("v1",
+                             new OpenApiInfo {Title = "DeVesen.Bazaar API", Version = "v1"});
             });
         }
 
@@ -74,8 +76,10 @@ namespace DeVes.Bazaar
                 app.UseDeveloperExceptionPage();
             }
 
-            app.ApplicationServices.GetRequiredService<ICategoryLogic>().BasicInitializationAsync().GetAwaiter().GetResult();
-            app.ApplicationServices.GetRequiredService<IManufacturerLogic>().BasicInitializationAsync().GetAwaiter().GetResult();
+            app.ApplicationServices.GetRequiredService<ICategoryLogic>().BasicInitializationAsync().GetAwaiter()
+               .GetResult();
+            app.ApplicationServices.GetRequiredService<IManufacturerLogic>().BasicInitializationAsync().GetAwaiter()
+               .GetResult();
 
             // app.UseHttpsRedirection();
 
@@ -84,15 +88,9 @@ namespace DeVes.Bazaar
             app.UseAuthorization();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "DeVesen.Bazaar API V1");
-            });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "DeVesen.Bazaar API V1"); });
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

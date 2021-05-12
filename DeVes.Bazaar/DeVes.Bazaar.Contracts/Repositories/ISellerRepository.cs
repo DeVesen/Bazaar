@@ -6,15 +6,16 @@ namespace DeVes.Bazaar.Contracts.Repositories
 {
     public interface ISellerRepository
     {
-        IEnumerable<SellerModel> GetItems(long? number,
+        IEnumerable<SellerModel> GetItems(long?  number,
                                           string firstName, string lastName,
-                                          string zip, string town, string eMail);
+                                          string zip,       string town, string eMail);
+
         SellerModel GetItem(long number);
 
         long GetNextFreeNumber();
 
         Task<bool> InsertAsync(SellerModel value);
-        Task<bool> UpdateAsync(long number, SellerModel value);
-        Task<bool> DeleteAsync(long number);
+        Task<bool> UpdateAsync(long        number, SellerModel value);
+        Task<bool> DeleteAsync(long        number);
     }
 }

@@ -6,13 +6,13 @@ namespace DeVes.Bazaar.GraphQl.Types
     public sealed class ManufacturerModelType : ObjectGraphType<ManufacturerModel>
     {
         private static QueryArgument ManufacturerNumberArgument => new QueryArgument<LongGraphType>
-            { Name = "manufacturerNumber", Description = "Identifier of the Article." };
-        private static QueryArgument TitleArgument => new QueryArgument<StringGraphType>
-            { Name = "title", Description = "Title of the Article." };
+            {Name = "manufacturerNumber", Description = "Identifier of the Article."};
 
-        public static QueryArguments AllArguments => new QueryArguments(
-            ManufacturerNumberArgument,
-            TitleArgument);
+        private static QueryArgument TitleArgument => new QueryArgument<StringGraphType>
+            {Name = "title", Description = "Title of the Article."};
+
+        public static QueryArguments AllArguments => new QueryArguments(ManufacturerNumberArgument,
+                                                                        TitleArgument);
 
         public ManufacturerModelType()
         {

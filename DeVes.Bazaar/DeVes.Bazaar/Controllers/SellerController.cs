@@ -19,7 +19,7 @@ namespace DeVes.Bazaar.Controllers
 
         public SellerController(ISellerLogic sellerLogic, IArticleLogic articleLogic)
         {
-            _sellerLogic = sellerLogic ?? throw new ArgumentNullException(nameof(sellerLogic));
+            _sellerLogic  = sellerLogic ?? throw new ArgumentNullException(nameof(sellerLogic));
             _articleLogic = articleLogic ?? throw new ArgumentNullException(nameof(articleLogic));
         }
 
@@ -28,12 +28,12 @@ namespace DeVes.Bazaar.Controllers
         [HttpGet]
         public IEnumerable<SellerModel> Get()
         {
-            var reqNumber = Request.Query.Get<long?>("number");
+            var reqNumber    = Request.Query.Get<long?>("number");
             var reqFirstName = Request.Query.Get<string>("firstName");
-            var reqTitle = Request.Query.Get<string>("lastName");
-            var reqZip = Request.Query.Get<string>("zip");
-            var reqTown = Request.Query.Get<string>("town");
-            var reqEMail = Request.Query.Get<string>("eMail");
+            var reqTitle     = Request.Query.Get<string>("lastName");
+            var reqZip       = Request.Query.Get<string>("zip");
+            var reqTown      = Request.Query.Get<string>("town");
+            var reqEMail     = Request.Query.Get<string>("eMail");
 
             return _sellerLogic.GetItems(reqNumber, reqFirstName, reqTitle, reqZip, reqTown, reqEMail)
                                .OrderBy(p => p.LastName)

@@ -7,28 +7,33 @@ namespace DeVes.Bazaar.GraphQl.Types
     public sealed class ArticleModelType : ObjectGraphType<ArticleModel>
     {
         private static QueryArgument ArticleNumberArgument => new QueryArgument<LongGraphType>
-            { Name = "articleNumber", Description = "Identifier of the Article." };
-        private static QueryArgument SellerNumberArgument => new QueryArgument<LongGraphType>
-            { Name = "sellerNumber", Description = "Identifier of the Seller." };
-        private static QueryArgument TitleArgument => new QueryArgument<StringGraphType>
-            { Name = "title", Description = "Title of the Article." };
-        private static QueryArgument CategoryArgument => new QueryArgument<StringGraphType>
-            { Name = "category", Description = "Category of the Article." };
-        private static QueryArgument ManufacturerArgument => new QueryArgument<StringGraphType>
-            { Name = "manufacturer", Description = "Manufacturer of the Article." };
-        private static QueryArgument IsSoldArgument => new QueryArgument<BooleanGraphType>
-            { Name = "isSold", Description = "IsSold of the Article." };
-        private static QueryArgument IsReturnedArgument => new QueryArgument<BooleanGraphType>
-            { Name = "isReturned", Description = "IsReturned of the Article." };
+            {Name = "articleNumber", Description = "Identifier of the Article."};
 
-        public static QueryArguments AllArguments => new QueryArguments(
-            ArticleNumberArgument,
-            SellerNumberArgument,
-            TitleArgument,
-            CategoryArgument,
-            ManufacturerArgument,
-            IsSoldArgument,
-            IsReturnedArgument);
+        private static QueryArgument SellerNumberArgument => new QueryArgument<LongGraphType>
+            {Name = "sellerNumber", Description = "Identifier of the Seller."};
+
+        private static QueryArgument TitleArgument => new QueryArgument<StringGraphType>
+            {Name = "title", Description = "Title of the Article."};
+
+        private static QueryArgument CategoryArgument => new QueryArgument<StringGraphType>
+            {Name = "category", Description = "Category of the Article."};
+
+        private static QueryArgument ManufacturerArgument => new QueryArgument<StringGraphType>
+            {Name = "manufacturer", Description = "Manufacturer of the Article."};
+
+        private static QueryArgument IsSoldArgument => new QueryArgument<BooleanGraphType>
+            {Name = "isSold", Description = "IsSold of the Article."};
+
+        private static QueryArgument IsReturnedArgument => new QueryArgument<BooleanGraphType>
+            {Name = "isReturned", Description = "IsReturned of the Article."};
+
+        public static QueryArguments AllArguments => new QueryArguments(ArticleNumberArgument,
+                                                                        SellerNumberArgument,
+                                                                        TitleArgument,
+                                                                        CategoryArgument,
+                                                                        ManufacturerArgument,
+                                                                        IsSoldArgument,
+                                                                        IsReturnedArgument);
 
         public ArticleModelType(ISellerLogic sellerLogic)
         {
@@ -44,7 +49,8 @@ namespace DeVes.Bazaar.GraphQl.Types
             Field(x => x.ReturnedAt, true).Description("The ReturnedAt of the Article.");
 
             Field<ListGraphType<ArticleModelType>>("seller",
-                resolve: context => sellerLogic.GetItem(context.Source.SellerNumber));
+                                                   resolve: context =>
+                                                       sellerLogic.GetItem(context.Source.SellerNumber));
         }
     }
 }

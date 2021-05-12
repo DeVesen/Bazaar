@@ -10,17 +10,16 @@ namespace DeVes.Bazaar.Contracts.Repositories
         long Count { get; }
 
         IEnumerable<TModel> GetItems();
-        TModel GetItem(long number);
+        TModel              GetItem(long number);
 
         long GetNextFreeNumber();
 
         Task<bool> InsertAsync(TModel value);
-        Task<bool> UpdateAsync(long number, TModel value);
-        Task<bool> DeleteAsync(long number);
+        Task<bool> UpdateAsync(long   number, TModel value);
+        Task<bool> DeleteAsync(long   number);
     }
 
     public interface IRepository
     {
-
     }
 }

@@ -24,17 +24,18 @@ namespace DeVes.Bazaar.Controllers
         [HttpGet]
         public IEnumerable<ArticleModel> Get()
         {
-            var reqNumber = Request.Query.Get<long?>("number");
+            var reqNumber       = Request.Query.Get<long?>("number");
             var reqSellerNumber = Request.Query.Get<long?>("sellerNumber");
-            var reqTitle = Request.Query.Get<string>("title");
-            var reqCategory = Request.Query.Get<string>("category");
+            var reqTitle        = Request.Query.Get<string>("title");
+            var reqCategory     = Request.Query.Get<string>("category");
             var reqManufacturer = Request.Query.Get<string>("manufacturer");
-            var reqIsSold = Request.Query.Get<bool?>("isSold");
-            var reqIsReturned = Request.Query.Get<bool?>("isReturned");
+            var reqIsSold       = Request.Query.Get<bool?>("isSold");
+            var reqIsReturned   = Request.Query.Get<bool?>("isReturned");
 
             return _articleLogic
-                .GetItems(reqNumber, reqSellerNumber, reqTitle, reqCategory, reqManufacturer, reqIsSold, reqIsReturned)
-                .OrderBy(p => p.Number);
+                   .GetItems(reqNumber, reqSellerNumber, reqTitle, reqCategory, reqManufacturer, reqIsSold,
+                             reqIsReturned)
+                   .OrderBy(p => p.Number);
         }
 
         // GET api/<ArticleController>/5

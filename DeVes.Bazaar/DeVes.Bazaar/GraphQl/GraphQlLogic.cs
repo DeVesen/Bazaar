@@ -22,8 +22,8 @@ namespace DeVes.Bazaar.GraphQl
             var tmp = await _globalAppSchema.ExecuteAsync(_ =>
             {
                 _.OperationName = request?.OperationName;
-                _.Query = request.Query;
-                _.Inputs = request?.Variables.ToInputs();
+                _.Query         = request.Query;
+                _.Inputs        = request?.Variables.ToInputs();
             });
 
             return tmp;

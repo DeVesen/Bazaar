@@ -21,11 +21,14 @@ namespace DeVes.Bazaar.Data.JsonDb
         }
 
 
-        public IEnumerable<T> GetItems() => Collection.AsQueryable();
-        public T GetItem(long number) => Collection.AsQueryable().FirstOrDefault(p => p.Number == number);
+        public IEnumerable<T> GetItems()           => Collection.AsQueryable();
+        public T              GetItem(long number) => Collection.AsQueryable().FirstOrDefault(p => p.Number == number);
 
         public async Task<bool> InsertAsync(T value) => await Collection.InsertOneAsync(value);
-        public async Task<bool> UpdateAsync(long number, T value) => await Collection.UpdateOneAsync(p => p.Number == number, value);
+
+        public async Task<bool> UpdateAsync(long number, T value) =>
+            await Collection.UpdateOneAsync(p => p.Number == number, value);
+
         public async Task<bool> DeleteAsync(long number) => await Collection.DeleteOneAsync(p => p.Number == number);
 
         public long GetNextFreeNumber()
@@ -35,6 +38,7 @@ namespace DeVes.Bazaar.Data.JsonDb
                 if (Collection.AsQueryable().Any(p => p.Number == i) is false)
                     return i;
             }
+
             throw new Exception("None free Number found!");
         }
     }

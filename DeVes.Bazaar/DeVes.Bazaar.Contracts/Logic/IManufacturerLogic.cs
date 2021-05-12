@@ -7,11 +7,11 @@ namespace DeVes.Bazaar.Contracts.Logic
     public interface IManufacturerLogic
     {
         IEnumerable<ManufacturerModel> GetItems();
-        ManufacturerModel GetItem(long number);
+        ManufacturerModel              GetItem(long number);
 
         Task<bool> CreateAsync(ManufacturerModel value);
         Task<bool> UpdateAsync(ManufacturerModel value);
-        Task<bool> DeleteAsync(long number);
+        Task<bool> DeleteAsync(long              number);
 
         Task BasicInitializationAsync();
     }

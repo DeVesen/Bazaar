@@ -9,12 +9,12 @@ namespace DeVes.Bazaar.Contracts.Repositories
         long Count { get; }
 
         IEnumerable<CategoryModel> GetItems();
-        CategoryModel GetItem(long number);
+        CategoryModel              GetItem(long number);
 
         long GetNextFreeNumber();
 
         Task<bool> InsertAsync(CategoryModel value);
-        Task<bool> UpdateAsync(long number, CategoryModel value);
-        Task<bool> DeleteAsync(long number);
+        Task<bool> UpdateAsync(long          number, CategoryModel value);
+        Task<bool> DeleteAsync(long          number);
     }
 }

@@ -7,11 +7,11 @@ namespace DeVes.Bazaar.Contracts.Logic
     public interface ICategoryLogic
     {
         IEnumerable<CategoryModel> GetItems();
-        CategoryModel GetItem(long number);
+        CategoryModel              GetItem(long number);
 
         Task<bool> CreateAsync(CategoryModel value);
         Task<bool> UpdateAsync(CategoryModel value);
-        Task<bool> DeleteAsync(long number);
+        Task<bool> DeleteAsync(long          number);
 
         Task BasicInitializationAsync();
     }

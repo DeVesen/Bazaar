@@ -30,10 +30,10 @@ namespace DeVes.Bazaar.TraceListener
         }
 
         public override void TraceEvent(TraceEventCache eventCache,
-                                        string source,
-                                        TraceEventType severity,
-                                        int id,
-                                        string message)
+                                        string          source,
+                                        TraceEventType  severity,
+                                        int             id,
+                                        string          message)
         {
             if (Filter != null &&
                 !Filter.ShouldTrace(eventCache, source, severity, id, message, null, null, null))
@@ -48,24 +48,24 @@ namespace DeVes.Bazaar.TraceListener
 
         private static void WriteEventType(TraceEventType severity)
         {
-            string txt;
+            string       txt;
             ConsoleColor color;
             switch (severity)
             {
                 case TraceEventType.Error:
-                    txt = "error";
+                    txt   = "error";
                     color = ConsoleColor.Red;
                     break;
                 case TraceEventType.Information:
-                    txt = "info";
+                    txt   = "info";
                     color = ConsoleColor.DarkGreen;
                     break;
                 case TraceEventType.Warning:
-                    txt = "warn";
+                    txt   = "warn";
                     color = ConsoleColor.Yellow;
                     break;
                 default:
-                    txt = $"{severity}";
+                    txt   = $"{severity}";
                     color = ConsoleColor.Gray;
                     break;
             }
