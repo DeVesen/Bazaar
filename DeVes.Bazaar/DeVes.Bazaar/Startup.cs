@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +15,7 @@ using DeVes.Bazaar.GraphQl.Types;
 using DeVes.Bazaar.Logic;
 using GraphQL;
 using GraphQL.NewtonsoftJson;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 
 namespace DeVes.Bazaar
@@ -22,18 +25,17 @@ namespace DeVes.Bazaar
         private readonly RepoOptions _basicDataRepoOptions;
         private readonly RepoOptions _sellerDataRepoOptions;
 
-        public Startup(IHostEnvironment env)
-        {
-            var appDataPath = Path.Combine(env.ContentRootPath, @"app-data");
 
-            if (Directory.Exists(appDataPath) is false)
-            {
-                Directory.CreateDirectory(appDataPath);
-            }
+        public Startup(IHostEnvironment env, IConfiguration configuration)
+        {
+            var appDataPath = InitializeLocalFileEnvironment(env);
 
             _basicDataRepoOptions  = new RepoOptions(Path.Combine(appDataPath, @"BasicData.json"));
             _sellerDataRepoOptions = new RepoOptions(Path.Combine(appDataPath, @"SellerData.json"));
+
+            ConfigureTracing(configuration);
         }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -91,6 +93,35 @@ namespace DeVes.Bazaar
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "DeVesen.Bazaar API V1"); });
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        }
+
+
+        private static string InitializeLocalFileEnvironment(IHostEnvironment env)
+        {
+            var appDataPath = Path.Combine(env.ContentRootPath, @"app-data");
+
+            if (Directory.Exists(appDataPath) is false)
+            {
+                Directory.CreateDirectory(appDataPath);
+            }
+
+            return appDataPath;
+        }
+
+        private static void ConfigureTracing(IConfiguration configuration)
+        {
+            var cfgDefaultValue = configuration.GetSection("Logging")
+                                               ?.GetSection("LogLevel")
+                                               ?.GetValue<string>("Default") ?? "Information";
+            var cfgConsoleValue = configuration.GetSection("Logging")
+                                               ?.GetSection("LogLevel")
+                                               ?.GetValue<string>("Console") ?? cfgDefaultValue;
+
+            if (Enum.TryParse(cfgConsoleValue, out SourceLevels sourceTraceLevelConsole) is false) return;
+            if (sourceTraceLevelConsole == SourceLevels.Off) return;
+
+            Trace.Listeners.Add(new TraceListener.ConsoleTraceListener
+                                    { Filter = new EventTypeFilter(sourceTraceLevelConsole) });
         }
     }
 }

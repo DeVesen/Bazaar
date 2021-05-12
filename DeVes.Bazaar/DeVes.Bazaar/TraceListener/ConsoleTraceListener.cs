@@ -29,10 +29,8 @@ namespace DeVes.Bazaar.TraceListener
             return $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} {new string(' ', IndentLevel * IndentSize)}{message}";
         }
 
-        public override void TraceEvent(TraceEventCache eventCache,
-                                        string          source,
-                                        TraceEventType  severity,
-                                        int             id,
+        public override void TraceEvent(TraceEventCache eventCache, string source,
+                                        TraceEventType  severity,   int    id,
                                         string          message)
         {
             if (Filter != null &&
