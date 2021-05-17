@@ -17,7 +17,7 @@ namespace DeVes.Bazaar.Logic
         public ArticleLogic(IArticleRepository articleRepository, ISellerRepository sellerRepository)
         {
             _articleRepository = articleRepository ?? throw new ArgumentNullException(nameof(articleRepository));
-            _sellerRepository  = sellerRepository  ?? throw new ArgumentNullException(nameof(sellerRepository));
+            _sellerRepository  = sellerRepository ?? throw new ArgumentNullException(nameof(sellerRepository));
         }
 
 
@@ -76,7 +76,7 @@ namespace DeVes.Bazaar.Logic
             if (string.IsNullOrWhiteSpace(value.Manufacturer))
                 throw new ArgumentException($"'{nameof(value.Manufacturer)}' is not defined!");
             if (value.Price <= 0) throw new ArgumentException($"'{nameof(value.Price)}' is not defined!");
-            
+
             var articleModel = _articleRepository.GetItem(value.Number);
 
             if (articleModel == null)
@@ -100,6 +100,44 @@ namespace DeVes.Bazaar.Logic
             if (number <= 0) throw new ArgumentException($"'{nameof(number)}' is not defined!");
 
             return await _articleRepository.DeleteAsync(number);
+        }
+
+
+        public async Task<MarkedResponseDto> SetArticleOnMarkedAsync(long articleNumber, double? price)
+        {
+            var articleElement = _articleRepository.GetItem(articleNumber);
+
+            if (articleElement == null) return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticleNotKnown);
+            if (price.HasValue && price < 0) return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticlePriceNotValid);
+
+            articleElement.OnSaleSince ??= DateTime.Now;
+            articleElement.Price       =   price ?? articleElement.Price;
+
+            articleElement.SoldAt      = null;
+            articleElement.SoldFor     = null;
+            articleElement.ReturnedAt  = null;
+            articleElement.ReturnedTax = null;
+
+            await _articleRepository.UpdateAsync(articleElement.Number, articleElement);
+
+            return MarkedResponseDto.Create(articleNumber);
+        }
+
+        public async Task<MarkedResponseDto> RemoveArticleFromMarkedAsync(long articleNumber)
+        {
+            var articleElement = _articleRepository.GetItem(articleNumber);
+
+            if (articleElement == null) return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticleNotKnown);
+            if (articleElement.SoldAt.HasValue)
+                return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticleAlreadySold);
+            if (articleElement.ReturnedAt.HasValue)
+                return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticleAlreadyReturned);
+
+            articleElement.OnSaleSince = null;
+
+            await _articleRepository.UpdateAsync(articleElement.Number, articleElement);
+
+            return MarkedResponseDto.Create(articleNumber);
         }
     }
 }

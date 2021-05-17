@@ -16,5 +16,9 @@ namespace DeVes.Bazaar.Contracts.Logic
         Task<bool> CreateAsync(ArticleInsertDto value);
         Task<bool> UpdateAsync(ArticleUpdateDto value);
         Task<bool> DeleteAsync(long               number);
+
+
+        Task<MarkedResponseDto> SetArticleOnMarkedAsync(long      articleNumber, double? price);
+        Task<MarkedResponseDto> RemoveArticleFromMarkedAsync(long articleNumber);
     }
 }

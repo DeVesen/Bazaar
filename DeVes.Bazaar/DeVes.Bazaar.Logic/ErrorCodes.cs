@@ -2,6 +2,10 @@
 {
     public static class ErrorCodes
     {
+        // Seller
+        public const string SellerNotKnown          = "SellerNotKnown";
+        public const string SellerNoUnBilledArticle = "SellerNoUnBilledArticle";
+
         // Article
         public const string ArticleNotKnown        = "ArticleNotKnown";
         public const string ArticlePriceNotValid   = "ArticlePriceNotValid";

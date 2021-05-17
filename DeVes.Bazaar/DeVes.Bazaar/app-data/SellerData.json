@@ -8,6 +8,7 @@
       "town": "Bellheim",
       "eMail": "Sven.Reichert@gmail.com",
       "phone": "01718383390",
+      "taxPercent": 15.0,
       "number": 3
     }
   ],
@@ -17,12 +18,26 @@
       "title": "string",
       "category": "string",
       "manufacturer": "string",
-      "onSaleSince": "0001-01-01T00:00:00",
+      "onSaleSince": "2021-05-18T11:00:02.4996702+02:00",
       "price": 105.0,
       "soldAt": null,
       "soldFor": null,
       "returnedAt": null,
+      "returnedTax": null,
       "number": 1
+    },
+    {
+      "sellerNumber": 3,
+      "title": "string",
+      "category": "string",
+      "manufacturer": "string",
+      "onSaleSince": "2021-05-17T20:30:36.8551404+02:00",
+      "price": 100.0,
+      "soldAt": null,
+      "soldFor": null,
+      "returnedAt": null,
+      "returnedTax": null,
+      "number": 2
     }
   ]
 }

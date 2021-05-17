@@ -70,6 +70,7 @@ namespace DeVes.Bazaar
             services.AddTransient<IArticleLogic, ArticleLogic>();
 
             services.AddTransient<ISaleLogic, SaleLogic>();
+            services.AddTransient<ISellerBillingLogic, SellerBillingLogic>();
 
             services.AddTransient<GraphQlLogic>();
             services.AddTransient<IDocumentExecuter, DocumentExecuter>();

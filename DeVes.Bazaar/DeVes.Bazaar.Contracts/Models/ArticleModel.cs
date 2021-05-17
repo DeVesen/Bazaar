@@ -12,8 +12,9 @@ namespace DeVes.Bazaar.Contracts.Models
         public double    Price        { get; set; }
 
 
-        public DateTime? SoldAt     { get; set; }
-        public double?   SoldFor    { get; set; }
-        public DateTime? ReturnedAt { get; set; }
+        public DateTime? SoldAt      { get; set; }
+        public double?   SoldFor     { get; set; }
+        public DateTime? ReturnedAt  { get; set; }
+        public double?   ReturnedTax { get; set; }
     }
 }

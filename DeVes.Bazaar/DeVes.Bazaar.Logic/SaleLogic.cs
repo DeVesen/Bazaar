@@ -15,27 +15,11 @@ namespace DeVes.Bazaar.Logic
 
         public SaleLogic(IArticleRepository articleRepository)
         {
-            _articleRepository = articleRepository ?? throw new ArgumentNullException(nameof(_articleRepository));
+            _articleRepository = articleRepository ?? throw new ArgumentNullException(nameof(articleRepository));
         }
 
 
-        public async Task<OnSaleResponseDto> SetOnSaleAsync(long articleNumber, double price)
-        {
-            var articleElement = _articleRepository.GetItem(articleNumber);
-
-            if (articleElement == null) return OnSaleResponseDto.Create(articleNumber, ErrorCodes.ArticleNotKnown);
-            if (articleElement.ReturnedAt.HasValue) return OnSaleResponseDto.Create(articleNumber, ErrorCodes.ArticleAlreadyReturned);
-            if (price < 0) return OnSaleResponseDto.Create(articleNumber, ErrorCodes.ArticlePriceNotValid);
-
-            articleElement.OnSaleSince ??= DateTime.Now;
-            articleElement.Price       = price;
-
-            await _articleRepository.UpdateAsync(articleElement.Number, articleElement);
-
-            return OnSaleResponseDto.Create(articleNumber);
-        }
-
-        public async Task<SalesReceiptDto> SellItemsAsync(IEnumerable<long> articleNumbers)
+        public async Task<SalesReceiptDto> SellArticlesAsync(IEnumerable<long> articleNumbers)
         {
             var allArticles      = articleNumbers.Select(p => new { ArticleNumber = p, Article = _articleRepository.GetItem(p)})
                                                  .ToArray();
@@ -69,22 +53,6 @@ namespace DeVes.Bazaar.Logic
             }
 
             return new SalesReceiptDto(allArticles.Select(p => ArticleReceiptDto.Create(p.Article.Number, p.Article.SoldFor ?? 0)).ToArray());
-        }
-
-        public async Task<RecallsSaleResponseDto> RecallsSaleAsync(long articleNumber)
-        {
-            var articleElement = _articleRepository.GetItem(articleNumber);
-
-            if (articleElement == null) return RecallsSaleResponseDto.Create(articleNumber, ErrorCodes.ArticleNotKnown);
-            if (articleElement.OnSaleSince.HasValue is false) return RecallsSaleResponseDto.Create(articleNumber, ErrorCodes.ArticleNotFreeForSale);
-            if (articleElement.ReturnedAt.HasValue) return RecallsSaleResponseDto.Create(articleNumber, ErrorCodes.ArticleAlreadyReturned);
-
-            articleElement.SoldAt      =   null;
-            articleElement.SoldFor     =   null;
-
-            await _articleRepository.UpdateAsync(articleElement.Number, articleElement);
-
-            return RecallsSaleResponseDto.Create(articleNumber);
         }
     }
 }

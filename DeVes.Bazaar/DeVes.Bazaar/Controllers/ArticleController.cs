@@ -14,11 +14,17 @@ namespace DeVes.Bazaar.Controllers
     [ApiController]
     public class ArticleController : ControllerBase
     {
-        private readonly IArticleLogic _articleLogic;
+        private readonly IArticleLogic       _articleLogic;
+        private readonly ISaleLogic          _saleLogic;
+        private readonly ISellerBillingLogic _sellerBillingLogic;
 
-        public ArticleController(IArticleLogic articleLogic)
+        public ArticleController(IArticleLogic       articleLogic,
+                                 ISaleLogic          saleLogic,
+                                 ISellerBillingLogic sellerBillingLogic)
         {
-            _articleLogic = articleLogic ?? throw new ArgumentNullException(nameof(articleLogic));
+            _articleLogic       = articleLogic ?? throw new ArgumentNullException(nameof(articleLogic));
+            _saleLogic          = saleLogic ?? throw new ArgumentNullException(nameof(sellerBillingLogic));
+            _sellerBillingLogic = sellerBillingLogic ?? throw new ArgumentNullException(nameof(sellerBillingLogic));
         }
 
         // GET: api/<ArticleController>
@@ -71,6 +77,46 @@ namespace DeVes.Bazaar.Controllers
             if (number <= 0) throw new ArgumentException(nameof(number));
 
             await _articleLogic.DeleteAsync(number);
+        }
+
+
+
+        // Put api/<ArticleController>/5/marked
+        [HttpPut("{number}/marked")]
+        public async Task<MarkedResponseDto> SetOnMarkedAsync(int number)
+        {
+            return await _articleLogic.SetArticleOnMarkedAsync(number, null);
+        }
+
+        // Put api/<ArticleController>/5/marked/12.99
+        [HttpPut("{number}/marked/{price:double}")]
+        public async Task<MarkedResponseDto> SetOnMarkedAsync(int number, double price)
+        {
+            return await _articleLogic.SetArticleOnMarkedAsync(number, price);
+        }
+
+        // DELETE api/<ArticleController>/5/marked
+        [HttpDelete("{number}/marked")]
+        public async Task<MarkedResponseDto> RemoveFromMarkedAsync(int number)
+        {
+            return await _articleLogic.RemoveArticleFromMarkedAsync(number);
+        }
+
+        
+
+        // PUT api/<ArticleController>/sale
+        [HttpPut("/sale")]
+        public async Task<SalesReceiptDto> SellArticlesAsync([FromBody] IEnumerable<long> articleNumbers)
+        {
+            return await _saleLogic.SellArticlesAsync(articleNumbers);
+        }
+
+        // DELETE api/<ArticleController>/5/billing
+        [HttpDelete("{number}/billing")]
+        public async Task CancelSettlementAsync(int number)
+        {
+            if (number <= 0) throw new ArgumentException(nameof(number));
+            await _sellerBillingLogic.CancelSettlementAsync(number);
         }
     }
 }
