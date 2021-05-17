@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.IO;
+using DeVes.Bazaar.Contracts;
 using DeVes.Bazaar.Contracts.Logic;
 using DeVes.Bazaar.Contracts.Repositories;
 using DeVes.Bazaar.Data.JsonDb;
@@ -40,8 +41,25 @@ namespace DeVes.Bazaar
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IManufacturerRepository>(provider =>
-                                                               new ManufacturerRepository(_basicDataRepoOptions));
+            services.AddSingleton<ITempDataMemory>(provider =>
+            {
+                var result = new TempDataMemory();
+                result.Set("manufacturer", Guid.NewGuid());
+                result.Set("manufacturer.create", Guid.NewGuid());
+                result.Set("manufacturer.update", Guid.NewGuid());
+                result.Set("category", Guid.NewGuid());
+                result.Set("category.create", Guid.NewGuid());
+                result.Set("category.update", Guid.NewGuid());
+                result.Set("seller", Guid.NewGuid());
+                result.Set("seller.create", Guid.NewGuid());
+                result.Set("seller.update", Guid.NewGuid());
+                result.Set("article", Guid.NewGuid());
+                result.Set("article.create", Guid.NewGuid());
+                result.Set("article.update", Guid.NewGuid());
+                return result;
+            });
+
+            services.AddTransient<IManufacturerRepository>(provider => new ManufacturerRepository(_basicDataRepoOptions));
             services.AddTransient<ICategoryRepository>(provider => new CategoryRepository(_basicDataRepoOptions));
             services.AddTransient<ISellerRepository>(provider => new SellerRepository(_sellerDataRepoOptions));
             services.AddTransient<IArticleRepository>(provider => new ArticleRepository(_sellerDataRepoOptions));
