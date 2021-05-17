@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DeVes.Bazaar.Contracts.Dto;
 using DeVes.Bazaar.Contracts.Logic;
 using DeVes.Bazaar.Contracts.Models;
 using DeVes.Bazaar.Extensions;
@@ -47,14 +48,14 @@ namespace DeVes.Bazaar.Controllers
 
         // POST api/<ArticleController>
         [HttpPost]
-        public async Task Post([FromBody] ArticleModel value)
+        public async Task Post([FromBody] ArticleInsertDto value)
         {
             await _articleLogic.CreateAsync(value ?? throw new ArgumentNullException(nameof(value)));
         }
 
         // PUT api/<ArticleController>/5
         [HttpPut("{number}")]
-        public async Task Put(int number, [FromBody] ArticleModel value)
+        public async Task Put(int number, [FromBody] ArticleUpdateDto value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 

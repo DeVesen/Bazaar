@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DeVes.Bazaar.Contracts.Dto;
 using DeVes.Bazaar.Contracts.Logic;
 using DeVes.Bazaar.Contracts.Models;
 using DeVes.Bazaar.Contracts.Repositories;
@@ -30,7 +31,7 @@ namespace DeVes.Bazaar.Logic
         public ArticleModel GetItem(long number) => _articleRepository.GetItem(number);
 
 
-        public async Task<bool> CreateAsync(ArticleModel value)
+        public async Task<bool> CreateAsync(ArticleInsertDto value)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
@@ -43,17 +44,6 @@ namespace DeVes.Bazaar.Logic
                 throw new ArgumentException($"'{nameof(value.Manufacturer)}' is not defined!");
             if (value.Price <= 0) throw new ArgumentException($"'{nameof(value.Price)}' is not defined!");
 
-            if (value.SoldAt.HasValue || value.SoldFor.HasValue)
-            {
-                if (value.OnSaleSince.HasValue is false)
-                    throw new ArgumentException($"'{nameof(value.OnSaleSince)}' is not defined!");
-                if (value.SoldAt.HasValue is false)
-                    throw new ArgumentException($"'{nameof(value.SoldAt)}' is not defined!");
-                if (value.SoldFor.HasValue is false)
-                    throw new ArgumentException($"'{nameof(value.SoldFor)}' is not defined!");
-                if (value.SoldFor <= 0) throw new ArgumentException($"'{nameof(value.SoldFor)}' is not defined!");
-            }
-
             value.Number = value.Number <= 0
                                ? _articleRepository.GetNextFreeNumber()
                                : value.Number;
@@ -63,10 +53,19 @@ namespace DeVes.Bazaar.Logic
             if (_sellerRepository.GetItem(value.SellerNumber) == null)
                 throw new ArgumentException($"SellerNumber '{value.Number}' not known!");
 
-            return await _articleRepository.InsertAsync(value);
+            var articleModel = new ArticleModel
+            {
+                SellerNumber = value.SellerNumber,
+                Title        = value.Title,
+                Category     = value.Category,
+                Manufacturer = value.Manufacturer,
+                Price        = value.Price
+            };
+
+            return await _articleRepository.InsertAsync(articleModel);
         }
 
-        public async Task<bool> UpdateAsync(ArticleModel value)
+        public async Task<bool> UpdateAsync(ArticleUpdateDto value)
         {
             if (value.Number <= 0) throw new ArgumentException($"'{nameof(value.Number)}' is not defined!");
             if (value.SellerNumber <= 0) throw new ArgumentException($"'{nameof(value.SellerNumber)}' is not defined!");
@@ -77,22 +76,23 @@ namespace DeVes.Bazaar.Logic
             if (string.IsNullOrWhiteSpace(value.Manufacturer))
                 throw new ArgumentException($"'{nameof(value.Manufacturer)}' is not defined!");
             if (value.Price <= 0) throw new ArgumentException($"'{nameof(value.Price)}' is not defined!");
+            
+            var articleModel = _articleRepository.GetItem(value.Number);
 
-            if (value.SoldAt.HasValue || value.SoldFor.HasValue)
-            {
-                if (value.SoldAt.HasValue is false)
-                    throw new ArgumentException($"'{nameof(value.SoldAt)}' is not defined!");
-                if (value.SoldFor.HasValue is false)
-                    throw new ArgumentException($"'{nameof(value.SoldFor)}' is not defined!");
-                if (value.SoldFor <= 0) throw new ArgumentException($"'{nameof(value.SoldFor)}' is not defined!");
-            }
+            if (articleModel == null)
+                throw new ArgumentException($"Article '{value.Number}' not known!");
+            if (articleModel.SoldAt.HasValue)
+                throw new ArgumentException($"Article '{value.Number}' already sold!");
+            if (articleModel.ReturnedAt.HasValue)
+                throw new ArgumentException($"Article '{value.Number}' already returned!");
 
-            if (_articleRepository.GetItem(value.Number) == null)
-                throw new ArgumentException($"Article {value.Number} not known!");
-            if (_sellerRepository.GetItem(value.SellerNumber) == null)
-                throw new ArgumentException($"SellerNumber '{value.Number}' not known!");
+            articleModel.SellerNumber = value.SellerNumber ?? articleModel.SellerNumber;
+            articleModel.Title        = value.Title ?? articleModel.Title;
+            articleModel.Category     = value.Category ?? articleModel.Category;
+            articleModel.Manufacturer = value.Manufacturer ?? articleModel.Manufacturer;
+            articleModel.Price        = value.Price ?? articleModel.Price;
 
-            return await _articleRepository.UpdateAsync(value.SellerNumber, value);
+            return await _articleRepository.UpdateAsync(articleModel.Number, articleModel);
         }
 
         public async Task<bool> DeleteAsync(long number)

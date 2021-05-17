@@ -69,6 +69,8 @@ namespace DeVes.Bazaar
             services.AddTransient<ISellerLogic, SellerLogic>();
             services.AddTransient<IArticleLogic, ArticleLogic>();
 
+            services.AddTransient<ISaleLogic, SaleLogic>();
+
             services.AddTransient<GraphQlLogic>();
             services.AddTransient<IDocumentExecuter, DocumentExecuter>();
             services.AddTransient<IDocumentWriter, DocumentWriter>();

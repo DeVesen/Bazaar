@@ -48,12 +48,12 @@ namespace DeVes.Bazaar.Controllers
             return _sellerLogic.GetItem(number);
         }
 
-        //// GET api/<SellerController>/5/Articles
-        //[HttpGet("{sellerNumber}/Articles")]
-        //public IEnumerable<ArticleModel> GetArticles(int sellerNumber)
-        //{
-        //    return _articleLogic.GetItemsOfSeller(sellerNumber);
-        //}
+        // GET api/<SellerController>/5/Articles
+        [HttpGet("{sellerNumber}/Articles")]
+        public IEnumerable<ArticleModel> GetArticles(int sellerNumber)
+        {
+            return _articleLogic.GetItems(null, sellerNumber);
+        }
 
         // POST api/<SellerController>
         [HttpPost]
