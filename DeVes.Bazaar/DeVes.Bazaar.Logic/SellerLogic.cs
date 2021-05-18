@@ -19,8 +19,8 @@ namespace DeVes.Bazaar.Logic
 
         public SellerModel GetItem(long number) => _sellerRepository.GetItem(number);
 
-        public IEnumerable<SellerModel> GetItems(long?  number, string firstName, string lastName,
-                                                 string zip,    string town,      string eMail)
+        public IEnumerable<SellerModel> GetItems(long?  number = null, string firstName = null, string lastName = null,
+                                                 string zip    = null, string town      = null, string eMail    = null)
             => _sellerRepository.GetItems(number, firstName, lastName, zip, town, eMail);
 
 
@@ -58,7 +58,7 @@ namespace DeVes.Bazaar.Logic
                 throw new ArgumentException($"'{nameof(value.Phone)}' is not defined!");
 
             if (_sellerRepository.GetItem(value.Number) == null)
-                throw new ArgumentException($"{value.Number} not in use!");
+                throw new ArgumentException($"Number '{value.Number}' not in use!");
 
             return await _sellerRepository.UpdateAsync(value.Number, value);
         }

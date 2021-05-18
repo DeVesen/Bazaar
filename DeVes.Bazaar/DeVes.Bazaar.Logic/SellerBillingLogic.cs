@@ -24,8 +24,8 @@ namespace DeVes.Bazaar.Logic
 
         public async Task<BillingResponseDto> BillingAsync(long sellerNumber, IEnumerable<long> articleNumbers = null)
         {
-            var billingTime   = DateTime.Now;
-            var sellerElement = _sellerRepository.GetItem(sellerNumber);
+            var billingTime    = DateTime.Now;
+            var sellerElement  = _sellerRepository.GetItem(sellerNumber);
             var articlesToBill = _articleRepository.GetItems(null, sellerNumber)
                                                    .Where(p => (articleNumbers ?? new long[0]).Any() is false ||
                                                                (articleNumbers ?? new long[0]).Contains(p.Number))

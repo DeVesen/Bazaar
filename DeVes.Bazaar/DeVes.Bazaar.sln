@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeVes.Bazaar.Logic", "DeVes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeVes.Bazaar.Contracts", "DeVes.Bazaar.Contracts\DeVes.Bazaar.Contracts.csproj", "{0279A6B6-FE66-4574-B317-1E41D81FAF0A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4BC703A5-2DEB-4941-9F6D-57A2A2471117}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeVes.Bazaar.Logic.Tests", "DeVes.Bazaar.Logic.Tests\DeVes.Bazaar.Logic.Tests.csproj", "{EE2E670D-1CC2-44BF-9B46-87979ACA0197}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,16 @@ Global
 		{0279A6B6-FE66-4574-B317-1E41D81FAF0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0279A6B6-FE66-4574-B317-1E41D81FAF0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0279A6B6-FE66-4574-B317-1E41D81FAF0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE2E670D-1CC2-44BF-9B46-87979ACA0197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE2E670D-1CC2-44BF-9B46-87979ACA0197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE2E670D-1CC2-44BF-9B46-87979ACA0197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE2E670D-1CC2-44BF-9B46-87979ACA0197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EE2E670D-1CC2-44BF-9B46-87979ACA0197} = {4BC703A5-2DEB-4941-9F6D-57A2A2471117}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03ADCFE3-5C77-4593-BE35-2F9495B912FB}

@@ -35,14 +35,16 @@ namespace DeVes.Bazaar.Logic
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
-            if (value.SellerNumber <= 0) throw new ArgumentException($"'{nameof(value.SellerNumber)}' is not defined!");
+            if (value.SellerNumber <= 0)
+                throw new ArgumentException($"'{nameof(value.SellerNumber)}' is not defined!");
             if (string.IsNullOrWhiteSpace(value.Title))
                 throw new ArgumentException($"'{nameof(value.Title)}' is not defined!");
             if (string.IsNullOrWhiteSpace(value.Category))
                 throw new ArgumentException($"'{nameof(value.Category)}' is not defined!");
             if (string.IsNullOrWhiteSpace(value.Manufacturer))
                 throw new ArgumentException($"'{nameof(value.Manufacturer)}' is not defined!");
-            if (value.Price <= 0) throw new ArgumentException($"'{nameof(value.Price)}' is not defined!");
+            if (value.Price <= 0)
+                throw new ArgumentException($"'{nameof(value.Price)}' is not defined!");
 
             value.Number = value.Number <= 0
                                ? _articleRepository.GetNextFreeNumber()
@@ -55,6 +57,7 @@ namespace DeVes.Bazaar.Logic
 
             var articleModel = new ArticleModel
             {
+                Number       = value.Number,
                 SellerNumber = value.SellerNumber,
                 Title        = value.Title,
                 Category     = value.Category,
@@ -67,8 +70,12 @@ namespace DeVes.Bazaar.Logic
 
         public async Task<bool> UpdateAsync(ArticleUpdateDto value)
         {
-            if (value.Number <= 0) throw new ArgumentException($"'{nameof(value.Number)}' is not defined!");
-            if (value.SellerNumber <= 0) throw new ArgumentException($"'{nameof(value.SellerNumber)}' is not defined!");
+            if (value == null) throw new ArgumentNullException(nameof(value));
+
+            if (value.Number <= 0)
+                throw new ArgumentException($"'{nameof(value.Number)}' is not defined!");
+            if (value.SellerNumber <= 0)
+                throw new ArgumentException($"'{nameof(value.SellerNumber)}' is not defined!");
             if (string.IsNullOrWhiteSpace(value.Title))
                 throw new ArgumentException($"'{nameof(value.Title)}' is not defined!");
             if (string.IsNullOrWhiteSpace(value.Category))
@@ -81,6 +88,8 @@ namespace DeVes.Bazaar.Logic
 
             if (articleModel == null)
                 throw new ArgumentException($"Article '{value.Number}' not known!");
+            if (_sellerRepository.GetItem(value.SellerNumber ?? articleModel.SellerNumber) == null)
+                throw new ArgumentException($"SellerNumber '{value.Number}' not known!");
             if (articleModel.SoldAt.HasValue)
                 throw new ArgumentException($"Article '{value.Number}' already sold!");
             if (articleModel.ReturnedAt.HasValue)
@@ -107,8 +116,10 @@ namespace DeVes.Bazaar.Logic
         {
             var articleElement = _articleRepository.GetItem(articleNumber);
 
-            if (articleElement == null) return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticleNotKnown);
-            if (price.HasValue && price < 0) return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticlePriceNotValid);
+            if (articleElement == null)
+                return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticleNotKnown);
+            if (price.HasValue && price < 0)
+                return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticlePriceNotValid);
 
             articleElement.OnSaleSince ??= DateTime.Now;
             articleElement.Price       =   price ?? articleElement.Price;
@@ -127,7 +138,8 @@ namespace DeVes.Bazaar.Logic
         {
             var articleElement = _articleRepository.GetItem(articleNumber);
 
-            if (articleElement == null) return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticleNotKnown);
+            if (articleElement == null)
+                return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticleNotKnown);
             if (articleElement.SoldAt.HasValue)
                 return MarkedResponseDto.Create(articleNumber, ErrorCodes.ArticleAlreadySold);
             if (articleElement.ReturnedAt.HasValue)

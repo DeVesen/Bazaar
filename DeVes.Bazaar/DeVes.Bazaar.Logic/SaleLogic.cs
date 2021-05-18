@@ -21,6 +21,8 @@ namespace DeVes.Bazaar.Logic
 
         public async Task<SalesReceiptDto> SellArticlesAsync(IEnumerable<long> articleNumbers)
         {
+            if (articleNumbers == null) throw new ArgumentNullException(nameof(articleNumbers));
+
             var allArticles      = articleNumbers.Select(p => new { ArticleNumber = p, Article = _articleRepository.GetItem(p)})
                                                  .ToArray();
             var resultReceiptLst = new List<ArticleReceiptDto>();
@@ -35,9 +37,9 @@ namespace DeVes.Bazaar.Logic
                 {
                     if (articleElement.Article.OnSaleSince.HasValue is false)
                         resultReceiptLst.Add(ArticleReceiptDto.Create(articleElement.ArticleNumber, ErrorCodes.ArticleNotFreeForSale));
-                    if (articleElement.Article.SoldAt.HasValue)
+                    else if (articleElement.Article.SoldAt.HasValue)
                         resultReceiptLst.Add(ArticleReceiptDto.Create(articleElement.ArticleNumber, ErrorCodes.ArticleAlreadySold));
-                    if (articleElement.Article.ReturnedAt.HasValue)
+                    else if (articleElement.Article.ReturnedAt.HasValue)
                         resultReceiptLst.Add(ArticleReceiptDto.Create(articleElement.ArticleNumber, ErrorCodes.ArticleAlreadyReturned));
 
                     articleElement.Article.SoldAt  = DateTime.Now;

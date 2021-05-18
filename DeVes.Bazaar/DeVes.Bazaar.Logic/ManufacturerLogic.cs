@@ -48,7 +48,7 @@ namespace DeVes.Bazaar.Logic
                 throw new ArgumentException($"'{nameof(value.Title)}' is not defined!");
 
             if (_manufacturerRepository.GetItem(value.Number) == null)
-                throw new ArgumentException($"{value.Number} not in use!");
+                throw new ArgumentException($"Number '{value.Number}' not in use!");
 
             return await _manufacturerRepository.UpdateAsync(value.Number, value);
         }
